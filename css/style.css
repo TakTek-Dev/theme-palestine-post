@@ -8570,29 +8570,131 @@ a.dlv-pgn__btn:hover {
     background: var(--main-color);
 }
 
-/* writer page */
-.custom-author-card .author-name {
+/* writer page — a 280px photo on a blob graphic sat far from the name; the
+   name was printed twice; the article count only counted the first page */
+.custom-author-card.author-profile {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    align-items: center;
+    gap: 28px;
+    margin: 0 0 40px;
+    padding: 28px 32px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-muted);
+}
+
+.page-writer .breadcrumb + .container {
+    padding-top: 4px !important;
+}
+
+.author-profile .author-image-container {
+    padding: 0;
+    background: none;
+}
+
+.custom-author-card .author-image {
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    object-position: center 25%;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px var(--main-color);
+}
+
+.author-profile .card-body {
+    padding: 0;
+}
+
+.author-profile .author-name {
     margin: 0 0 4px;
     font-family: var(--font-bold);
-    font-size: 24px;
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    line-height: 1.4;
     color: var(--text-color);
 }
 
-.custom-author-card .author-title {
-    margin: 0 0 12px;
+.author-profile .author-title {
+    margin: 0 0 14px;
+    font-size: 16px;
     color: var(--secondry-text-color);
 }
 
-.author-count {
+.author-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.author-stats li {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin: 0;
     padding: 6px 14px;
     border-radius: 999px;
-    background: var(--main-color-soft);
-    color: var(--main-color-ink);
+    background: #fff;
+    color: var(--text-color);
     font-size: 13px;
+}
+
+.author-stats i {
+    color: var(--main-color-ink);
+}
+
+.all-works .small-articles-group > .d-flex {
+    margin-bottom: 20px;
+}
+
+.all-works .title-side {
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+.all-works .tab-pane .row > [class*="col-"] {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.all-works .news-card {
+    flex: 1;
+    margin: 0;
+    padding: 22px 24px;
+    border: 1px solid var(--line-color);
+    border-radius: var(--radius);
+    box-shadow: none;
+}
+
+.all-works .news-card:hover {
+    border-color: transparent;
+    box-shadow: var(--shadow-card);
+}
+
+.all-works .news-card-text {
+    height: 100%;
+    padding: 0;
+}
+
+.all-works .news-card-text .date-container {
+    margin-bottom: 6px;
+}
+
+.all-works .news-card-text h2 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.all-works .news-card-text h2 a {
+    color: var(--text-color);
+}
+
+.all-works .news-card-text h2 a:hover {
+    color: var(--main-color-ink);
+}
+
+.all-works .news-card-text > p {
+    margin: 0 0 14px;
 }
 
 .buttons-group-tabs {
@@ -8618,19 +8720,6 @@ a.dlv-pgn__btn:hover {
     color: #fff;
 }
 
-.all-works .news-card-text h2 {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.all-works .news-card-text h2 a {
-    color: var(--text-color);
-}
-
-.all-works .news-card-text h2 a:hover {
-    color: var(--main-color-ink);
-}
-
 .read-more-link {
     display: inline-flex;
     align-items: center;
@@ -8639,6 +8728,33 @@ a.dlv-pgn__btn:hover {
     color: var(--main-color-ink);
     font-family: var(--font-semibold);
     font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .custom-author-card.author-profile {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 16px;
+        padding: 18px 16px;
+    }
+
+    .custom-author-card .author-image {
+        width: 88px;
+        height: 88px;
+    }
+
+    .author-profile .author-title {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .author-stats li {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .all-works .news-card {
+        padding: 18px 16px;
+    }
 }
 
 /* about page: a brand panel where a grey placeholder image used to be */
