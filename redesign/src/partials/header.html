@@ -1,0 +1,101 @@
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<header class="masthead" data-masthead>
+  <div class="masthead__strip">
+    <div class="container masthead__strip-inner">
+      <p class="masthead__date"><time data-date-greg datetime="2026-10-05">الاثنين 5 أكتوبر 2026</time><span class="masthead__hijri" data-date-hijri>24 ربيع الآخر 1448 هـ</span></p>
+      <p class="masthead__clock"><span class="live-dot" aria-hidden="true"></span>القدس <time data-clock>17:12</time></p>
+      <div class="masthead__tools">
+        <div class="tool" data-tool="weather">
+          <button class="tool__btn" type="button" aria-expanded="false" aria-controls="panel-weather">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-weather"/></svg><span class="tool__label">الطقس</span><span class="tool__value num" data-weather-inline hidden></span>
+          </button>
+          <div class="tool__panel" id="panel-weather" role="region" aria-label="الطقس في غزة والقدس" hidden>
+            <p class="tool__title">الطقس <small>توقعات 5 أيام</small></p>
+            <div data-weather-body><p class="tool__state">يُحمَّل عند الفتح…</p></div>
+          </div>
+        </div>
+        <div class="tool" data-tool="fx">
+          <button class="tool__btn" type="button" aria-expanded="false" aria-controls="panel-fx">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-coins"/></svg><span class="tool__label">العملات</span><span class="tool__value num" data-fx-inline hidden></span>
+          </button>
+          <div class="tool__panel" id="panel-fx" role="region" aria-label="أسعار العملات بالشيكل" hidden>
+            <p class="tool__title">العملات <small>مقابل الشيكل</small></p>
+            <div data-fx-body><p class="tool__state">يُحمَّل عند الفتح…</p></div>
+          </div>
+        </div>
+        <div class="tool" data-tool="notif">
+          <button class="tool__btn" type="button" aria-expanded="false" aria-controls="panel-notif">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-bell"/></svg><span class="tool__label">آخر الأخبار</span><span class="tool__badge num" data-notif-count hidden>0</span>
+          </button>
+          <div class="tool__panel" id="panel-notif" role="region" aria-label="آخر الأخبار منذ زيارتك" hidden>
+            <p class="tool__title">آخر الأخبار <small data-notif-since></small></p>
+            <ol class="notif-list" data-notif-list></ol>
+          </div>
+        </div>
+        <a class="masthead__send" href="index.html#source"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-send"/></svg>أرسل خبرًا</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="masthead__main">
+    <div class="container masthead__main-inner">
+      <a class="brand" href="index.html"><span class="brand__logo" role="img" aria-label="فلسطين بوست — الصفحة الرئيسية"></span></a>
+      <nav class="sections" aria-label="الأقسام">
+        <ul class="sections__list">
+          <li><a class="sections__link" href="index.html" {{nav_home}}>الرئيسية</a></li>
+          <li><a class="sections__link" href="section.html" {{nav_reports}}>تقارير بوست</a></li>
+          <li><a class="sections__link" href="section.html">مقالات</a></li>
+          <li><a class="sections__link" href="index.html#media">فيديو بوست</a></li>
+          <li><a class="sections__link" href="podcast.html" {{nav_podcast}}>بودكاست</a></li>
+          <li class="sections__opt"><a class="sections__link" href="section.html">موسوعة فلسطين</a></li>
+          <li class="sections__opt"><a class="sections__link" href="section.html">عربي ودولي</a></li>
+          <li class="more-menu" data-more>
+            <button class="sections__link" type="button" aria-expanded="false" aria-controls="more-panel">المزيد<svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-chevron"/></svg></button>
+            <ul class="more-menu__panel" id="more-panel" hidden>
+              <li class="more-menu__opt"><a href="section.html">موسوعة فلسطين</a></li>
+              <li class="more-menu__opt"><a href="section.html">عربي ودولي</a></li>
+              <li><a href="section.html">تكنولوجيا</a></li>
+              <li><a href="section.html">منوعات</a></li>
+              <li><a href="index.html#source">أرسل خبرًا</a></li>
+              <li><a href="index.html#about">من نحن</a></li>
+              <li><a href="index.html#sitemap">خريطة الموقع</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <form class="masthead__search" action="search.html" method="get" role="search">
+        <label class="visually-hidden" for="q-head">ابحث في فلسطين بوست</label>
+        <input class="masthead__search-input" id="q-head" name="q" type="search" placeholder="ابحث عن خبر أو مكان أو كاتب" autocomplete="off" enterkeyhint="search">
+        <button class="masthead__search-btn" type="submit" aria-label="بحث"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-search"/></svg></button>
+      </form>
+      <div class="masthead__actions">
+        <button class="icon-btn masthead__bell" type="button" data-notif-mobile aria-label="الإشعارات"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-bell"/></svg><span class="tool__badge num" data-notif-count hidden>0</span></button>
+        <button class="icon-btn masthead__search-open" type="button" data-search-open aria-label="بحث في فلسطين بوست"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-search"/></svg></button>
+        <button class="icon-btn masthead__menu-btn" type="button" data-menu-open aria-label="القائمة" aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-menu"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="place-rail" aria-label="الأماكن من الشمال إلى الجنوب">
+    <div class="container place-rail__inner">
+      <a class="place-rail__all" href="section.html" {{nav_local}}>أخبار محلية</a>
+      <ol class="place-rail__list">
+        <li><a class="place-rail__item" href="place.html"><span>جنين</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i></span><span class="visually-hidden">، خبر واحد اليوم</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>طوباس</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>طولكرم</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>نابلس</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i><i class="x"></i></span><span class="visually-hidden">، خبران اليوم</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>قلقيلية</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>سلفيت</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>رام الله</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i><i class="x"></i></span><span class="visually-hidden">، خبران اليوم</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>أريحا</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>القدس</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>بيت لحم</span></a></li>
+        <li><a class="place-rail__item" href="place.html"><span>الخليل</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i><i class="x"></i></span><span class="visually-hidden">، خبران اليوم</span></a></li>
+        <li><a class="place-rail__item" href="place.html" {{place_gaza}}><span>غزة</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i><i class="x"></i><i class="x"></i><i class="x"></i></span><span class="visually-hidden">، 4 أخبار اليوم</span></a></li>
+        <li aria-hidden="true"><span class="place-rail__sep"></span></li>
+        <li><a class="place-rail__item" href="place.html"><span>الداخل المحتل</span><span class="place-rail__today" aria-hidden="true"><i class="x"></i></span><span class="visually-hidden">، خبر واحد اليوم</span></a></li>
+      </ol>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,76 @@
+<dialog class="sheet" id="menu-sheet" aria-label="القائمة">
+  <div class="sheet__head">
+    <span class="brand__logo" role="img" aria-label="فلسطين بوست"></span>
+    <button class="icon-btn" type="button" data-sheet-close aria-label="إغلاق القائمة"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-close"/></svg></button>
+  </div>
+  <div class="sheet__body">
+    <div class="sheet__group">
+      <p class="sheet__label">الآن</p>
+      <div class="sheet__tools">
+        <div class="tool-card"><p class="tool-card__label">غزة · القدس</p><p class="tool-card__value num" data-weather-mini>—</p></div>
+        <div class="tool-card"><p class="tool-card__label">الدولار · اليورو</p><p class="tool-card__value num" data-fx-mini>—</p></div>
+      </div>
+    </div>
+    <div class="sheet__group">
+      <p class="sheet__label">الأماكن، من الشمال إلى الجنوب</p>
+      <ul class="sheet__places">
+        <li><a href="place.html">جنين <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="place.html">طوباس</a></li>
+        <li><a href="place.html">طولكرم</a></li>
+        <li><a href="place.html">نابلس <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="place.html">قلقيلية</a></li>
+        <li><a href="place.html">سلفيت</a></li>
+        <li><a href="place.html">رام الله <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="place.html">أريحا</a></li>
+        <li><a href="place.html">القدس</a></li>
+        <li><a href="place.html">بيت لحم</a></li>
+        <li><a href="place.html">الخليل <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="place.html">غزة <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="place.html">الداخل المحتل <i class="x" aria-hidden="true"></i></a></li>
+        <li><a href="section.html">كل الأخبار المحلية</a></li>
+      </ul>
+    </div>
+    <div class="sheet__group">
+      <p class="sheet__label">الأقسام</p>
+      <ul class="sheet__links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="section.html">تقارير بوست</a></li>
+        <li><a href="section.html">مقالات</a></li>
+        <li><a href="index.html#media">فيديو بوست</a></li>
+        <li><a href="podcast.html">بودكاست</a></li>
+        <li><a href="file.html">الملفات الخاصة</a></li>
+        <li><a href="section.html">موسوعة فلسطين</a></li>
+        <li><a href="section.html">عربي ودولي</a></li>
+        <li><a href="section.html">تكنولوجيا</a></li>
+        <li><a href="section.html">منوعات</a></li>
+      </ul>
+    </div>
+    <div class="sheet__group">
+      <p class="sheet__label">فلسطين بوست</p>
+      <ul class="sheet__links">
+        <li><a href="index.html#source">أرسل خبرًا <svg class="icon icon--sm" aria-hidden="true"><use href="assets/img/icons.svg#i-send"/></svg></a></li>
+        <li><a href="index.html#about">من نحن</a></li>
+        <li><a href="index.html#sitemap">خريطة الموقع</a></li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet search-sheet" id="search-sheet" aria-label="البحث">
+  <div class="container">
+    <form class="search-form" action="search.html" method="get" role="search">
+      <label class="visually-hidden" for="q-sheet">ابحث في فلسطين بوست</label>
+      <input class="field" id="q-sheet" name="q" type="search" placeholder="ابحث عن خبر، مكان، كاتب…" autocomplete="off" enterkeyhint="search">
+      <button class="btn btn--primary" type="submit"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-search"/></svg>بحث</button>
+      <button class="icon-btn" type="button" data-sheet-close aria-label="إغلاق البحث"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#i-close"/></svg></button>
+    </form>
+    <div class="search-suggest">
+      <a class="chip" href="search.html?q=الزيتون">الزيتون</a>
+      <a class="chip" href="search.html?q=الأسرى">الأسرى</a>
+      <a class="chip" href="search.html?q=الأقصى">الأقصى</a>
+      <a class="chip" href="search.html?q=مستوطنين">مستوطنين</a>
+      <a class="chip" href="place.html">غزة</a>
+      <a class="chip" href="file.html">نافذة على غزة</a>
+    </div>
+  </div>
+</dialog>

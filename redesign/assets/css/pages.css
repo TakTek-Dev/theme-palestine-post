@@ -1,0 +1,133 @@
+/* =========================================================================
+   Palestine Post 2.0 — page compositions and responsive behaviour
+   Breakpoints: sm 480 · md 768 · lg 1024 · xl 1280
+   ========================================================================= */
+
+/* ---- "more" menu in the sections bar -------------------------------- */
+.more-menu { position: relative; }
+.more-menu__panel {
+  position: absolute;
+  inset-block-start: calc(100% + 4px);
+  inset-inline-start: 0;
+  z-index: var(--z-dropdown);
+  min-inline-size: 220px;
+  padding: var(--s2);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-float);
+  border-block-start: 3px solid var(--teal);
+  animation: pp-drop var(--dur-2) var(--ease-out);
+}
+.more-menu__panel a { display: flex; align-items: center; min-block-size: 44px; padding-inline: var(--s3); font-weight: 600; }
+.more-menu__panel a:hover { background: var(--mist); color: var(--teal-ink); }
+.more-menu__opt { display: none; }
+.masthead__bell { display: none; position: relative; }
+.masthead__bell .tool__badge { position: absolute; inset-block-start: 4px; inset-inline-end: 2px; }
+
+/* the home page breathes between bands with seams, not boxes */
+.page-home .regions { padding-block-start: var(--s5); }
+
+/* =========================================================================
+   RESPONSIVE — each band is re-composed, not just shrunk
+   ========================================================================= */
+@media (max-width: 1279px) {
+  .sections__opt { display: none; }
+  .more-menu__opt { display: block; }
+  .columns__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s7); }
+  .column:nth-child(odd)::before { display: none; }
+  .lead__panel { margin-inline-end: 4%; }
+  .weave__col-latest { inline-size: 30%; }
+}
+
+@media (max-width: 1023px) {
+  .masthead { inset-block-start: -40px; }
+  .sections { display: none; }
+  .masthead__menu-btn { display: inline-grid; }
+  .masthead__main-inner { min-block-size: 64px; gap: var(--s3); }
+  .brand__logo { inline-size: 124px; }
+  .masthead__tools .tool, .masthead__send { display: none; }
+  .masthead__bell { display: inline-grid; }
+
+  .front__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--s7); }
+  .lead__panel { margin-inline-end: 6%; }
+
+  .weave__table { display: none; }
+  .weave__list { display: block; }
+  .weave__frame { padding: var(--s4); }
+  .weave__legend span:last-child { display: none; }
+
+  .regions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s7); }
+  .region:nth-child(3) { grid-column: 1 / -1; }
+  .region:nth-child(3)::before { display: none; }
+
+  .files__grid { grid-template-columns: minmax(0, 1fr); }
+  .dossier--compact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s5); }
+  .dossier--compact .dossier__cover { margin: 0; }
+
+  .reads__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--s5); }
+  .media-band__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--s8); }
+  .quotes__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--s6); }
+  .quote { padding-inline-start: var(--s7); padding-block-start: 0; }
+  .quote::before { inset-block-start: -10px; }
+  .source__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--s5); }
+  .desk__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s7); }
+  .desk__col:nth-child(3) { grid-column: 1 / -1; }
+  .desk__col:nth-child(3)::before { display: none; }
+  .hemline__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  :root { --col-gap: 20px; }
+  .masthead__strip-inner { min-block-size: 40px; gap: var(--s3); justify-content: space-between; }
+  .masthead__hijri { display: none; }
+  .masthead__main-inner { min-block-size: 58px; }
+  .brand__logo { inline-size: 112px; }
+  .place-rail__all { padding-inline-end: var(--s3); }
+  .place-rail__inner { gap: var(--s2); }
+
+  .breaking__inner { flex-wrap: wrap; gap: var(--s1) var(--s3); padding-block: var(--s3) var(--s3); }
+  .breaking__label { font-size: var(--fs-ui); }
+  .breaking__text { flex-basis: 100%; order: 3; font-size: var(--fs-ui); }
+  .breaking__follow { display: none; }
+  .breaking__close { margin-inline-start: auto; }
+
+  .front { padding-block-start: 0; }
+  .lead__media { margin-inline: calc(var(--gutter) * -1); aspect-ratio: 4 / 3; }
+  .lead__panel { margin: -40px 0 0; padding: var(--s5) var(--s4) var(--s4); }
+  .lead__title { font-size: 1.75rem; }
+
+  .thread__list::before { inset-inline-start: 52px; }
+  .thread__item { grid-template-columns: 42px 20px minmax(0, 1fr); }
+  .thread__knot, .thread__foot { padding-inline-start: 42px; }
+
+  .regions__grid { grid-template-columns: minmax(0, 1fr); }
+  .region:nth-child(n)::before { display: none; }
+  .region + .region { padding-block-start: var(--s6); background-image: repeating-linear-gradient(to left, var(--navy) 0 var(--stitch-len), transparent var(--stitch-len) calc(var(--stitch-len) + var(--stitch-gap))); background-size: 100% 2px; background-repeat: no-repeat; }
+
+  .dossier, .dossier--lead { padding: var(--s5) var(--s4); }
+  .dossier--lead, .dossier--compact { grid-template-columns: minmax(0, 1fr); }
+  .dossier--lead .dossier__cover { max-inline-size: 220px; }
+
+  .reads__side .story--row { grid-template-columns: minmax(0, 1fr) 96px; }
+  .columns__grid { grid-template-columns: minmax(0, 1fr); }
+  .column::before { display: none; }
+  .column + .column { padding-block-start: var(--s6); background-image: repeating-linear-gradient(to left, var(--seam) 0 var(--stitch-len), transparent var(--stitch-len) calc(var(--stitch-len) + var(--stitch-gap))); background-size: 100% 2px; background-repeat: no-repeat; }
+
+  .episode { grid-template-columns: 96px minmax(0, 1fr); gap: var(--s4); }
+  .player__time { flex-basis: 100%; margin-inline-start: 0; order: 9; }
+  .player__controls { flex-wrap: wrap; }
+  .video__item { grid-template-columns: 96px minmax(0, 1fr); }
+
+  .source__card { padding: var(--s6) var(--s5); }
+  .desk__grid { grid-template-columns: minmax(0, 1fr); }
+  .desk__col::before { display: none; }
+  .hemline__grid { grid-template-columns: minmax(0, 1fr); }
+  .hemline__places { columns: 2; }
+
+  .section-head { flex-wrap: wrap; }
+  .to-top { inset-block-end: var(--s4); inset-inline-end: var(--s4); }
+}
+
+@media (max-width: 380px) {
+  .masthead__date time { font-size: var(--fs-micro); }
+  .brand__logo { inline-size: 100px; }
+}

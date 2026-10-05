@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pp-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5510", "--bind", "127.0.0.1", "--directory", "redesign"],
+      "port": 5510
+    }
+  ]
+}
