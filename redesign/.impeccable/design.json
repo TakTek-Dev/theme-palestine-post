@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T23:31:27+03:00",
+  "title": "Design System: Palestine Post 2.0",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Logo Navy",
+        "canonical": "#023B56",
+        "tonalRamp": [
+          "#000D17",
+          "#00293D",
+          "#134763",
+          "#366785",
+          "#5789A8",
+          "#7AACCC",
+          "#9DD1F2",
+          "#DEF2FF"
+        ]
+      },
+      "navy-deep": {
+        "role": "primary",
+        "displayName": "Night Navy",
+        "canonical": "#01283B",
+        "tonalRamp": [
+          "#000D17",
+          "#02293C",
+          "#22475B",
+          "#42667C",
+          "#62889F",
+          "#84ABC3",
+          "#A8D0E8",
+          "#DDF2FF"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Deep Ink",
+        "canonical": "#0B2230",
+        "tonalRamp": [
+          "#000D17",
+          "#112836",
+          "#2E4555",
+          "#4C6575",
+          "#6D8698",
+          "#8FA9BB",
+          "#B2CDE0",
+          "#DFF2FF"
+        ]
+      },
+      "teal": {
+        "role": "secondary",
+        "displayName": "Logo Teal",
+        "canonical": "#33B3C0",
+        "tonalRamp": [
+          "#000E10",
+          "#002B2F",
+          "#004C52",
+          "#006F78",
+          "#0094A0",
+          "#3AB8C5",
+          "#66DEEB",
+          "#C7F9FF"
+        ]
+      },
+      "teal-ink": {
+        "role": "secondary",
+        "displayName": "Teal Ink",
+        "canonical": "#0A6773",
+        "tonalRamp": [
+          "#000E11",
+          "#002B31",
+          "#004B55",
+          "#166D79",
+          "#418F9C",
+          "#65B3C0",
+          "#8AD8E5",
+          "#CCF8FF"
+        ]
+      },
+      "teal-wash": {
+        "role": "secondary",
+        "displayName": "Teal Wash",
+        "canonical": "#D6EFF1",
+        "tonalRamp": [
+          "#000E10",
+          "#15292B",
+          "#314648",
+          "#506668",
+          "#708789",
+          "#93AAAC",
+          "#B6CFD1",
+          "#DBF4F6"
+        ]
+      },
+      "madder": {
+        "role": "tertiary",
+        "displayName": "Madder",
+        "canonical": "#B0172C",
+        "tonalRamp": [
+          "#1F0002",
+          "#4D000B",
+          "#800019",
+          "#B21A2E",
+          "#DA474E",
+          "#FF7173",
+          "#FFB2AF",
+          "#FFE8E7"
+        ]
+      },
+      "madder-wash": {
+        "role": "tertiary",
+        "displayName": "Madder Wash",
+        "canonical": "#FBE5E7",
+        "tonalRamp": [
+          "#140709",
+          "#302022",
+          "#4E3D3F",
+          "#6E5C5E",
+          "#907D7F",
+          "#B49FA1",
+          "#D8C3C5",
+          "#FEE8EA"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "File Gold",
+        "canonical": "#A87A22",
+        "tonalRamp": [
+          "#120900",
+          "#332100",
+          "#583C00",
+          "#805900",
+          "#A77921",
+          "#CC9C4A",
+          "#F1C06F",
+          "#FFECCE"
+        ]
+      },
+      "gold-ink": {
+        "role": "tertiary",
+        "displayName": "Gold Ink",
+        "canonical": "#7A5814",
+        "tonalRamp": [
+          "#120900",
+          "#332100",
+          "#583C00",
+          "#7D5A17",
+          "#9F7C3D",
+          "#C49F60",
+          "#E9C383",
+          "#FFECCD"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Paper Raised",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#F1F6F7",
+        "tonalRamp": [
+          "#090C0C",
+          "#222627",
+          "#3F4344",
+          "#5E6263",
+          "#7F8384",
+          "#A1A6A7",
+          "#C5CACB",
+          "#EAEFF0"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#D5E0E3",
+        "tonalRamp": [
+          "#060D0F",
+          "#1E2729",
+          "#3B4446",
+          "#5A6366",
+          "#7A8487",
+          "#9DA7AA",
+          "#C1CBCE",
+          "#E6F1F4"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#43555D",
+        "tonalRamp": [
+          "#010D14",
+          "#17282F",
+          "#33454D",
+          "#52656D",
+          "#73868F",
+          "#95A9B2",
+          "#B8CDD6",
+          "#DDF3FC"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#56656C",
+        "tonalRamp": [
+          "#030D12",
+          "#1A272D",
+          "#36444B",
+          "#55646B",
+          "#76858D",
+          "#98A8B0",
+          "#BBCCD4",
+          "#E0F2FA"
+        ]
+      },
+      "seam": {
+        "role": "neutral",
+        "displayName": "Seam",
+        "canonical": "#A9BCC2",
+        "tonalRamp": [
+          "#020D12",
+          "#18282C",
+          "#35454A",
+          "#53656A",
+          "#74868C",
+          "#96A9AF",
+          "#BACDD3",
+          "#DFF3F9"
+        ]
+      },
+      "seam-strong": {
+        "role": "neutral",
+        "displayName": "Seam Strong",
+        "canonical": "#7C9299",
+        "tonalRamp": [
+          "#000E13",
+          "#15282E",
+          "#32464C",
+          "#50656C",
+          "#71878D",
+          "#93AAB1",
+          "#B7CED5",
+          "#DBF3FB"
+        ]
+      },
+      "hole": {
+        "role": "neutral",
+        "displayName": "Hole",
+        "canonical": "#C9D6DA",
+        "tonalRamp": [
+          "#050D0F",
+          "#1D272A",
+          "#394447",
+          "#586367",
+          "#798588",
+          "#9BA8AB",
+          "#BFCCD0",
+          "#E4F1F5"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Scrim",
+        "canonical": "rgb(11 34 48 / 0.55)",
+        "tonalRamp": [
+          "#000D17",
+          "#112836",
+          "#2E4555",
+          "#4C6575",
+          "#6D8698",
+          "#8FA9BB",
+          "#B2CDE0",
+          "#DFF2FF"
+        ]
+      },
+      "on-navy": {
+        "role": "neutral",
+        "displayName": "Steel Mist",
+        "canonical": "#D7E6EB",
+        "tonalRamp": [
+          "#040D10",
+          "#1C272B",
+          "#384448",
+          "#576468",
+          "#77858A",
+          "#9AA8AD",
+          "#BDCCD1",
+          "#E2F2F7"
+        ]
+      },
+      "on-navy-muted": {
+        "role": "neutral",
+        "displayName": "Muted Steel",
+        "canonical": "#A9C6D0",
+        "tonalRamp": [
+          "#000E13",
+          "#102931",
+          "#2D464F",
+          "#4C666F",
+          "#6C8891",
+          "#8EAAB4",
+          "#B2CFD9",
+          "#D6F4FF"
+        ]
+      },
+      "on-navy-teal": {
+        "role": "neutral",
+        "displayName": "Pale Teal",
+        "canonical": "#9FD8DE",
+        "tonalRamp": [
+          "#000E10",
+          "#002B2F",
+          "#0E4B50",
+          "#346B71",
+          "#568D93",
+          "#78B0B6",
+          "#9CD5DB",
+          "#C6FAFF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The lead story headline only (capped at 3rem in the lead panel); navy, balanced."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The article title; navy, balanced, at most 22em wide."
+      },
+      "title-lg": {
+        "displayName": "Title Large",
+        "purpose": "Important stories with images, the first story of a listing, feature reports, article subheads."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Section heads on the navy baseline with the ط-stem, and the thread title."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titles that head a block or a promoted story; navy."
+      },
+      "title-list": {
+        "displayName": "Title List",
+        "purpose": "Story titles inside day lists and search results; ink."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Compact stories, thread items (at 600), related links, file items; ink."
+      },
+      "opinion-title": {
+        "displayName": "Opinion Title",
+        "purpose": "Opinion headlines in the Naskh hand; a Naskh headline means analysis, never news."
+      },
+      "standfirst": {
+        "displayName": "Standfirst",
+        "purpose": "Deks under lead, article and file titles; file descriptions; the source text. Ink 2."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Article reading text at a 45rem measure; reader-adjustable s/m/l/xl."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Buttons, navigation and controls."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Bylines, captions, counts, notes; the smallest size for Arabic words. Ink 3."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Digits only: weave hours, counts, badges; tabular lining figures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-float",
+        "value": "0 18px 40px -18px rgb(0 0 0 / 0.28), 0 2px 6px rgb(0 0 0 / 0.08)",
+        "purpose": "Dropdown panels (weather, currencies, notifications, the more menu), each with a 3px teal top edge. Only floating layers get a shadow."
+      },
+      {
+        "name": "shadow-bar",
+        "value": "0 10px 22px -16px rgb(0 0 0 / 0.35)",
+        "purpose": "The masthead's main bar once it is stuck (after 40px of scroll)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The one easing curve for every transition and entrance."
+      },
+      {
+        "name": "dur-1",
+        "value": "140ms",
+        "purpose": "Hover and press: colour, border, underline and stitch scale changes."
+      },
+      {
+        "name": "dur-2",
+        "value": "240ms",
+        "purpose": "Menus, sheets and disclosure; the stuck masthead shadow; the teal search thread; the place rail tucking away."
+      },
+      {
+        "name": "drop",
+        "value": "from opacity 0 and translateY(-6px), 240ms ease-out",
+        "purpose": "Dropdown panels, the search sheet and toasts arriving (the weave tooltip uses 140ms)."
+      },
+      {
+        "name": "sheet",
+        "value": "from opacity 0 and translateX(16px), 240ms ease-out",
+        "purpose": "The menu drawer entering from the start edge."
+      },
+      {
+        "name": "pulse",
+        "value": "ring 0 to 8px, 2.4s ease-out infinite",
+        "purpose": "The live dot of the breaking label only."
+      },
+      {
+        "name": "sew",
+        "value": "row opacity 0.15 to 1, 1.6s loop, 0.1s stagger per row",
+        "purpose": "The loader stitching the ط-stem from north to south."
+      },
+      {
+        "name": "lead-photo",
+        "value": "scale(1.015) over 900ms ease-out",
+        "purpose": "The lead photo on hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 0ms; pulse and loader stop",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "380px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "wide",
+        "value": "1400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Navy fill, white Kufi 700, straight cut, 44px; the default action (search submit, load actions).",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\" lang=\"ar\">بحث</button>",
+      "css": ".ds-btn-primary { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-block-size:44px;padding:0 24px;font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif);font-size:0.9375rem;font-weight:700;line-height:1;letter-spacing:normal;white-space:nowrap;border:2px solid transparent;border-radius:0;cursor:pointer;text-decoration:none;transition:background-color 140ms cubic-bezier(0.16, 1, 0.3, 1), color 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms cubic-bezier(0.16, 1, 0.3, 1); background:var(--navy, #023B56); color:var(--paper-raised, #FFFFFF); } .ds-btn-primary:hover { background:#01283B; } .ds-btn-primary:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; } .ds-btn-primary:active { transform:translateY(1px); }"
+    },
+    {
+      "name": "Thread Button",
+      "kind": "button",
+      "refersTo": "button-thread",
+      "description": "Outlined in a 2px navy thread; fills navy on hover. Secondary actions such as load more.",
+      "html": "<button class=\"ds-btn-thread\" type=\"button\" lang=\"ar\">عرض المزيد من أخبار غزة</button>",
+      "css": ".ds-btn-thread { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-block-size:44px;padding:0 24px;font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif);font-size:0.9375rem;font-weight:700;line-height:1;letter-spacing:normal;white-space:nowrap;border:2px solid transparent;border-radius:0;cursor:pointer;text-decoration:none;transition:background-color 140ms cubic-bezier(0.16, 1, 0.3, 1), color 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms cubic-bezier(0.16, 1, 0.3, 1); background:transparent; color:var(--navy, #023B56); border-color:var(--navy, #023B56); } .ds-btn-thread:hover { background:var(--navy, #023B56); color:var(--paper-raised, #FFFFFF); } .ds-btn-thread:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; } .ds-btn-thread:active { transform:translateY(1px); }"
+    },
+    {
+      "name": "Gold Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Gold-thread outline with gold-ink text; special files only.",
+      "html": "<a class=\"ds-btn-gold\" href=\"#\" lang=\"ar\">افتح الملف كاملًا</a>",
+      "css": ".ds-btn-gold { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-block-size:44px;padding:0 24px;font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif);font-size:0.9375rem;font-weight:700;line-height:1;letter-spacing:normal;white-space:nowrap;border:2px solid transparent;border-radius:0;cursor:pointer;text-decoration:none;transition:background-color 140ms cubic-bezier(0.16, 1, 0.3, 1), color 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms cubic-bezier(0.16, 1, 0.3, 1); background:transparent; color:var(--gold-ink, #7A5814); border-color:var(--gold, #A87A22); } .ds-btn-gold:hover { background:var(--gold-ink, #7A5814); border-color:var(--gold-ink, #7A5814); color:var(--paper-raised, #FFFFFF); } .ds-btn-gold:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "White, 1.5px seam-strong border, 48px, straight cut; focus swaps the outline for a navy border and a teal-wash halo.",
+      "html": "<input class=\"ds-field\" type=\"search\" dir=\"rtl\" lang=\"ar\" placeholder=\"ابحث عن خبر أو مكان أو كاتب\" aria-label=\"ابحث في فلسطين بوست\">",
+      "css": ".ds-field { display:block; inline-size:100%; max-inline-size:420px; min-block-size:48px; padding:12px 16px; background:var(--paper-raised, #FFFFFF); border:1.5px solid var(--seam-strong, #7C9299); border-radius:0; color:var(--ink, #0B2230); font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); font-size:0.9375rem; letter-spacing:normal; transition:border-color 140ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-field::placeholder { color:var(--ink-3, #56656C); opacity:1; } .ds-field:hover { border-color:var(--ink-2, #43555D); } .ds-field:focus-visible { outline:none; border-color:var(--navy, #023B56); box-shadow:0 0 0 3px var(--teal-wash, #D6EFF1); }"
+    },
+    {
+      "name": "Filter Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "40px straight-cut filters with a seam-strong border; pressed fills navy.",
+      "html": "<div class=\"ds-chips\" dir=\"rtl\" lang=\"ar\"><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">جنين</button><button class=\"ds-chip\" type=\"button\" aria-pressed=\"true\">نابلس</button><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">رام الله</button></div>",
+      "css": ".ds-chips { display:flex; flex-wrap:wrap; gap:8px; } .ds-chip { display:inline-flex; align-items:center; gap:8px; min-block-size:40px; padding:0 16px; border:1.5px solid var(--seam-strong, #7C9299); border-radius:0; background:transparent; color:var(--ink-2, #43555D); font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); font-weight:600; font-size:0.875rem; white-space:nowrap; cursor:pointer; transition:background-color 140ms cubic-bezier(0.16, 1, 0.3, 1), color 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-chip:hover { border-color:var(--navy, #023B56); color:var(--navy, #023B56); } .ds-chip[aria-pressed=\"true\"] { background:var(--navy, #023B56); border-color:var(--navy, #023B56); color:var(--paper-raised, #FFFFFF); } .ds-chip:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; }"
+    },
+    {
+      "name": "Sections on the Baseline",
+      "kind": "nav",
+      "refersTo": "sections",
+      "description": "Section links written on the navy baseline carried from the logo; the current section stands on it as a small teal ط-stem. (In the build the baseline is a stroke running from the logo to the page edge.)",
+      "html": "<nav class=\"ds-sections\" dir=\"rtl\" lang=\"ar\" aria-label=\"الأقسام\"><a class=\"ds-sections-link\" href=\"#\" aria-current=\"page\">الرئيسية</a><a class=\"ds-sections-link\" href=\"#\">تقارير بوست</a><a class=\"ds-sections-link\" href=\"#\">مقالات</a><a class=\"ds-sections-link\" href=\"#\">فيديو بوست</a><a class=\"ds-sections-link\" href=\"#\">بودكاست</a></nav>",
+      "css": ".ds-sections { display:flex; align-items:flex-end; gap:2px; border-block-end:5px solid var(--navy, #023B56); font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); } .ds-sections-link { position:relative; display:inline-flex; align-items:center; block-size:42px; padding-inline:14px 6px; font-weight:700; font-size:0.9375rem; color:var(--ink-2, #43555D); text-decoration:none; white-space:nowrap; transition:color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-sections-link:hover { color:var(--navy, #023B56); } .ds-sections-link[aria-current=\"page\"] { color:var(--navy, #023B56); font-weight:800; } .ds-sections-link[aria-current=\"page\"]::before { content:\"\"; position:absolute; inset-inline-start:0; inset-block-end:0; inline-size:10px; block-size:22px; background:var(--teal, #33B3C0); -webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 75'%3E%3Cpath d='M32 0h3v75H0v-4l3-3 2-2 3-6 1-5 3-4v-7l2-1 1-12 2-1V17l3-1 1-8 8-1 3-3z'/%3E%3C/svg%3E\") bottom / contain no-repeat; mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 75'%3E%3Cpath d='M32 0h3v75H0v-4l3-3 2-2 3-6 1-5 3-4v-7l2-1 1-12 2-1V17l3-1 1-8 8-1 3-3z'/%3E%3C/svg%3E\") bottom / contain no-repeat; } .ds-sections-link:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "section-head",
+      "description": "Signature: the section title on a 3px navy baseline with the logo's ط-stem standing on it at the inline start. No eyebrow, no icon.",
+      "html": "<div class=\"ds-section-head\" dir=\"rtl\" lang=\"ar\"><h2 class=\"ds-section-head-title\">آخر الأخبار</h2><a class=\"ds-more-link\" href=\"#\">كل الأخبار المحلية</a></div>",
+      "css": ".ds-section-head { position:relative; display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding-block-end:12px; padding-inline-start:32px; border-block-end:3px solid var(--navy, #023B56); font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); } .ds-section-head::before { content:\"\"; position:absolute; inset-inline-start:0; inset-block-end:0; inline-size:23px; block-size:50px; background:var(--teal, #33B3C0); -webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 75'%3E%3Cpath d='M32 0h3v75H0v-4l3-3 2-2 3-6 1-5 3-4v-7l2-1 1-12 2-1V17l3-1 1-8 8-1 3-3z'/%3E%3C/svg%3E\") bottom / contain no-repeat; mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 75'%3E%3Cpath d='M32 0h3v75H0v-4l3-3 2-2 3-6 1-5 3-4v-7l2-1 1-12 2-1V17l3-1 1-8 8-1 3-3z'/%3E%3C/svg%3E\") bottom / contain no-repeat; } .ds-section-head-title { margin:0; font-size:clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem); line-height:1.3; font-weight:800; color:var(--navy, #023B56); } .ds-more-link { display:inline-flex; align-items:center; min-block-size:44px; font-weight:700; font-size:0.9375rem; color:var(--teal-ink, #0A6773); text-decoration:underline dashed transparent 2px; text-underline-offset:0.4em; transition:text-decoration-color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-more-link:hover { text-decoration-color:currentColor; } .ds-more-link:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; }"
+    },
+    {
+      "name": "Thread",
+      "kind": "custom",
+      "refersTo": "thread",
+      "description": "Signature: latest news as one vertical teal running stitch through a time column; one cross-stitch per story, madder when breaking, faded when archive.",
+      "html": "<ol class=\"ds-thread\" dir=\"rtl\" lang=\"ar\"><li class=\"ds-thread-item\"><time class=\"ds-thread-time\">17:00</time><span class=\"ds-thread-node\" aria-hidden=\"true\"><i class=\"ds-x\"></i></span><a class=\"ds-thread-link\" href=\"#\"><b class=\"ds-thread-place\">نابلس</b>بعد إخلاء قسري لأكثر من شهرين.. 6 عائلات تعود إلى منازلها في تل جنوب نابلس</a></li><li class=\"ds-thread-item is-breaking\"><time class=\"ds-thread-time\">15:16</time><span class=\"ds-thread-node\" aria-hidden=\"true\"><i class=\"ds-x\"></i></span><a class=\"ds-thread-link\" href=\"#\"><b class=\"ds-thread-place\">رام الله</b>الاحتلال يطلق النار على شاب شرق رام الله بزعم محاولة تنفيذ عملية طعن</a></li><li class=\"ds-thread-item is-archive\"><time class=\"ds-thread-time\">19:51</time><span class=\"ds-thread-node\" aria-hidden=\"true\"><i class=\"ds-x\"></i></span><a class=\"ds-thread-link\" href=\"#\"><b class=\"ds-thread-place\">غزة</b>شهيد ومصاب بنيران الاحتلال في قطاع غزة</a></li></ol>",
+      "css": ".ds-thread { position:relative; list-style:none; margin:0; padding:0; max-inline-size:420px; font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); } .ds-thread::before { content:\"\"; position:absolute; inset-block:14px; inset-inline-start:58px; inline-size:2px; background:repeating-linear-gradient(to bottom, var(--teal, #33B3C0) 0 7px, transparent 7px 12px); opacity:0.85; } .ds-thread-item { position:relative; display:grid; grid-template-columns:46px 24px minmax(0, 1fr); align-items:start; padding-block:10px; } .ds-thread-time { grid-column:1; padding-block-start:3px; font-size:0.875rem; font-weight:700; color:var(--ink-2, #43555D); font-variant-numeric:tabular-nums lining-nums; } .ds-thread-node { grid-column:2; justify-self:center; position:relative; z-index:1; display:inline-grid; margin-block-start:6px; padding:2px; background:var(--paper, #FFFFFF); color:var(--teal, #33B3C0); } .ds-x { display:block; inline-size:11px; block-size:11px; background:currentColor; -webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 2.2l7.6 7.6' stroke='%23000' stroke-opacity='.72' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9.8 2.2l-7.6 7.6' stroke='%23000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% 100% no-repeat; mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 2.2l7.6 7.6' stroke='%23000' stroke-opacity='.72' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9.8 2.2l-7.6 7.6' stroke='%23000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% 100% no-repeat; } .ds-thread-link { grid-column:3; padding-inline-start:12px; font-weight:600; font-size:clamp(1rem, 0.97rem + 0.15vw, 1.0625rem); line-height:1.6; color:var(--ink, #0B2230); text-decoration:underline dashed transparent 2px; text-underline-offset:0.32em; text-decoration-skip-ink:none; transition:text-decoration-color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-thread-link:hover { text-decoration-color:var(--teal, #33B3C0); } .ds-thread-link:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; } .ds-thread-place { font-weight:800; color:var(--teal-ink, #0A6773); margin-inline-end:6px; } .ds-thread-item.is-breaking .ds-thread-node, .ds-thread-item.is-breaking .ds-thread-place { color:var(--madder, #B0172C); } .ds-thread-item.is-archive .ds-thread-link { color:var(--ink-3, #56656C); font-weight:500; } .ds-thread-item.is-archive .ds-thread-place { color:var(--ink-3, #56656C); } .ds-thread-item.is-archive .ds-thread-node { color:var(--seam-strong, #7C9299); }"
+    },
+    {
+      "name": "Dossier",
+      "kind": "card",
+      "refersTo": "dossier",
+      "description": "A special file: a white panel sewn onto the mist band with a 2px gold dashed seam inset 8px; gold cross-stitch bullets; gold action. Not a story card.",
+      "html": "<div class=\"ds-files-band\" dir=\"rtl\" lang=\"ar\"><article class=\"ds-dossier\"><h3 class=\"ds-dossier-title\"><a href=\"#\">نافذة على غزة</a></h3><p class=\"ds-dossier-desc\">تغطية شاملة ومستمرة لكل ما يتعلق بقضايا غزة.</p><ol class=\"ds-dossier-items\"><li><a href=\"#\">وقف تعامل غزة بالكاش خطة إسرائيلية لإيقاع الغزيين في «المصيدة الرقمية»</a></li><li><a href=\"#\">البنايات المتضررة في غزة قنابل موقوتة وسط تجمعات النازحين</a></li></ol><a class=\"ds-dossier-cta\" href=\"#\">افتح الملف كاملًا</a></article></div>",
+      "css": ".ds-files-band { background:var(--mist, #F1F6F7); padding:24px; } .ds-dossier { position:relative; background:var(--paper, #FFFFFF); padding:24px; font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); } .ds-dossier::after { content:\"\"; position:absolute; inset:8px; border:2px dashed var(--gold, #A87A22); opacity:0.85; pointer-events:none; } .ds-dossier > * { position:relative; z-index:1; } .ds-dossier-title { margin:0; font-size:clamp(1.75rem, 1.35rem + 1.4vw, 2.625rem); line-height:1.25; font-weight:900; color:var(--navy, #023B56); } .ds-dossier-title a { color:inherit; text-decoration:none; transition:color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-dossier-title a:hover { color:var(--gold-ink, #7A5814); } .ds-dossier-desc { margin:8px 0 0; font-family:var(--font-naskh, \"Noto Naskh Arabic\", \"Noto Naskh\", \"Times New Roman\", serif); font-size:clamp(1.125rem, 1.04rem + 0.35vw, 1.375rem); line-height:1.8; color:var(--ink-2, #43555D); } .ds-dossier-items { list-style:none; margin:16px 0 0; padding:0; } .ds-dossier-items li { position:relative; padding-block:12px; padding-inline-start:28px; } .ds-dossier-items li + li { background-image:repeating-linear-gradient(to left, var(--seam, #A9BCC2) 0 6px, transparent 6px 10px); background-size:100% 1.5px; background-repeat:no-repeat; } .ds-dossier-items li::before { content:\"\"; position:absolute; inset-inline-start:2px; inset-block-start:19px; inline-size:12px; block-size:12px; background:var(--gold, #A87A22); -webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 2.2l7.6 7.6' stroke='%23000' stroke-opacity='.72' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9.8 2.2l-7.6 7.6' stroke='%23000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% no-repeat; mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 2.2l7.6 7.6' stroke='%23000' stroke-opacity='.72' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9.8 2.2l-7.6 7.6' stroke='%23000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% no-repeat; } .ds-dossier-items a { font-weight:700; font-size:clamp(1rem, 0.97rem + 0.15vw, 1.0625rem); line-height:1.6; color:var(--ink, #0B2230); text-decoration:underline dashed transparent 2px; text-underline-offset:0.32em; transition:text-decoration-color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-dossier-items a:hover { text-decoration-color:var(--teal, #33B3C0); } .ds-dossier-cta { display:inline-flex; align-items:center; min-block-size:44px; margin-block-start:24px; padding:0 24px; border:2px solid var(--gold, #A87A22); color:var(--gold-ink, #7A5814); font-weight:700; font-size:0.9375rem; text-decoration:none; transition:background-color 140ms cubic-bezier(0.16, 1, 0.3, 1), color 140ms cubic-bezier(0.16, 1, 0.3, 1), border-color 140ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-dossier-cta:hover { background:var(--gold-ink, #7A5814); border-color:var(--gold-ink, #7A5814); color:var(--paper-raised, #FFFFFF); } .ds-dossier a:focus-visible { outline:3px solid var(--navy, #023B56);outline-offset:3px; }"
+    },
+    {
+      "name": "Breaking Bar",
+      "kind": "custom",
+      "refersTo": "breaking-bar",
+      "description": "The red thread: a madder band with white running stitches along both edges, a pulsing live dot, place, time and headline. Only when the desk flags a story.",
+      "html": "<div class=\"ds-breaking\" dir=\"rtl\" lang=\"ar\"><div class=\"ds-breaking-inner\"><strong class=\"ds-breaking-label\"><span class=\"ds-live-dot\" aria-hidden=\"true\"></span>عاجل</strong><p class=\"ds-breaking-text\"><b class=\"ds-breaking-place\">رام الله</b><span class=\"ds-breaking-time\">15:16</span><a href=\"#\">الاحتلال يطلق النار على شاب شرق رام الله بزعم محاولة تنفيذ عملية طعن</a></p><a class=\"ds-breaking-follow\" href=\"#\">تابع</a></div></div>",
+      "css": ".ds-breaking { position:relative; background:var(--madder, #B0172C); color:#FFF6F4; font-family:var(--font-kufi, \"Noto Kufi Arabic\", \"Segoe UI\", Tahoma, sans-serif); } .ds-breaking::before, .ds-breaking::after { content:\"\"; position:absolute; inset-inline:0; block-size:1.5px; background:repeating-linear-gradient(to left, rgb(255 246 244 / 0.6) 0 6px, transparent 6px 11px); } .ds-breaking::before { inset-block-start:4px; } .ds-breaking::after { inset-block-end:4px; } .ds-breaking-inner { display:flex; align-items:center; gap:16px; min-block-size:56px; padding:12px 16px; } .ds-breaking-label { display:inline-flex; align-items:center; gap:8px; flex:none; font-weight:900; font-size:1.0625rem; } .ds-live-dot { inline-size:8px; block-size:8px; border-radius:999px; background:#FFFFFF; animation:ds-pulse-w 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite; } @keyframes ds-pulse-w { 0% { box-shadow:0 0 0 0 rgb(255 255 255 / 0.6); } 70% { box-shadow:0 0 0 8px rgb(255 255 255 / 0); } 100% { box-shadow:0 0 0 0 rgb(255 255 255 / 0); } } @media (prefers-reduced-motion: reduce) { .ds-live-dot { animation:none; } } .ds-breaking-text { flex:1; min-width:0; margin:0; font-weight:700; font-size:1.0625rem; line-height:1.55; } .ds-breaking-place { font-weight:900; margin-inline-end:8px; } .ds-breaking-time { opacity:0.85; font-weight:600; margin-inline-end:8px; font-variant-numeric:tabular-nums lining-nums; } .ds-breaking-text a { color:inherit; text-decoration:underline dashed rgb(255 246 244 / 0.5) 1.5px; text-underline-offset:0.35em; } .ds-breaking-text a:hover { text-decoration-color:#FFFFFF; } .ds-breaking-follow { flex:none; display:inline-flex; align-items:center; min-block-size:40px; padding-inline:12px; border:1.5px solid rgb(255 246 244 / 0.7); color:inherit; font-weight:800; text-decoration:none; } .ds-breaking-follow:hover { background:rgb(255 255 255 / 0.12); } .ds-breaking :focus-visible { outline:3px solid #FFFFFF; outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Counted Thread",
+    "overview": "Palestine Post 2.0 reads Palestinian tatreez as an information system, not as ornament. In counted cross-stitch every stitch sits on a grid of holes; here every story is one cross-stitch placed on a grid of places (ordered north to south) and hours. The same mark runs through the product: it is the node on the live thread of latest news, the cell in today's weave, the stitch inside a dateline, the bullet of a file, the current page of the pager, and, sewn row by row, the loader. The page is composed like a thobe: dense at the chest (navy strip, masthead, place rail, lead story beside the live thread, today's weave at the fold), open through the middle for reading (regions, reports, columns, audio and video), dense again at the hem (the footer, which indexes every place, section and tag).\n\nThe material is white paper with cool mist bands, inked in the logo's navy and threaded in the logo's teal. Two more threads have one job each: madder for what is happening now, gold for special files. Fabric is cut straight: no radius anywhere except the live pulse dot, no boxed cards, no shadow on anything that sits in the page. Stories are separated by running-stitch seams, days and the page close with a hem, and a panel that is sewn on carries an inset dashed seam instead of a border and a shadow. The logo's ط-stem, the silhouette of historic Palestine, is the signature: it stands on a navy baseline at the head of every section, marks the active section on the masthead, ends every article, closes the footer, and is what the loader sews. The masthead carries the logo's own baseline across the page like a kashida, and the sections and the search are written on that line.\n\nThe register is editorial, dense and fast, never a campaign poster: no flag palette, no map backgrounds, no decorative tatreez, no olive or Aqsa imagery, and no dark theme. Kufi builds the structure; Naskh carries the reading. Motion behaves like sewing rather than flourish: colours change in 140ms and panels drop 6px into place in 240ms on one ease-out curve; the only loops are the breaking label's pulse and the loader stitching the ط-stem from north to south, and both stop under reduced motion.",
+    "keyCharacteristics": [
+      "One cross-stitch stands for one story, hour cell or file entry.",
+      "White paper and cool mist ground; navy ink and teal thread; madder only for now; gold only for special files.",
+      "Noto Kufi Arabic for display, headlines and UI; Noto Naskh Arabic for reading.",
+      "Straight cuts: radius 0, flat in-flow surfaces, shadows only on floating layers.",
+      "Running-stitch seams between stories, hems to close days and the page, appliqué seams for sewn-on panels.",
+      "The logo's ط-stem standing on a navy baseline as the section signature, the active marker and the end mark.",
+      "Dense chest, open middle, dense hem; light interface only."
+    ],
+    "rules": [
+      {
+        "name": "The One Job Per Thread Rule",
+        "body": "Teal is the brand thread, madder is now, gold is a special file. A thread never does another thread's job, and none of them is decoration. The build currently paints the stitch inside every dateline madder, and the video play glyph too, which spends the now-thread on stories that are not breaking; that is drift, not precedent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Teal-Ink Rule",
+        "body": "Logo teal is a thread, not a text colour on paper or mist. Readable teal is teal ink; logo teal carries text only on navy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cool Ground Rule",
+        "body": "Grounds are white paper and teal-tinted mist; there are no warm, beige or cream surfaces. One leftover warm rule between weave rows (rgb(185 177 161 / 0.35)) predates the white-ground revision and is drift.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Hands Rule",
+        "body": "Kufi builds: news headlines, structure, UI and numbers. Naskh speaks: the article body, standfirsts, deks, records, quotes and the footer's about text. A headline set in Naskh means opinion or a quotation, never news.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Tracking Rule",
+        "body": "Letter-spacing stays normal everywhere, inputs included, because Arabic is connected script. Hierarchy comes from size and weight (500 to 900), never from tracking or case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Counted Digits Rule",
+        "body": "Times and counts use Western digits (Intl locales with `-u-nu-latn`) set tabular and lining on every `time` and `.num`. The 12px micro size is for digits only. Drift: several Arabic labels sit at 12px (writer bios, the knot label, filter notes, tool panel subtitles) and the \"جديد\" marker at 10.5px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Float-Only Shadow Rule",
+        "body": "A shadow means the layer floats (a dropdown, the stuck bar). Anything in the page's flow is flat; separation comes from mist, navy or a seam.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Straight Cut Rule",
+        "body": "Border radius is 0; only the live pulse dot is round.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Seam, Not Box Rule",
+        "body": "Stories are never boxed; they are separated by running stitches. A panel exists only as a sewn appliqué (inset dashed seam) or as a full navy or mist band.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep stitches meaningful: a counted cross-stitch (teal; madder when breaking; gold in files) stands for one story, hour cell, file entry or current page, and the small muted stitch only separates levels in breadcrumbs and place lists.",
+      "Do separate stories with the 2px running-stitch seam (7px stitch, 5px gap, seam colour) and close days and the page with the hem.",
+      "Do open every section with the section head: the teal ط-stem (23 by 50px) standing on a 3px navy baseline, gold stem and rule for special files.",
+      "Do open a story's dek or meta row with the dateline: place in teal ink, the stitch, then the time.",
+      "Do set reading in Naskh at 18 to 20px with 1.95 line height inside 45rem, and everything structural in Kufi.",
+      "Do use teal ink (#0A6773) for any teal that must be read on paper or mist; keep logo teal for stems, stitches, fills and text on navy.",
+      "Do keep touch controls at 44px (buttons, icon buttons, pager cells, rail items); dense filter chips may go to 40px.",
+      "Do keep the focus ring: 3px navy outline at 3px offset, teal on navy, white on madder.",
+      "Do re-compose each band at each breakpoint (stack it, turn it into a swipe row or a list) instead of shrinking it.",
+      "Do defer heavy media: the audio player near the viewport, video on request, weather and currencies when their panel opens, and render the weave on the server."
+    ],
+    "donts": [
+      "Don't round corners; the 8px live dot is the only circle.",
+      "Don't box stories in cards with borders, shadows or tinted fills; a panel is either a sewn appliqué (inset dashed seam) or a full navy or mist band.",
+      "Don't put a shadow on anything in the page flow; a shadow means the layer floats.",
+      "Don't spend madder on anything that is not happening now (breaking, live, new since the last visit, the current hour, now playing).",
+      "Don't use gold outside special files.",
+      "Don't set logo teal (#33B3C0) as text on paper or mist.",
+      "Don't letter-space Arabic, and don't set Arabic words below 14px; 12px is for digits.",
+      "Don't put kickers or eyebrow labels above headlines; place and time arrive through the dateline and sections through the ط-stem.",
+      "Don't use tatreez as ornament (motifs, pattern fills, decorative bands): stitches count (cross-stitch), divide (running stitch) or attach a panel (appliqué seam).",
+      "Don't use flag colours, map backgrounds, keffiyeh, olive or Aqsa imagery; the only silhouette in the system is the logo's ط-stem.",
+      "Don't lay gradients, scrims or running text over news photos.",
+      "Don't introduce warm or beige grounds, and don't add a dark theme; the product is light only.",
+      "Don't use IBM Plex Sans Arabic or Cairo."
+    ]
+  }
+}

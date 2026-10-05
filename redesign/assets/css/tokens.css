@@ -65,6 +65,7 @@
   --st: 4px;
   --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
   --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --band: var(--s7);                        /* space above each band of a page */
   --gutter: clamp(16px, 3.2vw, 40px);       /* page side padding */
   --col-gap: clamp(20px, 2.4vw, 36px);      /* column gap — a column rule sits in it */
 
@@ -84,8 +85,8 @@
   --hair: 1px solid var(--rule);
 
   /* ---- Depth: only for floating layers ------------------------------- */
-  --shadow-float: 0 18px 40px -18px rgb(11 34 48 / 0.30), 0 2px 6px rgb(11 34 48 / 0.08);
-  --shadow-bar: 0 10px 22px -16px rgb(11 34 48 / 0.40);
+  --shadow-float: 0 18px 40px -18px rgb(0 0 0 / 0.28), 0 2px 6px rgb(0 0 0 / 0.08);
+  --shadow-bar: 0 10px 22px -16px rgb(0 0 0 / 0.35);
 
   /* ---- Motion -------------------------------------------------------- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

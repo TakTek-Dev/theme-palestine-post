@@ -12,7 +12,7 @@ import re
 from html import escape
 from pathlib import Path
 
-VERSION = 14
+VERSION = 21
 ROOT = Path(__file__).parent
 # The prototype duplicates live ppost.ps stories, so it must stay out of search results.
 # Set PREVIEW = False when these templates move into production.
@@ -94,7 +94,8 @@ def render_weave_table() -> str:
 
 def render_weave_list() -> str:
     """Mobile: each place with its last 12 hours as a strip of stitches."""
-    out = ['<ol class="weave__list">']
+    out = ['<ol class="weave__list">',
+           '<li class="wl-axis" aria-hidden="true"><span class="wl-axis__scale"><span>قبل 12 ساعة</span><span>الآن</span></span></li>']
     quiet = [p["name"] for p in WEAVE["places"] if not p["stories"]]
     for p in WEAVE["places"]:
         stories = p["stories"]
