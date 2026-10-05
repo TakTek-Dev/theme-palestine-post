@@ -72,7 +72,7 @@
   pointer-events: none;
 }
 
-.brand { display: block; flex: none; margin-block-start: var(--logo-top); }
+.brand { display: block; flex: none; margin-block-start: var(--logo-top); padding-block: 0 6px; }
 .brand__logo {
   display: block;
   block-size: var(--logo-h, 60px);
@@ -433,6 +433,10 @@
 .lead__related li { padding-block-start: var(--s3); }
 .lead__related a { font-weight: 700; font-size: var(--fs-h4); line-height: 1.6; color: var(--ink); }
 .lead__related .t-meta { display: block; margin-block-start: 2px; }
+/* two secondary stories carry the lead column down beside the thread */
+.lead__more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--col-gap); margin-block-start: var(--s6); padding-block-start: var(--s5); border-block-start: 1px solid var(--rule); }
+.lead__more .story__title { font-size: var(--fs-h3); font-weight: 800; color: var(--navy); }
+.thread__expand { display: none; margin-block-start: var(--s3); inline-size: 100%; }
 
 /* the thread — latest news as one running stitch, newest first */
 .thread { position: relative; }
@@ -536,7 +540,7 @@
 .weave__quiet a { color: var(--ink-2); font-weight: 600; }
 .weave__quiet a:hover { color: var(--teal-ink); }
 .wl-quiet { padding-block: var(--s3); font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.8; }
-.wl-quiet a { color: var(--ink-2); font-weight: 600; }
+.wl-quiet a { display: inline-block; padding-block: 6px; color: var(--ink-2); font-weight: 600; }
 .stitch {
   position: relative;
   display: inline-grid;
@@ -562,7 +566,7 @@
   translate: 50% 0;
   z-index: var(--z-dropdown);
   inline-size: max-content;
-  max-inline-size: 300px;
+  max-inline-size: min(300px, 78vw);
   padding: var(--s2) var(--s3);
   background: var(--navy);
   color: var(--paper-raised);
@@ -572,13 +576,11 @@
   text-align: start;
   white-space: normal;
   box-shadow: var(--shadow-float);
-  opacity: 0;
-  visibility: hidden;
+  display: none;                     /* out of layout until asked: no overflow on small screens */
   pointer-events: none;
-  transition: opacity var(--dur-1) var(--ease-out);
 }
 .stitch__tip time { color: #9FD8DE; margin-inline-end: 6px; }
-.stitch:hover .stitch__tip, .stitch:focus-visible .stitch__tip { opacity: 1; visibility: visible; }
+.stitch:hover .stitch__tip, .stitch:focus-visible .stitch__tip { display: block; animation: pp-drop var(--dur-1) var(--ease-out); }
 .weave__latest { padding-inline-start: var(--s4) !important; }
 .weave__latest a { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; font-size: var(--fs-meta); font-weight: 600; color: var(--ink-2); line-height: 1.6; }
 .weave__latest a:hover { color: var(--teal-ink); }
@@ -590,7 +592,7 @@
 .weave__list { display: none; }
 .wl-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--s3); padding-block: var(--s3); }
 .wl-item + .wl-item { background-image: repeating-linear-gradient(to left, var(--seam) 0 6px, transparent 6px 10px); background-size: 100% 1.5px; background-repeat: no-repeat; }
-.wl-item__place { font-weight: 800; color: var(--navy); font-size: var(--fs-ui); display: inline-flex; gap: 6px; align-items: baseline; }
+.wl-item__place { font-weight: 800; color: var(--navy); font-size: var(--fs-ui); display: inline-flex; gap: 6px; align-items: center; min-block-size: 36px; }
 .wl-item__strip { display: grid; grid-template-columns: repeat(12, 14px); align-items: center; justify-content: end; block-size: 24px; }
 .wl-item__strip i { inline-size: 14px; block-size: 14px; background: radial-gradient(circle, var(--hole) 0 1.3px, transparent 1.8px); }
 .wl-item__strip i.on { background: none; position: relative; }
@@ -612,8 +614,9 @@
 .story a.dateline__place, .story .story__meta a { position: relative; z-index: 1; }
 
 .story--image .story__title { font-size: var(--fs-h2); line-height: var(--lh-head); font-weight: 800; color: var(--navy); text-wrap: balance; }
-.story--row { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: var(--s4); align-items: start; padding-block: var(--s4); }
-.story--row .story__media { margin: 0; grid-column: 2; grid-row: 1 / span 2; }
+.story--row { display: grid; grid-template-columns: minmax(0, 1fr) 96px; grid-template-rows: auto auto auto 1fr; column-gap: var(--s4); align-items: start; padding-block: var(--s4); }
+.story--row .story__media { margin: 0; grid-column: 2; grid-row: 1 / -1; }
+.story--row .story__dek, .story--row .story__meta, .story--row .read__byline { grid-column: 1; }
 .story--row .story__title { grid-column: 1; font-size: var(--fs-h4); line-height: 1.6; font-weight: 700; color: var(--ink); }
 .story--row .story__meta { grid-column: 1; }
 .story--text { padding-block: var(--s4); }
@@ -697,7 +700,7 @@
 .dossier--compact .dossier__cover { margin-block-end: var(--s4); }
 
 /* tag for stories that belong to a file */
-.file-tag { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: var(--fs-meta); color: var(--gold-ink); }
+.file-tag { display: inline-flex; align-items: center; gap: 6px; min-block-size: 32px; font-weight: 700; font-size: var(--fs-meta); color: var(--gold-ink); }
 .file-tag .x { --x-size: 9px; color: var(--gold); }
 
 /* ---------------------------------------------------------------------
@@ -756,56 +759,40 @@
 .episode__title { margin-block-start: 2px; font-size: var(--fs-h3); line-height: 1.5; font-weight: 800; color: var(--navy); }
 .episode__meta { margin-block-start: 2px; font-size: var(--fs-meta); color: var(--ink-3); }
 
-.player { margin-block-start: var(--s4); }
-.player__controls { display: flex; align-items: center; gap: var(--s2); }
-.player__play {
-  display: inline-grid;
-  place-items: center;
-  inline-size: 52px;
-  block-size: 52px;
-  background: var(--navy);
-  color: var(--paper-raised);
-  position: relative;
-  flex: none;
-  transition: background-color var(--dur-1) var(--ease-out);
+/* Plyr, dressed in the brand: navy controls, teal progress, square cuts.
+   The timeline runs left to right (media convention), so the player is dir="ltr". */
+.pod-player {
+  margin-block-start: var(--s4);
+  min-block-size: 56px;               /* reserves the controls' height: no shift when Plyr arrives */
+  --plyr-color-main: var(--teal-ink);
+  --plyr-font-family: var(--font-kufi);
+  --plyr-audio-controls-background: var(--mist);
+  --plyr-audio-control-color: var(--navy);
+  --plyr-audio-control-color-hover: #fff;
+  --plyr-audio-control-background-hover: var(--navy);
+  --plyr-control-radius: 0;
+  --plyr-control-spacing: 8px;
+  --plyr-menu-radius: 0;
+  --plyr-menu-background: var(--paper);
+  --plyr-menu-color: var(--ink);
+  --plyr-tooltip-radius: 0;
+  --plyr-tooltip-background: var(--navy);
+  --plyr-tooltip-color: #fff;
+  --plyr-range-track-height: 6px;
+  --plyr-range-thumb-height: 16px;
+  --plyr-range-thumb-background: var(--navy);
+  --plyr-range-thumb-shadow: none;
+  --plyr-range-fill-background: var(--teal);
+  --plyr-audio-progress-buffered-background: var(--rule);
+  --plyr-font-size-base: 14px;
+  --plyr-font-weight-regular: 600;
 }
-.player__play::after { content: ""; position: absolute; inset: 4px; border: 1.5px dashed rgb(255 255 255 / 0.5); pointer-events: none; }
-.player__play:hover { background: #01283B; }
-.player__play .icon { inline-size: 22px; block-size: 22px; }
-.player__play .i-pause { display: none; }
-.player.is-playing .player__play .i-play { display: none; }
-.player.is-playing .player__play .i-pause { display: block; }
-.player.is-loading .player__play .icon { opacity: 0.4; }
-.player__skip { inline-size: 44px; block-size: 44px; display: inline-grid; place-items: center; color: var(--navy); font-size: 11px; font-weight: 800; position: relative; }
-.player__skip:hover { background: var(--mist); }
-.player__skip span { position: absolute; inset-block-end: 2px; inset-inline: 0; text-align: center; }
-.player__rate { min-inline-size: 48px; block-size: 36px; border: 1.5px solid var(--seam-strong); font-weight: 800; font-size: var(--fs-meta); color: var(--navy); }
-.player__rate:hover { border-color: var(--navy); }
-.player__time { margin-inline-start: auto; font-size: var(--fs-meta); color: var(--ink-3); font-weight: 600; }
-.player__time b { color: var(--ink); }
-/* the thread: one stitch per five seconds; played stitches turn into crosses */
-.player__thread {
-  --n: 46;
-  display: grid;
-  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
-  align-items: center;
-  block-size: 40px;
-  margin-block-start: var(--s3);
-  cursor: pointer;
-  touch-action: none;
-}
-.player__thread i { block-size: 16px; position: relative; }
-.player__thread i::before { /* unplayed: a running stitch */
-  content: "";
-  position: absolute;
-  inset-inline: 18%;
-  inset-block-start: 7px;
-  block-size: 2px;
-  background: var(--seam-strong);
-}
-.player__thread i.on::before { inset: 1px 8%; block-size: auto; background: var(--teal-ink); -webkit-mask: var(--mask-x) center / contain no-repeat; mask: var(--mask-x) center / contain no-repeat; }
-.player__thread i.head::before { inset: 0 4%; background: var(--madder); -webkit-mask: var(--mask-x) center / contain no-repeat; mask: var(--mask-x) center / contain no-repeat; }
-.player__thread:focus-visible { outline-offset: 2px; }
+.pod-player audio { inline-size: 100%; }
+.pod-player .plyr--audio .plyr__controls { padding: 6px; border: 1px solid var(--rule); }
+.pod-player .plyr__control[data-plyr="play"] { background: var(--navy); color: #fff; padding: 12px; }
+.pod-player .plyr__control[data-plyr="play"]:hover { background: #01283B; }
+.pod-player .plyr__time { color: var(--ink-2); }
+.pod-player .plyr__menu__container .plyr__control { direction: rtl; }
 
 .episode-list { margin-block-start: var(--s5); }
 .ep-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: var(--s3); align-items: center; padding-block: var(--s3); }

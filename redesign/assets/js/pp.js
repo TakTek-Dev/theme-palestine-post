@@ -263,6 +263,39 @@
     });
   }
 
+  /* ---- Strip values: weather and currencies at a glance (after idle) ----- */
+  function initStripValues() {
+    const wx = $("[data-weather-inline]");
+    const fx = $("[data-fx-inline]");
+    if (!wx && !fx) return;
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1200));
+    idle(() => {
+      if (wx) loadWeather().then((list) => {
+        wx.innerHTML = list.map((d, i) => `${CITIES[i].name} <b>${Math.round(d.current.temperature_2m)}°</b>`).join(" <small>·</small> ");
+        wx.hidden = false;
+        wx.previousElementSibling.hidden = true;
+        wx.closest("button").setAttribute("aria-label", "الطقس: " + list.map((d, i) => `${CITIES[i].name} ${Math.round(d.current.temperature_2m)} درجة`).join("، "));
+      }).catch(() => {});
+      if (fx) loadFx().then((r) => {
+        const f = (n) => n.toLocaleString("ar-PS-u-nu-latn", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        fx.innerHTML = `$ <b>${f(r.usd)}</b> <small>·</small> € <b>${f(r.eur)}</b> <small>شيكل</small>`;
+        fx.hidden = false;
+        fx.previousElementSibling.hidden = true;
+        fx.closest("button").setAttribute("aria-label", `العملات: الدولار ${f(r.usd)} شيكل، اليورو ${f(r.eur)} شيكل`);
+      }).catch(() => {});
+    });
+  }
+
+  /* ---- Thread: on small screens the rest of the day opens on request ----- */
+  function initThreadExpand() {
+    $$("[data-thread-expand]").forEach((btn) => btn.addEventListener("click", () => {
+      const thread = btn.closest(".thread");
+      thread.classList.add("is-expanded");
+      btn.setAttribute("aria-expanded", "true");
+      $("[data-extra] a", thread)?.focus();
+    }));
+  }
+
   /* ---- Breaking: dismissible for this session --------------------------- */
   function initBreaking() {
     const band = $("[data-breaking]");
@@ -296,101 +329,83 @@
     });
   }
 
-  /* ---- Audio: the episode is a thread embroidered as you listen --------- */
-  const fmtTime = (s) => { s = Math.max(0, Math.round(s)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
-  function initPlayers() {
-    $$("[data-player]").forEach((player) => {
-      const bar = $("[data-thread-bar]", player);
-      const playBtn = $("[data-play]", player);
-      const cur = $("[data-current]", player);
-      const tot = $("[data-total]", player);
-      let duration = Number(player.dataset.duration) || 0;
-      let audio = null;
-      let stitches = [];
-      const STEP = 5; // one stitch every five seconds
+  /* ---- Audio: Plyr, loaded only when a player comes near the viewport ------ */
+  const PLYR_VERSION = "3.7.8";
+  const PLYR_AR = {
+    restart: "من البداية", rewind: "رجوع {seektime} ثانية", play: "تشغيل", pause: "إيقاف مؤقت",
+    fastForward: "تقديم {seektime} ثانية", seek: "انتقال", seekLabel: "{currentTime} من {duration}",
+    played: "تم تشغيله", buffered: "تم تحميله", currentTime: "الوقت الحالي", duration: "المدة",
+    volume: "الصوت", mute: "كتم الصوت", unmute: "تشغيل الصوت", download: "تنزيل",
+    settings: "الإعدادات", menuBack: "رجوع", speed: "السرعة", normal: "عادية", loop: "تكرار",
+    start: "البداية", end: "النهاية", all: "الكل", reset: "إعادة", disabled: "معطّل", enabled: "مفعّل",
+  };
+  let plyrPromise;
+  function loadPlyr() {
+    if (window.Plyr) return Promise.resolve();
+    plyrPromise ||= new Promise((resolve, reject) => {
+      const base = `https://cdnjs.cloudflare.com/ajax/libs/plyr/${PLYR_VERSION}/`;
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = base + "plyr.min.css";
+      document.head.append(css);
+      const js = document.createElement("script");
+      js.src = base + "plyr.min.js";
+      js.onload = resolve;
+      js.onerror = () => { plyrPromise = null; reject(new Error("plyr")); };
+      document.head.append(js);
+    });
+    return plyrPromise;
+  }
+  const players = [];
+  function setupPlayer(host) {
+    const audio = $("audio", host);
+    if (!audio || host.dataset.ready) return;
+    host.dataset.ready = "1";
+    const player = new window.Plyr(audio, {
+      controls: ["rewind", "play", "fast-forward", "progress", "current-time", "duration", "mute", "volume", "settings"],
+      settings: ["speed"],
+      speed: { selected: 1, options: [0.75, 1, 1.25, 1.5, 2] },
+      seekTime: 15,
+      duration: Number(host.dataset.duration) || undefined,
+      invertTime: false,
+      i18n: PLYR_AR,
+      tooltips: { controls: true, seek: true },
+      keyboard: { focused: true, global: false },
+    });
+    players.push(player);
+    player.on("play", () => players.forEach((p) => { if (p !== player) p.pause(); }));
 
-      const lay = () => {
-        const n = Math.max(12, Math.ceil(duration / STEP));
-        bar.style.setProperty("--n", n);
-        bar.innerHTML = "<i></i>".repeat(n);
-        stitches = Array.from(bar.children);
-        bar.setAttribute("aria-valuemax", String(Math.round(duration)));
-        if (tot) tot.textContent = fmtTime(duration);
-      };
-      const paint = (t) => {
-        const k = duration ? Math.floor((t / duration) * stitches.length) : 0;
-        stitches.forEach((s, i) => { s.classList.toggle("on", i < k); s.classList.toggle("head", i === k && t > 0); });
-        if (cur) cur.textContent = fmtTime(t);
-        bar.setAttribute("aria-valuenow", String(Math.round(t)));
-        bar.setAttribute("aria-valuetext", `${fmtTime(t)} من ${fmtTime(duration)}`);
-      };
-      const ensure = () => {
-        if (audio) return audio;
-        audio = new Audio();
-        audio.preload = "metadata";
-        audio.src = player.dataset.src;
-        audio.addEventListener("loadedmetadata", () => { if (audio.duration && isFinite(audio.duration)) { duration = audio.duration; lay(); paint(audio.currentTime); } });
-        audio.addEventListener("timeupdate", () => paint(audio.currentTime));
-        audio.addEventListener("waiting", () => player.classList.add("is-loading"));
-        audio.addEventListener("playing", () => player.classList.remove("is-loading"));
-        audio.addEventListener("play", () => { player.classList.add("is-playing"); playBtn.setAttribute("aria-label", "إيقاف مؤقت"); pauseOthers(audio); });
-        audio.addEventListener("pause", () => { player.classList.remove("is-playing"); playBtn.setAttribute("aria-label", "تشغيل الحلقة"); });
-        audio.addEventListener("ended", () => { paint(duration); });
-        audio.addEventListener("error", () => { player.classList.remove("is-playing", "is-loading"); toast("تعذّر تشغيل الحلقة الآن"); });
-        player._audio = audio;
-        return audio;
-      };
-      const seekTo = (t) => { const a = ensure(); a.currentTime = Math.min(Math.max(0, t), duration || a.duration || 0); paint(a.currentTime); };
-
-      lay(); paint(0);
-      playBtn?.addEventListener("click", () => { const a = ensure(); if (a.paused) a.play().catch(() => {}); else a.pause(); });
-      $$("[data-skip]", player).forEach((b) => b.addEventListener("click", () => seekTo((audio?.currentTime || 0) + Number(b.dataset.skip))));
-      $("[data-rate]", player)?.addEventListener("click", (e) => {
-        const rates = [1, 1.25, 1.5, 2];
-        const a = ensure();
-        const next = rates[(rates.indexOf(a.playbackRate) + 1) % rates.length];
-        a.playbackRate = next;
-        e.currentTarget.textContent = `${next}×`;
-      });
-      // the thread runs right-to-left: the first stitch sits at the start (right)
-      const fromPointer = (e) => {
-        const r = bar.getBoundingClientRect();
-        const ratio = Math.min(1, Math.max(0, (r.right - e.clientX) / r.width));
-        seekTo(ratio * (duration || 0));
-      };
-      bar.addEventListener("pointerdown", (e) => { bar.setPointerCapture(e.pointerId); fromPointer(e); });
-      bar.addEventListener("pointermove", (e) => { if (bar.hasPointerCapture(e.pointerId)) fromPointer(e); });
-      bar.addEventListener("keydown", (e) => {
-        const t = audio?.currentTime || 0;
-        const map = { ArrowLeft: t + 5, ArrowRight: t - 5, ArrowUp: t + 5, ArrowDown: t - 5, Home: 0, End: duration };
-        if (e.key in map) { e.preventDefault(); seekTo(map[e.key]); }
-      });
-
-      // other episodes load into this player
-      const host = player.closest("[data-player-host]")?.parentElement;
-      $$(".ep-row[data-src]", host || document).forEach((row) => {
-        $(".ep-row__play", row)?.addEventListener("click", () => {
-          const a = ensure();
-          a.pause();
-          player.dataset.src = row.dataset.src;
-          a.src = row.dataset.src;
-          duration = Number(row.dataset.duration) || 0;
-          const scope = player.closest("[data-player-host]");
+    // other episodes load into this player
+    const scope = host.closest("[data-player-host]");
+    const list = scope?.parentElement;
+    $$(".ep-row[data-src]", list || document).forEach((row) => {
+      $(".ep-row__play", row)?.addEventListener("click", () => {
+        player.source = { type: "audio", title: row.dataset.title, sources: [{ src: row.dataset.src, type: "audio/mpeg" }] };
+        if (scope) {
           $(".episode__title", scope).textContent = row.dataset.title;
-          $(".episode__no", scope).textContent = row.dataset.no || "";
+          const no = $(".episode__no", scope);
+          if (no) no.textContent = row.dataset.no || "";
           $(".episode__meta", scope).textContent = row.dataset.meta || "";
           const img = $(".episode__cover img", scope);
           if (img && row.dataset.img) img.src = row.dataset.img;
-          $$(".ep-row", host).forEach((r) => r.classList.toggle("is-current", r === row));
-          lay(); paint(0);
-          a.play().catch(() => {});
-          announce("تشغيل: " + row.dataset.title);
-        });
+        }
+        $$(".ep-row", list).forEach((r) => r.classList.toggle("is-current", r === row));
+        player.once("canplay", () => player.play());
+        announce("تشغيل: " + row.dataset.title);
       });
     });
   }
-  function pauseOthers(current) {
-    $$("[data-player]").forEach((p) => { if (p._audio && p._audio !== current) p._audio.pause(); });
+  function initPlayers() {
+    const hosts = $$("[data-pod-player]");
+    if (!hosts.length) return;
+    const start = () => loadPlyr().then(() => hosts.forEach(setupPlayer)).catch(() => { /* native controls stay */ });
+    if (!("IntersectionObserver" in window)) { start(); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); start(); }
+    }, { rootMargin: "600px 0px" });
+    hosts.forEach((h) => io.observe(h));
+    // an episode row tapped before the library arrives still works
+    $$(".ep-row__play").forEach((b) => b.addEventListener("click", start, { once: true }));
   }
 
   /* ---- Video: poster first, the embed only on request ------------------- */
@@ -517,6 +532,8 @@
     initDisclosures();
     initWeather();
     initFx();
+    initStripValues();
+    initThreadExpand();
     initSinceLastVisit();
     initWeaveLinks();
     initBreaking();

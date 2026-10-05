@@ -12,8 +12,11 @@ import re
 from html import escape
 from pathlib import Path
 
-VERSION = 5
+VERSION = 14
 ROOT = Path(__file__).parent
+# The prototype duplicates live ppost.ps stories, so it must stay out of search results.
+# Set PREVIEW = False when these templates move into production.
+PREVIEW = True
 PARTIALS = {p.stem: p.read_text(encoding="utf-8") for p in (ROOT / "src" / "partials").glob("*.html")}
 FLAGS = ["nav_home", "nav_reports", "nav_podcast", "nav_local", "place_gaza"]
 WEAVE = json.loads((ROOT / "src" / "data" / "weave.json").read_text(encoding="utf-8"))
@@ -137,7 +140,8 @@ def build(page: Path) -> None:
         body = body.replace("<!-- @weave-table -->", render_weave_table())
         body = body.replace("<!-- @weave-list -->", render_weave_list())
 
-    values = {"v": str(VERSION), "head_extra": meta.pop("head_extra", "")}
+    values = {"v": str(VERSION), "head_extra": meta.pop("head_extra", ""),
+              "robots": '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""}
     values.update(meta)
     for flag in FLAGS:
         values[flag] = 'aria-current="page"' if flag in meta.get("current", "").split() else ""
