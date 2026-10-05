@@ -1,360 +1,440 @@
-$(document).ready(function () {
+/* =========================================================================
+   فلسطين بوست — theme interactions
+   Plain JavaScript, no jQuery. Each init* function owns one component and
+   returns early when the page doesn't have it.
+   ========================================================================= */
+(function () {
+  "use strict";
 
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-   // Initially hide the content of closed accordion items
-   $('.fb-accordion-item.fb-closed .fb-accordion-content').hide();
+  const store = {
+    get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch { /* private mode */ } },
+  };
 
-   // When an accordion item is clicked
-   $('.fb-accordion .fb-accordion-item').click(function() {
-     // Only proceed if the clicked item is not already active
-     if (!$(this).hasClass('fb-active')) {
-       // Slide up the content of the currently active item
-       $('.fb-accordion .fb-accordion-item.fb-active .fb-accordion-content').slideUp(300);
-       // Remove active class and add closed class for all accordion items
-       $('.fb-accordion .fb-accordion-item').removeClass('fb-active').addClass('fb-closed');
- 
-       // Set the clicked item as active
-       $(this).removeClass('fb-closed').addClass('fb-active');
-       // Force display as flex, hide it immediately, then slide it down smoothly
-       $(this).find('.fb-accordion-content').css('display', 'flex').hide().slideDown(300);
-     }
-   });
-  
-
-
-  $(".owl-news").owlCarousel({
-    loop: true,
-    margin: 20,
-    rtl: true,
-    nav: true,
-    navText: [
-      "<i class='fa-solid fa-chevron-right'></i>",
-      "<i class='fa-solid fa-chevron-left'></i>",
-    ],
-    responsive: {
-      0: { items: 1 },
-      600: { items: 2 },
-      1000: { items: 2 },
-    },
-  });
-
-  // عند النقر على التبويبة
-  $(".buttons-group-tabs li").click(function () {
-    var tab = $(this).data("tab");
-
-    // تغيير النمط النشط للتبويبات
-    $(".buttons-group-tabs li").removeClass("active");
-    $(this).addClass("active");
-
-    // إخفاء جميع المحتويات وعرض المحتوى المقابل للتبويب
-    $(".tab-pane").hide();
-    $("." + tab).show();
-  });
-
-  // Initialize sliders with configurations
-  const sliderConfigs = [
-    {
-      id: "#slider1",
-      options: {
-        loop: true,
-        margin: 20,
-        rtl: true,
-        nav: true,
-        navText: [
-          "<i class='fa-solid fa-chevron-right'></i>",
-          "<i class='fa-solid fa-chevron-left'></i>",
-        ],
-        responsive: {
-          0: { items: 1 },
-          600: { items: 2 },
-          1000: { items: 3 },
-        },
-      },
-    },
-    {
-      id: "#slider2",
-      options: {
-        loop: true,
-        margin: 20,
-        rtl: true,
-        nav: true,
-          // Disable mouse and touch dragging
-  mouseDrag: false,
-  touchDrag: false,
-        navText: [
-          "<i class='fa-solid fa-chevron-right'></i>",
-          "<i class='fa-solid fa-chevron-left'></i>",
-        ],
-        responsive: {
-          0: { items: 1},
-          600: { items: 2 },
-          1000: { items: 2 },
-        },
-      },
-    },
-    {
-      id: "#slider3",
-      options: {
-        loop: true,
-        rtl: true,
-        margin: 20,
-        nav: true,
-        navText: [
-          "<i class='fa-solid fa-chevron-right'></i>",
-          "<i class='fa-solid fa-chevron-left'></i>",
-        ],
-        responsive: {
-          0: { items: 1 },
-          600: { items: 2 },
-          1000: { items: 2 },
-        },
-      },
-    },
-    {
-      id: "#slider4",
-      options: {
-        loop: true,
-        margin: 15,
-        rtl: true,
-        nav: true,
-        dots: false,
-        navText: [
-          "<i class='fa-solid fa-chevron-right'></i>",
-          "<i class='fa-solid fa-chevron-left'></i>",
-        ],
-        responsive: {
-          0: { items: 1 },
-          600: { items: 2 },
-          1000: { items: 3 },
-        },
-      },
-    },
-    {
-      id: "#safit-slider",
-      options: {
-        loop: true,
-
-        margin: 20,
-        rtl: true,
-        nav: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        responsive: { 0: { items: 1 }, 600: { items: 2 }, 1000: { items: 3 } },
-      },
-    },
-  ];
-
-  sliderConfigs.forEach(({ id, options }) => $(id).owlCarousel(options));
-
-
-
- 
-  $(".right-choises li").on("click", function () {
-    event.preventDefault();
-    $(".right-choises li").removeClass("active");
-    $(this).addClass("active");
-  });
-
-  $(".bars-container ").addClass("active");
-  $(".bars-container , .cells-container i").click(function () {
-    $(".bars-container , .cells-container ").removeClass("active");
-    $(this).addClass("active");
-  });
-
-  $("#bars-btn, #cells-btn").click(function () {
-    const isBars = $(this).is("#bars-btn");
-    $(".hide-right-section").toggle(isBars);
-    $(".toggle-menu").toggle(!isBars);
-    $(".toggle-menu-card").toggle(isBars);
-    $(".bars-container ").toggleClass("active", isBars);
-    $(".cells-container ").toggleClass("active", !isBars);
-  });
-
-
-
-  $(".share-arrow, .share h4, .btn-share").click(function (e) {
-    e.preventDefault();
-    let shareIcons = $(this).siblings(".share-social-icons");
-
-    if (shareIcons.hasClass("show")) {
-      shareIcons.removeClass("show");
-      setTimeout(() => shareIcons.hide(), 300); // يخفي العنصر بعد الانتقال
-    } else {
-      shareIcons.show(); // يظهر العنصر قبل إضافة التأثير
-      setTimeout(() => shareIcons.addClass("show"), 10);
+  /* ---- small status message (copy link, form sent) ---------------------- */
+  let toastTimer;
+  function toast(message) {
+    let el = $(".pp-toast");
+    if (!el) {
+      el = document.createElement("p");
+      el.className = "pp-toast";
+      el.setAttribute("role", "status");
+      document.body.append(el);
     }
-  });
-
-
-
-  $(window).on("scroll", function () {
-    $("#scrollToTop").toggleClass("show", $(this).scrollTop() > 800);
-  });
-
-  $("#scrollToTop").on("click", function () {
-    $("html, body").animate({ scrollTop: 0 }, "smooth");
-  });
-
-  const hideSliders = () => $(".owl-carousel-container").hide();
-
-
-
-
-
-
-  // Loop through each audio player container on the page
-  document.querySelectorAll('.audio-player').forEach((container) => {
-    // Create a WaveSurfer instance for the current audio player container
-    const wavesurfer = WaveSurfer.create({
-      container: container.querySelector('.waveform-ph'),
-      waveColor: '#E0E0E0',
-      progressColor: '#33B3C0',
-      height: 20,
-      responsive: true,
-    });
-
-    // Load the audio file from the data attribute in the waveform container
-    const audioPath = container.querySelector('.waveform-ph').dataset.audio;
-    wavesurfer.load(audioPath);
-
-    // Get control buttons and time display element
-    const playPauseButton = container.querySelector('.play-pause');
-    const rewindButton = container.querySelector('.rewind');
-    const forwardButton = container.querySelector('.forward');
-    const timeDisplay = container.querySelector('.time-display');
-
-    // Initialize volume level (range: 0.0 to 1.0)
-    let currentVolume = 1.0;
-    wavesurfer.setVolume(currentVolume);
-
-    // Get the volume slider element and volume icon element
-    const volumeSlider = container.querySelector('.volume-slider');
-    const volumeIcon = container.querySelector('.volume-icon');
-
-    // Set the slider's initial value and update the background gradient
-    volumeSlider.value = currentVolume;
-    updateSliderBackground(currentVolume);
-
-    // Function to update the slider background gradient for RTL:
-    // The gradient fills from the right (0%) to left (100%).
-    function updateSliderBackground(volume) {
-      const percentage = volume * 100; // percentage of the active (colored) portion
-      // For RTL, the gradient is set to "to left" so that the active color (#00a2b9)
-      // fills from the right edge up to the given percentage, and the remainder is gray.
-      volumeSlider.style.background = `linear-gradient(to left, #00a2b9 0%, #00a2b9 ${percentage}%, #E0E0E0 ${percentage}%, #E0E0E0 100%)`;
-    }
-
-    // Update the volume and slider appearance when the slider value changes
-    volumeSlider.addEventListener('input', () => {
-      currentVolume = parseFloat(volumeSlider.value);
-      wavesurfer.setVolume(currentVolume);
-      updateSliderBackground(currentVolume);
-
-      // Update the volume icon: show mute icon if volume is 0, otherwise show volume up icon
-      if (currentVolume === 0) {
-        volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
-      } else {
-        volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
-      }
-    });
-
-    // Play/Pause toggle with icon update
-    playPauseButton.addEventListener('click', () => {
-      wavesurfer.playPause();
-      playPauseButton.innerHTML = wavesurfer.isPlaying() ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
-    });
-
-    // Rewind 10 seconds
-    rewindButton.addEventListener('click', () => {
-      const currentTime = wavesurfer.getCurrentTime();
-      let newTime = currentTime - 10;
-      if (newTime < 0) newTime = 0;
-      const duration = wavesurfer.getDuration();
-      if (duration > 0) {
-        wavesurfer.seekTo(newTime / duration);
-      }
-    });
-
-    // Forward 10 seconds
-    forwardButton.addEventListener('click', () => {
-      const currentTime = wavesurfer.getCurrentTime();
-      let newTime = currentTime + 10;
-      const duration = wavesurfer.getDuration();
-      if (newTime > duration) newTime = duration;
-      if (duration > 0) {
-        wavesurfer.seekTo(newTime / duration);
-      }
-    });
-
-    // Update the time display during audio playback
-    wavesurfer.on('audioprocess', () => {
-      const currentTime = wavesurfer.getCurrentTime();
-      const duration = wavesurfer.getDuration();
-      timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-    });
-
-    // Set the initial time display when the audio is ready
-    wavesurfer.on('ready', () => {
-      const duration = wavesurfer.getDuration();
-      timeDisplay.textContent = `${formatTime(0)} / ${formatTime(duration)}`;
-    });
-  });
-
-  // Function to format seconds into MM:SS format
-  function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    el.textContent = message;
+    el.classList.add("is-visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("is-visible"), 2600);
   }
 
+  /* ---- 1. Mobile navigation (replaces Bootstrap's collapse plugin) ------- */
+  function initNavToggle() {
+    const button = $(".navbar-toggler");
+    const panel = button && document.getElementById(button.getAttribute("aria-controls"));
+    if (!panel) return;
+    button.addEventListener("click", () => {
+      const open = !panel.classList.contains("show");
+      panel.classList.toggle("show", open);
+      button.setAttribute("aria-expanded", String(open));
+    });
+  }
 
+  /* ---- 2. Header menus: currency, weather, notifications ----------------- */
+  function initHeaderMenus() {
+    const boxes = $$(".left-icons .icon-container");
+    if (!boxes.length) return;
+    const setOpen = (box, open) => {
+      box.classList.toggle("is-open", open);
+      $(".icon-trigger", box)?.setAttribute("aria-expanded", String(open));
+    };
+    boxes.forEach((box) => {
+      const button = $(".icon-trigger", box);
+      const menu = $(".mega-menu", box);
+      if (!button || !menu) return;
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const open = !box.classList.contains("is-open");
+        boxes.forEach((other) => other !== box && setOpen(other, false));
+        setOpen(box, open);
+        if (open) document.dispatchEvent(new CustomEvent("pp:menu-open", { detail: { id: menu.id } }));
+      });
+      menu.addEventListener("click", (event) => event.stopPropagation());
+    });
+    document.addEventListener("click", () => boxes.forEach((box) => setOpen(box, false)));
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      const open = boxes.find((box) => box.classList.contains("is-open"));
+      if (!open) return;
+      setOpen(open, false);
+      $(".icon-trigger", open)?.focus();
+    });
+  }
 
-
-  // إغلاق قائمة الإشعارات عند النقر في أي مكان خارجها
-  $(document).on('click', function () {
-    $('.notifications-mega-menu').hide();
-  });
-
-  // منع إخفاء القائمة عند النقر داخل القائمة نفسها
-  $(document).on('click', '.notifications-mega-menu', function (e) {
-    e.stopPropagation();
-  });
-
-  // عند النقر على أيقونة الإشعارات
-  $('.notifications-mega-menu').closest('.icon-container').on('click', function (e) {
-    e.stopPropagation();
-
-    const notificationMenu = $(this).find('.notifications-mega-menu');
-
-    // إخفاء أي قوائم أخرى (Mega Menus) مفتوحة
-    $(".top-bar-container .mega-menu").not(notificationMenu).hide();
-
-    // التأكد من وجود إشعارات، وإن لم توجد نضع رسالة "لا يوجد إشعارات"
-    const notificationItems = notificationMenu.find('.notification-item');
-    if (notificationItems.length === 0) {
-      const container = notificationMenu.find('.notifications-container');
-      // تأكد أننا لم نضف الرسالة من قبل
-      if (!container.find('.no-notifications-msg').length) {
-        container.html('<p class="no-notifications-msg">لا يوجد إشعارات</p>');
-      }
+  /* the bell shows how many stories arrived since the reader last opened it */
+  function initNotificationBadge() {
+    const items = $$("#menu-notifications .notification-item");
+    const badge = $("[data-notif-count]");
+    if (!items.length || !badge) return;
+    const latest = $("h6", items[0])?.textContent.trim() || "";
+    const seen = store.get("pp:notif-seen");
+    const fresh = seen ? items.findIndex((item) => $("h6", item)?.textContent.trim() === seen) : items.length;
+    const count = fresh < 0 ? items.length : fresh;
+    if (count > 0) {
+      badge.textContent = String(count);
+      badge.hidden = false;
+      badge.closest(".icon-trigger")?.setAttribute("aria-label", `الإشعارات، ${count} أخبار جديدة`);
     }
+    document.addEventListener("pp:menu-open", (event) => {
+      if (event.detail.id !== "menu-notifications") return;
+      store.set("pp:notif-seen", latest);
+      badge.hidden = true;
+      badge.closest(".icon-trigger")?.setAttribute("aria-label", "الإشعارات");
+    });
+  }
 
-    // فتح/إغلاق القائمة
-    notificationMenu.toggle();
-  });
-});
+  /* ---- 3. Tabs: local news (home) and the writer page -------------------- */
+  function initTabs() {
+    $$("[role=tablist]").forEach((list) => {
+      const tabs = $$("[role=tab]", list);
+      const select = (tab, focus) => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          t.parentElement.classList.toggle("active", on);
+          const pane = document.getElementById(t.getAttribute("aria-controls"));
+          if (!pane) return;
+          pane.classList.toggle("active", on);
+          if (pane.classList.contains("tab-pane")) pane.hidden = !on;
+        });
+        if (focus) tab.focus();
+        tab.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+      };
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(tab, false));
+        tab.addEventListener("keydown", (event) => {
+          // right-to-left: the left arrow moves to the next tab
+          const moves = { ArrowLeft: i + 1, ArrowRight: i - 1, Home: 0, End: tabs.length - 1 };
+          if (!(event.key in moves)) return;
+          event.preventDefault();
+          select(tabs[(moves[event.key] + tabs.length) % tabs.length], true);
+        });
+      });
+    });
+  }
 
+  /* ---- 4. Special files: one file open at a time ------------------------- */
+  function initFiles() {
+    $$(".fb-accordion").forEach((accordion) => {
+      const items = $$(".fb-accordion-item", accordion);
+      const open = (item) => items.forEach((other) => {
+        const on = other === item;
+        other.classList.toggle("fb-active", on);
+        other.classList.toggle("fb-closed", !on);
+        $(".fb-accordion-title", other)?.setAttribute("aria-expanded", String(on));
+        const panel = $(".fb-accordion-content", other);
+        if (panel) panel.hidden = !on;
+      });
+      items.forEach((item) => {
+        const panel = $(".fb-accordion-content", item);
+        if (panel && !item.classList.contains("fb-active")) panel.hidden = true;
+        $(".fb-accordion-title", item)?.addEventListener("click", () => open(item));
+      });
+    });
+  }
 
+  /* ---- 5. Video: poster first, the player only when asked ---------------- */
+  function embedUrl(src, autoplay) {
+    const url = new URL(src.replace("www.youtube.com/embed", "www.youtube-nocookie.com/embed"), location.href);
+    url.searchParams.set("rel", "0");
+    if (autoplay) url.searchParams.set("autoplay", "1");
+    return url.toString();
+  }
 
-function playVideo(container) {
-  const img = container.querySelector('img');
-  const button = container.querySelector('.play-button');
-  const iframe = container.querySelector('iframe');
-  img.style.display = 'none';
-  button.style.display = 'none';
-  iframe.style.display = 'block';
-}
+  function makeFrame(src, title) {
+    const frame = document.createElement("iframe");
+    frame.src = embedUrl(src, true);
+    frame.title = title || "مشغّل الفيديو";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.className = "video-embed";
+    return frame;
+  }
 
+  function initVideoFacades() {
+    document.addEventListener("click", (event) => {
+      const poster = event.target.closest("[data-embed]");
+      if (!poster) return;
+      const label = poster.getAttribute("aria-label")?.replace("تشغيل الفيديو: ", "");
+      const frame = makeFrame(poster.dataset.embed, label);
+      poster.replaceWith(frame);
+      frame.focus();
+    });
+  }
 
+  function initVideoPlaylist() {
+    const section = $(".videos-section2");
+    if (!section) return;
+    const items = $$(".video-item", section);
+    const stage = $("#main-video", section);
+    const overlay = $("#video-thumbnail-overlay", section);
+    const counter = $(".video-counter", section);
+    const title = $(".title-video-play", section);
+    const toggle = $(".toggle-video", section);
+    if (!items.length || !stage) return;
+    let current = Math.max(0, items.findIndex((item) => item.classList.contains("active")));
+    let playing = false;
+
+    const show = (index, play) => {
+      current = index;
+      playing = play;
+      items.forEach((item, i) => {
+        item.classList.toggle("active", i === index);
+        if (i === index) item.setAttribute("aria-current", "true");
+        else item.removeAttribute("aria-current");
+      });
+      const item = items[index];
+      const text = $("p", item)?.textContent.trim() || "";
+      if (counter) counter.textContent = `${index + 1}/${items.length}`;
+      if (title) title.textContent = text;
+      stage.replaceChildren();
+      if (overlay) {
+        const poster = $("img", overlay);
+        const thumb = $("img", item);
+        if (poster && thumb) poster.src = thumb.currentSrc || thumb.src;
+        overlay.hidden = play;
+      }
+      if (play) stage.append(makeFrame(item.dataset.video, text));
+      if (toggle) {
+        toggle.setAttribute("aria-label", play ? "إيقاف الفيديو" : "تشغيل الفيديو");
+        $("i", toggle).className = play ? "fas fa-stop" : "fas fa-play";
+      }
+    };
+
+    items.forEach((item, i) => item.addEventListener("click", () => show(i, true)));
+    $(".video-overlay__play", section)?.addEventListener("click", () => show(current, true));
+    toggle?.addEventListener("click", () => show(current, !playing));
+    show(current, false);
+  }
+
+  /* ---- 6. Podcast players: Plyr, loaded when a player comes near --------- */
+  const PLYR_VERSION = "3.7.8";
+  const PLYR_AR = {
+    restart: "من البداية", rewind: "رجوع {seektime} ثانية", play: "تشغيل", pause: "إيقاف مؤقت",
+    fastForward: "تقديم {seektime} ثانية", seek: "انتقال", seekLabel: "{currentTime} من {duration}",
+    played: "تم تشغيله", buffered: "تم تحميله", currentTime: "الوقت الحالي", duration: "المدة",
+    volume: "الصوت", mute: "كتم الصوت", unmute: "تشغيل الصوت", settings: "الإعدادات",
+    menuBack: "رجوع", speed: "السرعة", normal: "عادية",
+  };
+  let plyrLoading;
+  function loadPlyr() {
+    if (window.Plyr) return Promise.resolve();
+    plyrLoading ||= new Promise((resolve, reject) => {
+      const base = `https://cdnjs.cloudflare.com/ajax/libs/plyr/${PLYR_VERSION}/`;
+      const css = Object.assign(document.createElement("link"), { rel: "stylesheet", href: base + "plyr.min.css" });
+      const js = Object.assign(document.createElement("script"), { src: base + "plyr.min.js" });
+      js.onload = resolve;
+      js.onerror = () => { plyrLoading = null; reject(new Error("Plyr did not load")); };
+      document.head.append(css, js);
+    });
+    return plyrLoading;
+  }
+
+  function initPodcastPlayers() {
+    const hosts = $$("[data-pod-player]");
+    if (!hosts.length) return;
+    const players = [];
+    const setup = (host) => {
+      const audio = $("audio", host);
+      if (!audio || host.dataset.ready) return;
+      host.dataset.ready = "1";
+      const player = new window.Plyr(audio, {
+        controls: ["rewind", "play", "fast-forward", "progress", "current-time", "mute", "settings"],
+        settings: ["speed"],
+        speed: { selected: 1, options: [0.75, 1, 1.25, 1.5, 2] },
+        seekTime: 15,
+        invertTime: false,
+        i18n: PLYR_AR,
+        keyboard: { focused: true, global: false },
+        tooltips: { controls: true, seek: true },
+      });
+      player.on("play", () => players.forEach((other) => other !== player && other.pause()));
+      players.push(player);
+    };
+    // the native <audio controls> stays usable if the library never arrives
+    const start = () => loadPlyr().then(() => hosts.forEach(setup)).catch(() => {});
+    if (!("IntersectionObserver" in window)) { start(); return; }
+    const watcher = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      watcher.disconnect();
+      start();
+    }, { rootMargin: "400px 0px" });
+    hosts.forEach((host) => watcher.observe(host));
+  }
+
+  /* ---- 7. Share panels and copy link ------------------------------------ */
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const field = Object.assign(document.createElement("textarea"), { value: text });
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.append(field);
+      field.select();
+      const ok = document.execCommand("copy");
+      field.remove();
+      return ok;
+    }
+  }
+
+  function initShare() {
+    const closeAll = (except) => $$(".btn-share[aria-expanded=true]").forEach((button) => {
+      if (button === except) return;
+      button.setAttribute("aria-expanded", "false");
+      document.getElementById(button.getAttribute("aria-controls"))?.classList.remove("show");
+    });
+    document.addEventListener("click", async (event) => {
+      const trigger = event.target.closest(".btn-share");
+      if (trigger) {
+        const open = trigger.getAttribute("aria-expanded") !== "true";
+        closeAll(trigger);
+        trigger.setAttribute("aria-expanded", String(open));
+        document.getElementById(trigger.getAttribute("aria-controls"))?.classList.toggle("show", open);
+        return;
+      }
+      const copy = event.target.closest("[data-copy]");
+      if (copy) {
+        toast((await copyText(copy.dataset.copy)) ? "نُسخ الرابط" : "انسخ الرابط من شريط العنوان");
+        return;
+      }
+      if (!event.target.closest(".share-social-icons")) closeAll();
+    });
+    document.addEventListener("keydown", (event) => event.key === "Escape" && closeAll());
+  }
+
+  /* ---- 8. Article: text size, remembered between visits ------------------ */
+  function initArticleTools() {
+    const text = $(".article-text-content");
+    const bigger = $(".zoom-in");
+    const smaller = $(".zoom-out");
+    if (!text || !bigger || !smaller) return;
+    const sizes = [16, 18, 20, 22, 24];
+    let index = Math.min(sizes.length - 1, Math.max(0, Number(store.get("pp:article-size") ?? 1)));
+    const apply = () => {
+      document.documentElement.style.setProperty("--article-size", `${sizes[index]}px`);
+      bigger.disabled = index === sizes.length - 1;
+      smaller.disabled = index === 0;
+      store.set("pp:article-size", String(index));
+    };
+    bigger.addEventListener("click", () => { index = Math.min(sizes.length - 1, index + 1); apply(); });
+    smaller.addEventListener("click", () => { index = Math.max(0, index - 1); apply(); });
+    apply();
+  }
+
+  /* ---- 9. Send news form: clear messages instead of browser bubbles ------ */
+  function initSendNews() {
+    const form = $("[data-send-news]");
+    if (!form) return;
+    const messages = {
+      valueMissing: "هذا الحقل مطلوب.",
+      typeMismatch: "اكتب بريدًا إلكترونيًا صحيحًا، مثل name@example.com",
+      tooShort: "اكتب تفاصيل أكثر: متى وأين حدث ذلك وماذا رأيت.",
+    };
+    const check = (field) => {
+      const error = document.getElementById(field.getAttribute("aria-describedby"));
+      const problem = Object.keys(messages).find((key) => field.validity[key]);
+      field.setAttribute("aria-invalid", String(Boolean(problem)));
+      if (error) {
+        error.textContent = problem ? messages[problem] : "";
+        error.hidden = !problem;
+      }
+      return !problem;
+    };
+    const fields = $$("[required]", form);
+    fields.forEach((field) => field.addEventListener("blur", () => field.value && check(field)));
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const invalid = fields.filter((field) => !check(field));
+      const status = $(".form-status", form);
+      if (invalid.length) {
+        invalid[0].focus();
+        return;
+      }
+      // the backend posts the form; the static theme only confirms the flow
+      form.reset();
+      if (status) {
+        status.textContent = "وصلنا خبرك. سنراجعه ونتواصل معك إن احتجنا تفاصيل أكثر.";
+        status.hidden = false;
+      }
+    });
+  }
+
+  /* ---- 10. Site map: filter the lists while typing ----------------------- */
+  function initSitemapFilter() {
+    const field = $("[data-sitemap-filter]");
+    if (!field) return;
+    const cards = $$(".sitemap-card");
+    const empty = $(".sitemap-empty");
+    field.addEventListener("input", () => {
+      const term = field.value.trim();
+      let shown = 0;
+      cards.forEach((card) => {
+        let hits = 0;
+        $$("li", card).forEach((li) => {
+          const match = !term || li.textContent.includes(term);
+          li.hidden = !match;
+          if (match) hits += 1;
+        });
+        card.hidden = hits === 0;
+        shown += hits;
+      });
+      if (empty) empty.hidden = shown > 0;
+    });
+  }
+
+  /* ---- 11. Back to top ---------------------------------------------------- */
+  function initScrollTop() {
+    const button = $("#scrollToTop");
+    if (!button) return;
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        button.classList.toggle("show", window.scrollY > 800);
+        ticking = false;
+      });
+    }, { passive: true });
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      $(".logo a")?.focus({ preventScroll: true });
+    });
+  }
+
+  function init() {
+    initNavToggle();
+    initHeaderMenus();
+    initNotificationBadge();
+    initTabs();
+    initFiles();
+    initVideoFacades();
+    initVideoPlaylist();
+    initPodcastPlayers();
+    initShare();
+    initArticleTools();
+    initSendNews();
+    initSitemapFilter();
+    initScrollTop();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

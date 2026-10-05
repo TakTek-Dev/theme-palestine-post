@@ -1,143 +1,90 @@
-$(document).ready(function() {
+/* =========================================================================
+   Currency rates in the header menu.
+   Source: open.er-api.com (free, no API key in the page). Fetched the first
+   time the menu opens and cached for an hour.
+   ========================================================================= */
+(function () {
+  "use strict";
 
-  /*********************************************
-   * إغلاق القائمة عند النقر في أي مكان خارجها
-   *********************************************/
-  $(document).on('click', function() {
-    $('.top-bar-container .mega-menu').hide();
-  });
+  const API = "https://open.er-api.com/v6/latest/USD";
+  const CACHE_KEY = "pp:fx";
+  const MAX_AGE = 60 * 60 * 1000;
+  const WATCH = [
+    ["ILS", "شيكل"], ["JOD", "دينار أردني"], ["EGP", "جنيه مصري"], ["SAR", "ريال سعودي"],
+    ["AED", "درهم إماراتي"], ["QAR", "ريال قطري"], ["KWD", "دينار كويتي"], ["TRY", "ليرة تركية"], ["GBP", "جنيه إسترليني"],
+  ];
+  let state = "idle";
 
-  // منع إخفاء القائمة عند النقر داخلها
-  $(document).on('click', '.top-bar-container .mega-menu', function(e) {
-    e.stopPropagation();
-  });
-
-  // منع إعادة التحميل عند النقر على أسهم التمرير في القائمة
-  $(document).on('click', '.curancy-mega-menu .owl-nav, .curancy-mega-menu .owl-nav *', function(e) {
-    e.stopPropagation();
-  });
-
-  /***********************************************************
-   * عند النقر على الأيقونة التي تحتوي على .curancy-mega-menu
-   ***********************************************************/
-  $(".curancy-mega-menu").closest('.icon-container').on('click', function(e) {
-    e.stopPropagation();
-
-    const megaMenu = $(this).find('.curancy-mega-menu');
-
-    // إخفاء أي قوائم أخرى مفتوحة
-    $(".top-bar-container .mega-menu").not(megaMenu).hide();
-
-    // هل تم التحميل مسبقًا؟
-    if (!megaMenu.data('loaded')) {
-      // إظهار الـ Loading
-      megaMenu.find('.loading-overlay').addClass('active');
-      megaMenu.show();
-
-      // جلب بيانات العملات
-      fetchCurrencyData(megaMenu)
-        .then(() => {
-          // عند اكتمال الجلب بنجاح
-          megaMenu.data('loaded', true); 
-        });
-    } else {
-      // إذا تم التحميل من قبل، نعرض القائمة فقط
-      megaMenu.show();
+  function cached() {
+    try {
+      const hit = JSON.parse(localStorage.getItem(CACHE_KEY));
+      return hit && Date.now() - hit.at < MAX_AGE ? hit : null;
+    } catch {
+      return null;
     }
-  });
+  }
 
-  /*********************************************
-   * دالة لجلب بيانات العملات (تُعيد Promise)
-   *********************************************/
-  function fetchCurrencyData(menuElement) {
-    const apiKey = "48ef6fafed9643d1bfd1855cb6b9bc0f";
-    const apiUrl = `https://openexchangerates.org/api/latest.json?app_id=${apiKey}`;
+  function row(code, name, value) {
+    const digits = value >= 100 ? 1 : 3;
+    return `<div class="currency"><p>${name}</p><span><bdi>${value.toFixed(digits)}</bdi> <small lang="en">${code}</small></span></div>`;
+  }
 
-    // إعادة الـ Promise ليتم التعامل معه في .then()
-    return fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) throw new Error("Network response was not ok");
+  function render(menu, rates, at) {
+    const usd = menu.querySelector(".slider-usd");
+    const eur = menu.querySelector(".slider-eur");
+    if (usd) usd.innerHTML = WATCH.filter(([c]) => rates[c]).map(([c, n]) => row(c, n, rates[c])).join("");
+    if (eur && rates.EUR) {
+      const list = [["USD", "دولار أمريكي"], ...WATCH].filter(([c]) => rates[c]);
+      eur.innerHTML = list.map(([c, n]) => row(c, n, rates[c] / rates.EUR)).join("");
+    }
+    const stamp = new Date(at).toLocaleString("ar-EG-u-nu-latn", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+    menu.querySelectorAll(".date-slider").forEach((el) => { el.textContent = `محدّث ${stamp}`; });
+  }
+
+  function fail(menu) {
+    const content = menu.querySelector(".mega-menu-content");
+    let note = menu.querySelector(".menu-error");
+    if (!note) {
+      note = document.createElement("p");
+      note.className = "menu-error";
+      content.prepend(note);
+    }
+    note.innerHTML = 'تعذّر تحميل أسعار العملات. <button type="button" class="menu-retry">إعادة المحاولة</button>';
+    note.querySelector("button").addEventListener("click", () => { note.remove(); load(menu); });
+  }
+
+  function load(menu) {
+    const hit = cached();
+    if (hit) {
+      render(menu, hit.rates, hit.at);
+      state = "done";
+      return;
+    }
+    if (state === "loading") return;
+    state = "loading";
+    const overlay = menu.querySelector(".loading-overlay");
+    overlay?.classList.add("active");
+    fetch(API)
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
       })
-      .then(data => {
-        if (data.rates) {
-          updateDateTime(menuElement);
-          // تحديث سلايدر الدولار
-          updateSlider(".slider-usd", data.rates.USD, data.rates, "USD");
-          // تحديث سلايدر اليورو
-          updateSlider(".slider-eur", data.rates.EUR, data.rates, "EUR");
-        }
+      .then((data) => {
+        if (data.result !== "success") throw new Error("bad payload");
+        const at = Date.now();
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ at, rates: data.rates })); } catch { /* private mode */ }
+        render(menu, data.rates, at);
+        state = "done";
       })
-      .catch(error => {
-        console.error('Failed to fetch currency:', error);
-        menuElement.find('.mega-menu-content').prepend(
-          '<p class="error">حدث خطأ في تحميل البيانات</p>'
-        );
+      .catch(() => {
+        state = "idle";
+        fail(menu);
       })
-      .finally(() => {
-        // إزالة تأثير اللودنج
-        menuElement.find('.loading-overlay').removeClass('active');
-      });
+      .finally(() => overlay?.classList.remove("active"));
   }
 
-  /*************************************
-   * دالة تحديث السلايدر (Owl Carousel)
-   *************************************/
-  function updateSlider(sliderSelector, baseRate, rates, baseCurrency) {
-    const slider = $(sliderSelector);
-
-    // تدمير أي سلايدر قديم
-    slider.owlCarousel('destroy');
-    slider.html('');
-
-    // بناء العناصر داخل السلايدر بناءً على العملات المتاحة
-    Object.keys(rates).forEach(currency => {
-      if (currency !== baseCurrency) {
-        const rate = (rates[currency] / baseRate).toFixed(3);
-        slider.append(`
-          <div class="item">
-            <div class="currency">
-              <p>${currency}</p>
-              <span>${rate} ${currency}</span>
-            </div>
-          </div>
-        `);
-      }
-    });
-
-    // تهيئة Owl Carousel
-    slider.owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      rtl: true,
-      dots: false,
-      navText: [
-        "<i class='fa-solid fa-chevron-right'></i>",
-        "<i class='fa-solid fa-chevron-left'></i>"
-      ],
-      responsive: {
-        0: { items: 3 },
-        600: { items: 4 },
-        1000: { items: 4 }
-      }
-    });
-  }
-
-  /*********************************************
-   * دالة تحديث التاريخ والوقت في الـ Mega Menu
-   *********************************************/
-  function updateDateTime(menuElement) {
-    const now = new Date();
-    const options = {
-      hour: '2-digit',
-      minute: '2-digit',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    };
-
-    const dateTimeString = now.toLocaleDateString("ar-EG", options);
-    menuElement.find(".date-slider").text(dateTimeString);
-  }
-});
+  document.addEventListener("pp:menu-open", (event) => {
+    if (event.detail.id !== "menu-currency" || state === "done") return;
+    load(document.getElementById("menu-currency"));
+  });
+})();

@@ -1,150 +1,106 @@
-$(document).ready(function() {
-  // إغلاق أي قائمة مفتوحة عند النقر في أي مكان خارجها
-  $(document).on('click', function() {
-    $('.top-bar-container .mega-menu').hide();
-  });
+/* =========================================================================
+   Five-day weather for Gaza and Jerusalem in the header menu.
+   Source: Open-Meteo (free, no API key in the page). One request covers both
+   cities; the result is cached for thirty minutes.
+   ========================================================================= */
+(function () {
+  "use strict";
 
-  // منع إغلاق القائمة عند النقر داخلها
-  $(document).on('click', '.top-bar-container .mega-menu', function(e) {
-    e.stopPropagation();
-  });
+  const CITIES = [
+    { name: "غزة", lat: 31.5017, lon: 34.4668 },
+    { name: "القدس", lat: 31.7683, lon: 35.2137 },
+  ];
+  const API = "https://api.open-meteo.com/v1/forecast?daily=weather_code,temperature_2m_max,temperature_2m_min"
+    + "&timezone=Asia%2FJerusalem&forecast_days=5"
+    + `&latitude=${CITIES.map((c) => c.lat).join(",")}&longitude=${CITIES.map((c) => c.lon).join(",")}`;
+  const CACHE_KEY = "pp:weather";
+  const MAX_AGE = 30 * 60 * 1000;
+  let state = "idle";
 
-  // منع إعادة التحميل عند النقر على أسهم التمرير (التي ينشئها Owl Carousel)
-  $(document).on('click', '.weather-mega-menu .owl-nav, .weather-mega-menu .owl-nav *', function(e) {
-    e.stopPropagation();
-  });
+  // WMO weather codes → Arabic description and a Font Awesome icon
+  function describe(code) {
+    if (code === 0) return ["صحو", "fa-sun"];
+    if (code <= 2) return ["غائم جزئيًا", "fa-cloud-sun"];
+    if (code === 3) return ["غائم", "fa-cloud"];
+    if (code <= 48) return ["ضباب", "fa-smog"];
+    if (code <= 57) return ["رذاذ", "fa-cloud-rain"];
+    if (code <= 67) return ["أمطار", "fa-cloud-showers-heavy"];
+    if (code <= 77) return ["ثلوج", "fa-snowflake"];
+    if (code <= 82) return ["زخات مطر", "fa-cloud-sun-rain"];
+    return ["عواصف رعدية", "fa-cloud-bolt"];
+  }
 
-  // عند النقر على أيقونة الطقس (الأب الذي يحتوي على .weather-mega-menu)
-  $(".weather-mega-menu").closest('.icon-container').on('click', function(e) {
-    e.stopPropagation();
-    
-    const megaMenu = $(this).find('.weather-mega-menu');
-    
-    // إخفاء أي قوائم أخرى مفتوحة
-    $(".top-bar-container .mega-menu").not(megaMenu).hide();
-
-    // التحقق إذا كانت البيانات قد تم جلبها مسبقًا
-    if (!megaMenu.data('loaded')) {
-      // إظهار اللودنج
-      megaMenu.find('.loading-overlay').addClass('active');
-      megaMenu.show();
-
-      // جلب بيانات الطقس
-      fetchWeatherData(megaMenu).then(() => {
-        // عند اكتمال جلب البيانات بنجاح
-        megaMenu.data('loaded', true); 
-      });
-    } else {
-      // في حال تم التحميل من قبل، فقط أظهر القائمة بدون لودنج
-      megaMenu.show();
+  function cached() {
+    try {
+      const hit = JSON.parse(localStorage.getItem(CACHE_KEY));
+      return hit && Date.now() - hit.at < MAX_AGE ? hit.data : null;
+    } catch {
+      return null;
     }
-  });
-
-  // دالة لجلب بيانات الطقس (تُعيد Promise لتسهيل التحكم بالـ loading)
-  function fetchWeatherData(menuElement) {
-    return new Promise((resolve, reject) => {
-      const apiKey = "4e1c311a82984f5686d131632252601";
-      const cities = [
-        { name: "غزة", query: "Gaza" },
-        { name: "القدس", query: "Jerusalem" }
-      ];
-
-      // تفريغ أي محتوى سابق في السلايدرات
-      menuElement.find('.weather-sliders').html('');
-
-      let requestsCount = 0; // عدّ الطلبات لنعرف متى ننتهي من التحميل
-
-      cities.forEach(city => {
-        fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city.query}&days=5&lang=ar`)
-          .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-          })
-          .then(data => {
-            if (!data.forecast) throw new Error('Invalid data structure');
-            buildWeatherSlider(menuElement, city, data);
-          })
-          .catch(error => {
-            console.error('Weather fetch error:', error);
-            menuElement.find('.weather-sliders').append(`
-              <div class="weather-error">
-                <p>فشل تحميل بيانات الطقس لـ ${city.name}</p>
-              </div>
-            `);
-          })
-          .finally(() => {
-            requestsCount++;
-            // عندما تنتهي كل الطلبات (لكل المدن)
-            if (requestsCount === cities.length) {
-              // إزالة اللودنج
-              menuElement.find('.loading-overlay').removeClass('active');
-              resolve();
-            }
-          });
-      });
-    });
   }
 
-  // دالة بناء سلايدر الطقس
-  function buildWeatherSlider(menuElement, city, data) {
-    const sliderId = `weather-slider-${city.query.replace(/\s+/g, '-')}`;
-    const sliderContainer = $(`
-      <div class="background-weather">
-        <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
-          <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-            <div class="dot-title red-dot"></div>
-            <h5>${city.name}</h5>
-          </div>
-          <div class="date">${new Date().toLocaleDateString("ar-EG", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-          })}</div>
-        </header>
-        <div class="owl-carousel weather-slider owl-theme" id="${sliderId}"></div>
-      </div>
-    `);
-
-    const slider = sliderContainer.find(`#${sliderId}`);
-
-    // إضافة الأيام والتوقعات إلى السلايدر
-    data.forecast.forecastday.forEach(day => {
-      const date = new Date(day.date);
-      slider.append(`
-        <div class="item">
-          <div class="weather-item">
-            <p>${date.toLocaleDateString("ar-EG", { weekday: "long" })} 
-              <span>${day.date}</span>
-            </p>
-            <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}">
-            <span class="description-weather">${day.day.condition.text}</span>
-            <span class="temperature">${Math.round(day.day.avgtemp_c)}°C</span>
-          </div>
+  function cityBlock(city, daily) {
+    const days = daily.time.map((day, i) => {
+      const [label, icon] = describe(daily.weather_code[i]);
+      const name = i === 0 ? "اليوم" : new Date(`${day}T12:00:00`).toLocaleDateString("ar-EG-u-nu-latn", { weekday: "long" });
+      return `<li class="weather-item">
+        <p>${name}</p>
+        <i class="fa-solid ${icon}" aria-hidden="true"></i>
+        <span class="description-weather">${label}</span>
+        <span class="temperature"><bdi>${Math.round(daily.temperature_2m_max[i])}°</bdi> / <bdi>${Math.round(daily.temperature_2m_min[i])}°</bdi></span>
+      </li>`;
+    }).join("");
+    return `<section class="background-weather" aria-label="الطقس في ${city.name}">
+      <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+        <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+          <div class="dot-title red-dot"></div><h5>${city.name}</h5>
         </div>
-      `);
-    });
-
-    // ضم السلايدر إلى القسم الخاص بالمدن في الـ mega menu
-    menuElement.find('.weather-sliders').append(sliderContainer);
-
-    // تهيئة Owl Carousel
-    slider.owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      rtl: true,
-      dots: false,
-      navText: [
-        "<i class='fa-solid fa-chevron-right'></i>",
-        "<i class='fa-solid fa-chevron-left'></i>"
-      ],
-      responsive: {
-        0: { items: 1 },
-        600: { items: 1 },
-        1000: { items: 1.7 }
-      }
-    });
+      </header>
+      <ul class="weather-list">${days}</ul>
+    </section>`;
   }
 
-});
+  function render(menu, data) {
+    const list = Array.isArray(data) ? data : [data];
+    menu.querySelector(".weather-sliders").innerHTML = CITIES.map((city, i) => list[i] ? cityBlock(city, list[i].daily) : "").join("");
+  }
+
+  function fail(menu) {
+    menu.querySelector(".weather-sliders").innerHTML =
+      '<p class="menu-error">تعذّر تحميل حالة الطقس. <button type="button" class="menu-retry">إعادة المحاولة</button></p>';
+    menu.querySelector(".menu-retry").addEventListener("click", () => load(menu));
+  }
+
+  function load(menu) {
+    const hit = cached();
+    if (hit) {
+      render(menu, hit);
+      state = "done";
+      return;
+    }
+    if (state === "loading") return;
+    state = "loading";
+    const overlay = menu.querySelector(".loading-overlay");
+    overlay?.classList.add("active");
+    fetch(API)
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data })); } catch { /* private mode */ }
+        render(menu, data);
+        state = "done";
+      })
+      .catch(() => {
+        state = "idle";
+        fail(menu);
+      })
+      .finally(() => overlay?.classList.remove("active"));
+  }
+
+  document.addEventListener("pp:menu-open", (event) => {
+    if (event.detail.id !== "menu-weather" || state === "done") return;
+    load(document.getElementById("menu-weather"));
+  });
+})();

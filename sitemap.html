@@ -1,1052 +1,521 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>فلسطين بوست</title>
-    <!-- Meta Description -->
-    <meta name="description"
-        content="فلسطين بوست: منصة شاملة تقدم الأخبار المتعلقة بالشرق الأوسط، توثيق الانتهاكات، وتسليط الضوء على قضايا حقوق الإنسان." />
-
-    <!-- Meta Keywords -->
-    <meta name="keywords"
-        content="فلسطين بوست, أخبار الشرق الأوسط, الأسرى الفلسطينيون, حقوق الإنسان,  , حماس , الاحتلال, العدالة, توثيق الانتهاكات, فلسطين, السجون" />
-
-    <!-- Robots Meta -->
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content=" فلسطين بوست" />
-    <meta property="og:description"
-        content="فلسطين بوست: منصة شاملة تقدم الأخبار المتعلقة بالشرق الأوسط، توثيق الانتهاكات، وتسليط الضوء على قضايا حقوق الإنسان." />
-    <meta property="og:image" content="img/og-image.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content=" فلسطين بوست" />
-    <meta name="twitter:description"
-        content="فلسطين بوست: منصة شاملة تقدم الأخبار المتعلقة بالشرق الأوسط،, حماس , توثيق الانتهاكات، وتسليط الضوء على قضايا حقوق الإنسان." />
-    <meta name="twitter:image" content="img/twitter-image.png" />
-
-    <!-- Include WaveSurfer.js -->
-    <script src="https://unpkg.com/wavesurfer.js"></script>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="./imgs/header logo.png " />
-    <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/all.min.css" />
-    <link rel="stylesheet" href="./css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css" />
-    <link rel="stylesheet" href="./css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-
-    <!-- Inline CSS for the Sitemap Section -->
-    <style>
-        /* ========================================
-       Sitemap Section Container
-       ======================================== */
-        .sitemap-section {
-            padding: 60px 20px;
-            background-color: #f9f9f9;
-        }
-
-
-
-        /* ----------------------------------------
-       Sitemap Header (Title & Subtitle)
-       ---------------------------------------- */
-        .sitemap-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .sitemap-header h2 {
-            font-size: 36px;
-            color: #023b56;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .sitemap-header p {
-            font-size: 18px;
-            color: #757575;
-        }
-
-        /* ----------------------------------------
-       Sitemap Search Bar
-       ---------------------------------------- */
-        .sitemap-search {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .sitemap-input-group {
-            display: inline-flex;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            overflow: hidden;
-            background-color: #fff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .sitemap-input {
-            flex: 1;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: #333;
-        }
-
-        .sitemap-search-btn {
-            background-color: #33b3c0;
-            border: none;
-            color: #fff;
-            padding: 0 20px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .sitemap-search-btn:hover {
-            background-color: #023b56;
-        }
-
-        /* ========================================
-       Sitemap Card (Full Width Layout)
-       ======================================== */
-        .sitemap-card {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            text-align: center;
-        }
-
-        .sitemap-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Icon wrapper styled as a centered circle */
-        .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #e6f7ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 40px;
-            color: #33b3c0;
-        }
-
-        /* Card Title */
-        .sitemap-card h3 {
-            font-size: 28px;
-            color: #023b56;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-
-        /* ----------------------------------------
-       Sitemap Links with Multi-Column Layout
-       ---------------------------------------- */
-        .sitemap-card ul {
-            list-style: disc;
-            padding: 0;
-            margin: 0 auto;
-            /* Use CSS columns to split the list into multiple columns */
-            column-count: 4;
-            column-gap: 30px;
-            text-align: start;
-            padding-right: 2rem;
-        }
-
-        /* Adjust column-count based on available width */
-        @media (max-width: 768px) {
-            .sitemap-card ul {
-                column-count: 1;
-            }
-        }
-
-        .sitemap-card ul li {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .sitemap-card ul li a {
-            color: #757575;
-            transition: color 0.3s ease;
-        }
-
-        .sitemap-card ul li a:hover {
-            color: #33b3c0;
-        }
-
-        /* ========================================
-       Extra Resources Section
-       ======================================== */
-        .sitemap-extra {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-        }
-
-        .sitemap-extra h3 {
-            font-size: 28px;
-            color: #023b56;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .sitemap-extra p {
-            font-size: 16px;
-            color: #757575;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.5;
-        }
-
-        .sitemap-extra-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .sitemap-extra-links a {
-            padding: 12px 24px;
-            background-color: #33b3c0;
-            color: #fff;
-            border-radius: 25px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sitemap-extra-links a:hover {
-            background-color: #023b56;
-        }
-
-        /* ========================================
-       Responsive Adjustments
-       ======================================== */
-        @media (max-width: 576px) {
-            .sitemap-header h2 {
-                font-size: 28px;
-            }
-
-            .sitemap-header p {
-                font-size: 16px;
-            }
-
-            .sitemap-card {
-                padding: 20px 15px;
-            }
-
-            .sitemap-card ul {
-                column-count: 2;
-                column-gap: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>خريطة الموقع | فلسطين بوست</title>
+  <meta name="description" content="كل أقسام فلسطين بوست وتصنيفاتها في صفحة واحدة.">
+  <meta name="theme-color" content="#023b56">
+  <meta property="og:site_name" content="فلسطين بوست">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="خريطة الموقع | فلسطين بوست">
+  <meta property="og:description" content="كل أقسام فلسطين بوست وتصنيفاتها في صفحة واحدة.">
+  <meta property="og:image" content="https://ppost.ps/og/6ffe5fa3e4898d6b3092a91b010bb36eef905090.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./imgs/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="./imgs/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fsn1.your-objectstorage.com" crossorigin>
+  <link rel="preload" href="./fonts/Alexandria/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css?v=8">
 </head>
-
-<body>
-    <header>
-        <!-- top-bar-start -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-container">
-                    <!-- Logo Section with explicit dimensions -->
-                    <div class="logo">
-                        <a href="#">
-                            <img src="./imgs/header logo.png" alt="شعار الموقع" loading="lazy" width="150"
-                                height="50" />
-                        </a>
-                    </div>
-
-                    <!-- Search Input Section -->
-                    <div class="top-bar-input">
-                        <input class="search-input" placeholder="بحث عن.." />
-                        <button class="top-bar-btn">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-
-                    <!-- Left Icons Section -->
-                    <div class="left-icons">
-                        <!-- Currency Icon & Mega Menu -->
-                        <div class="icon-container">
-                            <img src="./imgs/dollar-circle.svg" alt="أيقونة العملات" loading="lazy" width="32"
-                                height="32" />
-                            <div class="curancy-mega-menu mega-menu">
-                                <div class="loading-overlay">
-                                    <div class="loading-spinner"></div>
-                                </div>
-                                <div class="mega-menu-content">
-                                    <h2 class="currency-mega-menu-title">العملات</h2>
-                                    <div class="currency-mega-menu">
-                                        <!-- First Slider: الدولار اليوم -->
-                                        <div class="background-currency">
-                                            <header
-                                                class="d-flex align-items-center gap-2 justify-content-between mb-2">
-                                                <div
-                                                    class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                                    <div class="dot-title red-dot"></div>
-                                                    <h5>الدولار اليوم</h5>
-                                                </div>
-                                                <div class="date-slider"></div>
-                                            </header>
-                                            <div class="owl-carousel slider-usd owl-theme currency-slider"></div>
-                                        </div>
-
-                                        <!-- Second Slider: اليورو اليوم -->
-                                        <div class="background-currency">
-                                            <header
-                                                class="d-flex align-items-center gap-2 justify-content-between mb-2">
-                                                <div
-                                                    class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                                    <div class="dot-title red-dot"></div>
-                                                    <h5>اليورو اليوم</h5>
-                                                </div>
-                                                <div class="date-slider"></div>
-                                            </header>
-                                            <div class="owl-carousel slider-eur owl-theme currency-slider"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<body class="page-sitemap">
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-container">
+          <div class="logo"><a href="index.html" aria-label="فلسطين بوست، الصفحة الرئيسية"><img src="https://fsn1.your-objectstorage.com/ppost/uploads/2025/5/file_68287e8b380d2.png" alt="فلسطين بوست" width="150" height="50" decoding="async"></a></div>
+          <div class="top-bar-input">
+            <form role="search" action="articles.html">
+              <div class="form-group"><input class="search-input" placeholder="ابحث في فلسطين بوست" aria-label="ابحث في فلسطين بوست" type="search"> <button type="submit" class="top-bar-btn" aria-label="بحث"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button></div>
+            </form>
+          </div>
+          <div class="left-icons">
+            <div class="icon-container icon-container--currency">
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-currency" aria-label="العملات"><img src="./imgs/dollar-circle.svg" alt="" width="32" height="32" decoding="async"></button>
+              <div class="curancy-mega-menu mega-menu" id="menu-currency" role="region" aria-label="العملات">
+                <div class="loading-overlay">
+                  <div class="loading-spinner"></div>
+                </div>
+                <div class="mega-menu-content">
+                  <h2 class="currency-mega-menu-title">العملات</h2>
+                  <div class="currency-mega-menu">
+                    <div class="background-currency">
+                      <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                        <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                          <div class="dot-title red-dot"></div>
+                          <h5>الدولار اليوم</h5>
                         </div>
-
-                        <div class="v-line"></div>
-
-                        <!-- Weather Icon & Mega Menu -->
-                        <div class="icon-container">
-                            <img class="sun" src="./imgs/sun.png" alt="أيقونة الطقس" width="32" height="32" />
-                            <div class="weather-mega-menu curancy-mega-menu mega-menu">
-                                <div class="loading-overlay">
-                                    <div class="loading-spinner"></div>
-                                </div>
-                                <div class="mega-menu-content">
-                                    <h2 class="weather-mega-menu-title currency-mega-menu-title">الطقس</h2>
-                                    <div class="weather-sliders">
-                                        <!-- Slider for Weather Data -->
-                                        <div class="owl-carousel weather-slider owl-theme">
-                                            <!-- سيتم تعبئة البيانات ديناميكيًا هنا -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="date-slider"></div>
+                      </header>
+                      <div class="currency-list slider-usd"></div>
+                    </div>
+                    <div class="background-currency">
+                      <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                        <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                          <div class="dot-title red-dot"></div>
+                          <h5>اليورو اليوم</h5>
                         </div>
-
-                        <div class="v-line"></div>
-
-                        <!-- Notifications Icon & Mega Menu -->
-                        <div class="icon-container">
-                            <img src="./imgs/notification.svg" alt="أيقونة الإشعارات" loading="lazy" width="32"
-                                height="32" />
-                            <div class="notifications-mega-menu mega-menu">
-                                <!-- Mega Menu Content for Notification -->
-                                <div class="mega-menu-content">
-                                    <div class="notifications-container">
-                                        <h2 class="notifications-header currency-mega-menu-title">اشعارات</h2>
-                                        <div class="notification-item">
-                                            <div class="d-flex gap-3">
-                                                <div class="image-noti">
-                                                    <img src="https://dummyimage.com/80x80/dddddd/000000/" alt>
-                                                </div>
-                                                <div class="text-noti">
-                                                    <div class="notification-header">
-                                                        <header
-                                                            class="d-flex align-items-center gap-2 justify-content-between mb-2">
-
-                                                            <div class="title-boti">
-                                                                <div
-                                                                    class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                                                    <div class="dot-title red-dot"></div>
-                                                                    <h5>غزة</h5>
-                                                                </div>
-                                                                <div class="date-slider"></div>
-                                                            </div>
-                                                        </header>
-                                                        <div class="notification-text">
-                                                            <h6>قطاع المياه في غزة</h6>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        قطاع المياه في غزة يتعرض للتدهور. تراجع حصة الفرد
-                                                        اليومية وارتفاع في التلوث.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="notification-item">
-                                            <div class="d-flex gap-3">
-                                                <div class="image-noti">
-                                                    <img src="https://dummyimage.com/80x80/dddddd/000000/" alt>
-                                                </div>
-                                                <div class="text-noti">
-                                                    <div class="notification-header">
-                                                        <header
-                                                            class="d-flex align-items-center gap-2 justify-content-between mb-2">
-
-                                                            <div class="title-boti">
-                                                                <div
-                                                                    class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                                                    <div class="dot-title red-dot"></div>
-                                                                    <h5>غزة</h5>
-                                                                </div>
-                                                                <div class="date-slider"></div>
-                                                            </div>
-                                                        </header>
-                                                        <div class="notification-text">
-                                                            <h6>قطاع المياه في غزة</h6>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        قطاع المياه في غزة يتعرض للتدهور. تراجع حصة الفرد
-                                                        اليومية وارتفاع في التلوث.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="notification-item">
-                                            <div class="d-flex gap-3">
-                                                <div class="image-noti">
-                                                    <img src="https://dummyimage.com/80x80/dddddd/000000/" alt>
-                                                </div>
-                                                <div class="text-noti">
-                                                    <div class="notification-header">
-                                                        <header
-                                                            class="d-flex align-items-center gap-2 justify-content-between mb-2">
-
-                                                            <div class="title-boti">
-                                                                <div
-                                                                    class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                                                    <div class="dot-title red-dot"></div>
-                                                                    <h5>غزة</h5>
-                                                                </div>
-                                                                <div class="date-slider"></div>
-                                                            </div>
-                                                        </header>
-                                                        <div class="notification-text">
-                                                            <h6>قطاع المياه في غزة</h6>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        قطاع المياه في غزة يتعرض للتدهور. تراجع حصة الفرد
-                                                        اليومية وارتفاع في التلوث.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="date-slider"></div>
+                      </header>
+                      <div class="currency-list slider-eur"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="v-line"></div>
+            <div class="icon-container icon-container--weather">
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-weather" aria-label="الطقس"><img class="sun" src="./imgs/sun.png" alt="" width="32" height="32" decoding="async"></button>
+              <div class="weather-mega-menu curancy-mega-menu mega-menu" id="menu-weather" role="region" aria-label="الطقس">
+                <div class="loading-overlay">
+                  <div class="loading-spinner"></div>
+                </div>
+                <div class="mega-menu-content">
+                  <h2 class="weather-mega-menu-title currency-mega-menu-title">الطقس</h2>
+                  <div class="weather-sliders"></div>
+                </div>
+              </div>
+            </div>
+            <div class="v-line"></div>
+            <div class="icon-container icon-container--notifications">
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-notifications" aria-label="الإشعارات"><img src="./imgs/notification.svg" alt="" width="32" height="32" decoding="async"><span class="icon-badge" data-notif-count="" hidden></span></button>
+              <div class="notifications-mega-menu mega-menu" id="menu-notifications" role="region" aria-label="الإشعارات">
+                <div class="mega-menu-content">
+                  <div class="notifications-container">
+                    <h2 class="notifications-header currency-mega-menu-title">آخر الأخبار</h2>
+                    <div class="notification-item">
+                      <a href="single-article.html">
+                        <div class="d-flex gap-3">
+                          <div class="image-noti"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3ee6854535.webp" alt="&quot;التاج&quot; جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة" loading="lazy" width="60" height="60" decoding="async"></div>
+                          <div class="text-noti">
+                            <div class="notification-header">
+                              <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                                <div class="title-boti">
+                                  <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                                    <div class="dot-title red-dot"></div>
+                                    <h5>تقارير بوست</h5>
+                                  </div>
                                 </div>
+                              </header>
+                              <div class="notification-text">
+                                <h6>"التاج" جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة</h6>
+                              </div>
+                              <p>رغم مرور 3 سنوات على ارتكاب الاحتلال لواحدة من أكبر المجازر وأبشعها خلال حرب الإبادة على قطاع غزة، إلا أن "مجزرة التاج"، نسبة للعمارة التي جرى استهدافها في مدينة غزة، مازالت حاضرة في قلوب وعقول الغزيين، ولم تفلح السنوات في نسيانها.</p>
                             </div>
+                          </div>
                         </div>
-                        <!-- End of Left Icons -->
+                      </a>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- top-bar-end -->
-
-        <!-- nav-bar-start -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container">
-                <div class="d-flex align-items-center py-3 gap-2">
-                    <button class="navbar-toggler pt-2" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon" alt="Menu toggle icon"></span>
-                    </button>
-                    <!-- Input field for mobile screens -->
-                    <input type="text" class="form-control d-lg-none" style="max-width: 450px" dir="rtl"
-                        placeholder="ابحث عن....." />
-                </div>
-
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="index.html">الرئيسية</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link custom-hover" id="local-news-toggle" href="#">
-                                أخبار محلية<i class="fa-solid fa-chevron-down" alt="Dropdown arrow"></i>
-                            </a>
-                            <div class="mega-menu" id="local-news-slide-menu">
-                                <div class="menu-container">
-                                    <!-- Jerusalem -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>القدس</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Gaza -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>غزة</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Nablus -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>نابلس</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Hebron -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>الخليل</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Ramallah -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>رام الله</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Tulkarm -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>طولكرم</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Bethlehem -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>بيت لحم</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Qalqilya -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>قلقيلية</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Occupied Interior -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>الداخل المحتل</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Jericho -->
-                                    <div class="menu-item">
-                                        <div
-                                            class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
-                                            <div class="dot-title red-dot"></div>
-                                            <h3>أريحا</h3>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الاول للمنطقة
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    خبر الثانى للمنطقة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                    <div class="notification-item">
+                      <a href="single-article.html">
+                        <div class="d-flex gap-3">
+                          <div class="image-noti"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3ea798a25f.webp" alt="إصابة شاب برصاص الاحتلال شمال غرب الخليل" loading="lazy" width="60" height="60" decoding="async"></div>
+                          <div class="text-noti">
+                            <div class="notification-header">
+                              <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                                <div class="title-boti">
+                                  <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                                    <div class="dot-title red-dot"></div>
+                                    <h5>الخليل</h5>
+                                  </div>
                                 </div>
-
+                              </header>
+                              <div class="notification-text">
+                                <h6>إصابة شاب برصاص الاحتلال شمال غرب الخليل</h6>
+                              </div>
+                              <p>أصيب شاب فلسطيني مساء اليوم الاثنين، في بيت أولا شمال غرب مدينة الخليل بالضفة الغربية.</p>
                             </div>
-                        </li>
-                        <!-- Other navigation items -->
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="articles.html">تقارير بوست</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="writer.html">الكاتب</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="podcast.html">بودكاست</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="single-article.html">تقرير مفرد </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="videos.html">فيديو</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="contact-us.html">اتصل بنا</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="about-us.html">من نحن</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-hover" href="send-news.html">ارسل خبر</a>
-                        </li>
-                    </ul>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="notification-item">
+                      <a href="single-article.html">
+                        <div class="d-flex gap-3">
+                          <div class="image-noti"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3e5b64cdc8.webp" alt="بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا" loading="lazy" width="60" height="60" decoding="async"></div>
+                          <div class="text-noti">
+                            <div class="notification-header">
+                              <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                                <div class="title-boti">
+                                  <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                                    <div class="dot-title red-dot"></div>
+                                    <h5>أريحا</h5>
+                                  </div>
+                                </div>
+                              </header>
+                              <div class="notification-text">
+                                <h6>بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا</h6>
+                              </div>
+                              <p>أقام مستوطنون، اليوم الاثنين، بؤرة استيطانية جديدة في منطقة اسطيح بقرية الديوك التحتا شمال غرب أريحا، بعد إدخال آليات ومعدات وسواتر حديدية إلى الموقع.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="notification-item">
+                      <a href="single-article.html">
+                        <div class="d-flex gap-3">
+                          <div class="image-noti"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3dda47e11d.webp" alt="أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة" loading="lazy" width="60" height="60" decoding="async"></div>
+                          <div class="text-noti">
+                            <div class="notification-header">
+                              <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                                <div class="title-boti">
+                                  <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                                    <div class="dot-title red-dot"></div>
+                                    <h5>غزة</h5>
+                                  </div>
+                                </div>
+                              </header>
+                              <div class="notification-text">
+                                <h6>أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة</h6>
+                              </div>
+                              <p>قالت منظمة أطباء بلا حدود، اليوم الاثنين، إن الأوضاع الإنسانية في قطاع غزة تواصل التدهور، مشيرة إلى أن الإجراءات الإسرائيلية تؤدي إلى تضييق المساحة المتاحة أمام الفلسطينيين للحياة</p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="notification-item">
+                      <a href="single-article.html">
+                        <div class="d-flex gap-3">
+                          <div class="image-noti"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d475886c3.webp" alt="إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس" loading="lazy" width="60" height="60" decoding="async"></div>
+                          <div class="text-noti">
+                            <div class="notification-header">
+                              <header class="d-flex align-items-center gap-2 justify-content-between mb-2">
+                                <div class="title-boti">
+                                  <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                                    <div class="dot-title red-dot"></div>
+                                    <h5>نابلس</h5>
+                                  </div>
+                                </div>
+                              </header>
+                              <div class="notification-text">
+                                <h6>إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس</h6>
+                              </div>
+                              <p>أصيب مواطن يبلغ من العمر 50 عاما، مساء اليوم الاثنين، برضوض عقب تعرضه للضرب من قبل جنود الاحتلال الإسرائيلي خلال اقتحامهم قرية أوصرين جنوب نابلس.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </nav>
-        <!-- nav-bar-end -->
-    </header>
-
-
-    <!-- Sitemap Section Start -->
-    <section class="sitemap-section">
-        <div class="container">
-            <!-- Sitemap Header -->
-            <div class="sitemap-header">
-                <h2>خريطة الموقع</h2>
-                <p>استكشف جميع أقسام موقع فلسطين بوست والمحتوى الإعلامي الشامل</p>
-            </div>
-
-            <!-- Sitemap Search Bar -->
-            <div class="sitemap-search">
-                <div class="sitemap-input-group">
-                    <input type="text" class="sitemap-input" placeholder="ابحث في خريطة الموقع..."
-                        aria-label="Search Sitemap">
-                    <button class="sitemap-search-btn" type="button">
-                        <i class="fa-solid fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Sitemap Cards Grid (Full Width Cards) -->
-            <div class="sitemap-grid">
-                <!-- Card 1: Local News -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-newspaper"></i>
-                    </div>
-                    <h3>أخبار محلية</h3>
-                    <ul>
-                        <li>
-
-                            <a href="#">أخبار غزة اليومية</a>
-                        </li>
-                        <li><a href="#">تحديثات رام الله</a></li>
-                        <li><a href="#">تقارير الخليل</a></li>
-                        <li><a href="#">القدس وعناوينها</a></li>
-                        <li><a href="#">نابلس – آخر الأحداث</a></li>
-                        <li><a href="#">طولكرم – ملخص الأخبار</a></li>
-                        <li><a href="#">أريحا – التقارير الميدانية</a></li>
-                        <li><a href="#">جنين – أخبار المواطنين</a></li>
-                        <li><a href="#">سلفيت – التصريحات الرسمية</a></li>
-                        <li><a href="#">مؤتمرات صحفية محلية</a></li>
-                        <li><a href="#">بيانات وإعلانات</a></li>
-                        <li><a href="#">تغطيات إخبارية حصرية</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 2: Reports -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-clipboard-list"></i>
-                    </div>
-                    <h3>تقارير بوست</h3>
-                    <ul>
-                        <li><a href="#">تحقيقات ميدانية</a></li>
-                        <li><a href="#">تقارير حقوق الإنسان</a></li>
-                        <li><a href="#">تحليل سياسي معمق</a></li>
-                        <li><a href="#">ملفات اقتصادية</a></li>
-                        <li><a href="#">رصد الانتهاكات</a></li>
-                        <li><a href="#">تغطيات الحصار</a></li>
-                        <li><a href="#">مقابلات حصرية</a></li>
-                        <li><a href="#">تحليلات اقتصادية</a></li>
-                        <li><a href="#">تقارير أسرى الفلسطينيين</a></li>
-                        <li><a href="#">ملفات ومذكرات</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 3: Podcast -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-microphone"></i>
-                    </div>
-                    <h3>بودكاست</h3>
-                    <ul>
-                        <li><a href="#">حلقة الأسبوع</a></li>
-                        <li><a href="#">بودكاست سياسي</a></li>
-                        <li><a href="#">بودكاست اقتصادي</a></li>
-                        <li><a href="#">بودكاست ثقافي</a></li>
-                        <li><a href="#">بودكاست اجتماعي</a></li>
-                        <li><a href="#">مقابلات صوتية</a></li>
-                        <li><a href="#">نقاشات وتحليلات</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 4: About Us -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <h3>من نحن</h3>
-                    <ul>
-                        <li><a href="about-us.html">تاريخ فلسطين بوست</a></li>
-                        <li><a href="about-us.html#mission">رسالتنا ورؤيتنا</a></li>
-                        <li><a href="about-us.html#team">فريق العمل</a></li>
-                        <li><a href="about-us.html#testimonials">آراء المتابعين</a></li>
-                        <li><a href="about-us.html#partners">شركاؤنا الإعلاميون</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 5: Contact Us -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <h3>اتصل بنا</h3>
-                    <ul>
-                        <li><a href="contact-us.html">نموذج الاتصال</a></li>
-                        <li><a href="contact-us.html#privacy">سياسة الخصوصية</a></li>
-                        <li><a href="contact-us.html#terms">الشروط والأحكام</a></li>
-                        <li><a href="contact-us.html#feedback">آراء العملاء</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 6: Submit News -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </div>
-                    <h3>أرسل خبر</h3>
-                    <ul>
-                        <li><a href="send-news.html">نموذج إرسال الخبر</a></li>
-                        <li><a href="send-news.html#guide">دليل التحرير</a></li>
-                        <li><a href="send-news.html#what">ما ننشره من أخبار</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 7: International News -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-                    <h3>أخبار دولية</h3>
-                    <ul>
-                        <li><a href="#">أخبار أمريكا</a></li>
-                        <li><a href="#">أخبار أوروبا</a></li>
-                        <li><a href="#">أخبار آسيا</a></li>
-                        <li><a href="#">أخبار أفريقيا</a></li>
-                        <li><a href="#">أخبار الشرق الأوسط</a></li>
-                        <li><a href="#">تقارير دولية</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 8: Videos -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-                    <h3>فيديوهات</h3>
-                    <ul>
-                        <li><a href="#">جميع الفيديوهات</a></li>
-                        <li><a href="#">تقارير مرئية</a></li>
-                        <li><a href="#">مقابلات فيديو</a></li>
-                        <li><a href="#">وثائقيات</a></li>
-                        <li><a href="#">ملخصات إخبارية</a></li>
-                    </ul>
-                </div>
-
-                <!-- Card 9: Articles -->
-                <div class="sitemap-card">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <h3>مقالات</h3>
-                    <ul>
-                        <li><a href="#">أحدث المقالات</a></li>
-                        <li><a href="#">تحليلات وآراء</a></li>
-                        <li><a href="#">مقالات ثقافية</a></li>
-                        <li><a href="#">أرشيف المقالات</a></li>
-                        <li><a href="#">مقالات اجتماعية</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Extra Resources Section -->
-            <div class="sitemap-extra">
-                <h3>مزيد من الموارد</h3>
-                <p>استكشف المزيد من الأقسام والموارد التي يقدمها موقع فلسطين بوست لتعزيز تجربتك الإعلامية والاطلاع على
-                    أرشيف الأخبار، شركاؤنا، المدونة والمكتبة الرقمية.</p>
-                <div class="sitemap-extra-links">
-                    <a href="#">أرشيف الأخبار</a>
-                    <a href="#">شركاؤنا</a>
-                    <a href="#">المدونة</a>
-                    <a href="#">المكتبة الرقمية</a>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </section>
-    <!-- Sitemap Section End -->
-
-
-
-    <!-- footer start -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="about">
-                    <img class="footer-logo" src="./imgs/footer logo.png" alt="Footer Logo" />
-                    <p>
-                        فلسطين بوست منبرا اعلاميا جديدا, تعطي حيزا
-                        كبيرا للمواطن في صناعه الحدث الاعلامي,
-                        وتقدم مضمونا يجمع اهداف الاعلام.
-                    </p>
-                </div>
-
-                <div class="categores">
-                    <h4>تصنيفات</h4>
-                    <ul class="categores-line">
-                        <li><a href="#">نابلس</a></li>
-                        <li><a href="#">القدس</a></li>
-                        <li><a href="#">غزة</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">رام الله</a></li>
-                        <li><a href="#">الداخل المحتل</a></li>
-                        <li><a href="#">الخليل</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">قلقيلية</a></li>
-                        <li><a href="#">بيت لحم</a></li>
-                        <li><a href="#">طولكرم</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">اريحا</a></li>
-                    </ul>
-                </div>
-
-                <div class="categores">
-                    <h4>الوسوم</h4>
-                    <ul class="categores-line">
-                        <li><a href="#">نابلس</a></li>
-                        <li><a href="#">القدس</a></li>
-                        <li><a href="#">غزة</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">رام الله</a></li>
-                        <li><a href="#">الداخل المحتل</a></li>
-                        <li><a href="#">الخليل</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">قلقيلية</a></li>
-                        <li><a href="#">بيت لحم</a></li>
-                        <li><a href="#">طولكرم</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">اريحا</a></li>
-                    </ul>
-                </div>
-
-                <div class="categores">
-                    <h4>الوسوم</h4>
-                    <ul class="categores-line">
-                        <li><a href="#">نابلس</a></li>
-                        <li><a href="#">القدس</a></li>
-                        <li><a href="#">غزة</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">رام الله</a></li>
-                        <li><a href="#">الداخل المحتل</a></li>
-                        <li><a href="#">الخليل</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">قلقيلية</a></li>
-                        <li><a href="#">بيت لحم</a></li>
-                        <li><a href="#">طولكرم</a></li>
-                    </ul>
-
-                    <ul class="categores-line">
-                        <li><a href="#">اريحا</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-social-icons">
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            </div>
-        </div>
-
-        <!-- جميع الحقوق محفوظه-->
-        <div class="resrved-rights-bar">
-            <div class="container">
-                <div class="resrved-rights-container">
-                    <h6>جميع الحقوق محفوظة فلسطين بوست 2024</h6>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer-end-->
-
-    <!-- scroll -->
-    <div id="scrollToTop">
-        <i class="fa-solid fa-arrow-up"></i>
+      </div>
     </div>
-
-    <!-- تحميل مكتبة YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
-    <script src="./js/jquery-3.7.1.min.js" type="text/javascript"></script>
-    <script src="./js/owl.carousel.min.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="./js/currencies.js" type="text/javascript"></script>
-    <script src="./js/weather.js" type="text/javascript"></script>
-    <script src="./js/script.js" type="text/javascript"></script>
-
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" aria-label="القائمة الرئيسية">
+      <div class="container">
+        <div class="d-flex align-items-center py-3 gap-2 full-width-small">
+          <button class="navbar-toggler pt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="فتح قائمة التنقل"><span class="navbar-toggler-icon"></span></button>
+          <div class="w-100 none-in-large-screen">
+            <form role="search" action="articles.html" method="GET">
+              <div class="form-group"><input class="search-input" placeholder="ابحث في فلسطين بوست" aria-label="ابحث في فلسطين بوست" name="search" type="search"> <button type="submit" class="top-bar-btn" aria-label="بحث"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button></div>
+            </form>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link custom-hover" href="index.html">الرئيسية</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link custom-hover" href="articles.html" aria-haspopup="true">أخبار محلية <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+              <div class="mega-menu" id="local-news-slide-menu">
+                <div class="menu-container">
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>غزة</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">أزمة مياه تتفاقم في غزة بسبب تعطل خط "ميكروت" منذ أسبوع</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>القدس</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">تفاصيل مروعة في مقتل فاطمة الرجبي بالقدس</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">45 عملا مقاوما في الضفة والقدس خلال أسبوع</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>الخليل</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">إصابة شاب برصاص الاحتلال شمال غرب الخليل</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">استشهاد شاب وإصابة اثنين برصاص الاحتلال قرب بني نعيم شرق الخليل</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>نابلس</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">بعد إخلاء قسري لأكثر من شهرين.. 6 عائلات تعود إلى منازلها في تل جنوب نابلس</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>رام الله</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">الاحتلال يطلق النار على شاب شرق رام الله بزعم محاولة تنفيذ عملية طعن</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">نادي الأسير: الاحتلال يحوّل “التحريض” إلى أداة لاستهداف الوعي والذاكرة الفلسطينية</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>جنين</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">إصابة 3 مواطنين باعتداء مستوطنين عليهم أثناء قطف الزيتون غرب جنين</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">الاحتلال يجبر عائلات على إخلاء منازلها في جنين ويحولها إلى ثكنات عسكرية</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>طولكرم</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">إصابة طفل وسيدتين واعتقال فتى خلال اقتحام وسط طولكرم</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">طولكرم: الاحتلال يقتحم مدرسة جبارة ويزيل الأعلام الفلسطينية من ساحتها وجدرانها</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>طوباس</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">لليوم الثامن.. الاحتلال يعزل 47 عائلة ويحاصر الرأس الأحمر بالأغوار</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">الاحتلال يمنع 104 معلمين من الوصول إلى مدارسهم في الأغوار الشمالية</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>أريحا</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">أريحا: الاحتلال يغلق طرقًا مؤدية إلى مخيم عقبة جبر بالسواتر الترابية</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>قلقيلية</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">اعتقال 23 شابا خلال اقتحام قوات الاحتلال بلدة حجة شرق قلقيلية</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">قلقيلية: الاحتلال يحتجز شاباً ويستولي على شاحنته في عزون</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>الداخل المحتل</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">قائمة بأسماء معتقلين صدرت بحقهم أوامر اعتقال إداري جديدة</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">قائمة بأسماء معتقلين صدرت بحقهم أوامر اعتقال إداري جديدة</a></li>
+                    </ul>
+                  </div>
+                  <div class="menu-item">
+                    <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2">
+                      <div class="dot-title red-dot"></div>
+                      <a href="articles.html">
+                        <h5>سلفيت</h5>
+                      </a>
+                    </div>
+                    <ul>
+                      <li><a class="line-clamp-2" href="single-article.html">الاحتلال يجبر المزارعين على مغادرة أراضيهم غرب سلفيت</a></li>
+                      <li><a class="line-clamp-2" href="single-article.html">مستوطنون يهاجمون مواطنين ويحرقون مركبات في مناطق متفرقة بالضفة</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="podcast.html">بودكاست</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">تقارير بوست</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="videos.html">فيديو بوست</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">مقالات</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">موسوعة فلسطين</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">عربي دولي</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">تكنولوجيا</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="articles.html">منوعات</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="send-news.html">أرسل خبر</a></li>
+            <li class="nav-item"><a class="nav-link custom-hover" href="about-us.html">من نحن</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <div>
+      <section class="sitemap-section">
+        <div class="container">
+          <div class="sitemap-header">
+            <h1>خريطة الموقع</h1>
+            <p>استكشف جميع أقسام موقع فلسطين بوست والمحتوى الإعلامي الشامل</p>
+          </div>
+          <div class="sitemap-search">
+            <div class="sitemap-input-group">
+              <label class="visually-hidden" for="sitemap-filter">ابحث في خريطة الموقع</label>
+              <input id="sitemap-filter" type="search" class="sitemap-input" placeholder="ابحث في خريطة الموقع" data-sitemap-filter=""><span class="sitemap-search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+            <p class="sitemap-empty" role="status" hidden>لا نتائج مطابقة.</p>
+          </div>
+          <div class="sitemap-grid">
+            <div class="sitemap-card">
+              <div class="icon-wrapper"><i class="fa-solid fa-microphone"></i></div>
+              <h3>الكتاب</h3>
+              <ul>
+                <li><a href="writer.html">عبد المنعم سعيد</a></li>
+                <li><a href="writer.html">وجدان شتيوي</a></li>
+                <li><a href="writer.html">رجب أبو سرية</a></li>
+                <li><a href="writer.html">أكرم عطا الله</a></li>
+                <li><a href="writer.html">عيسى قراقع</a></li>
+                <li><a href="writer.html">ولاء فروانة</a></li>
+                <li><a href="writer.html">آية جودة</a></li>
+                <li><a href="writer.html">محمد الجمل</a></li>
+                <li><a href="writer.html">مجاهد طبنجة</a></li>
+                <li><a href="writer.html">راسم عبيدات</a></li>
+                <li><a href="writer.html">عبدالله معروف</a></li>
+                <li><a href="writer.html">ربا إسماعيل</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-card">
+              <div class="icon-wrapper"><i class="fa-solid fa-newspaper"></i></div>
+              <h3>التصنيفات</h3>
+              <ul>
+                <li><a href="articles.html">غزة</a></li>
+                <li><a href="articles.html">أخبار محلية</a></li>
+                <li><a href="articles.html">القدس</a></li>
+                <li><a href="articles.html">عربي دولي</a></li>
+                <li><a href="articles.html">رام الله</a></li>
+                <li><a href="articles.html">نابلس</a></li>
+                <li><a href="articles.html">الخليل</a></li>
+                <li><a href="articles.html">جنين</a></li>
+                <li><a href="articles.html">الداخل المحتل</a></li>
+                <li><a href="articles.html">بيت لحم</a></li>
+                <li><a href="articles.html">طولكرم</a></li>
+                <li><a href="articles.html">طوباس</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-card">
+              <div class="icon-wrapper"><i class="fa-solid fa-clipboard-list"></i></div>
+              <h3>الوسوم</h3>
+              <ul>
+                <li><a href="articles.html">إسرائيل</a></li>
+                <li><a href="articles.html">قطاع غزة</a></li>
+                <li><a href="articles.html">الخارجية الفلسطينية</a></li>
+                <li><a href="articles.html">رمضان</a></li>
+                <li><a href="articles.html">الأقصى</a></li>
+                <li><a href="articles.html">العشر الأواخر</a></li>
+                <li><a href="articles.html">مستوطنين</a></li>
+                <li><a href="articles.html">اشتباك</a></li>
+                <li><a href="articles.html">الاحتلال</a></li>
+                <li><a href="articles.html">نابلس</a></li>
+                <li><a href="articles.html">دير الحطب</a></li>
+                <li><a href="articles.html">ارتقاء</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="about">
+          <img class="footer-logo" src="./imgs/footer_logo.png" alt="فلسطين بوست" width="150" height="50" loading="lazy" decoding="async">
+          <p>السرعة والموضوعية في نقل الحدث</p>
+          <div class="footer-social-icons" aria-label="فلسطين بوست على مواقع التواصل"><a href="https://www.facebook.com/palpostn" target="_blank" rel="noopener" aria-label="فلسطين بوست على فيسبوك"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="https://t.me/PalpostN" target="_blank" rel="noopener" aria-label="فلسطين بوست على تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a><a href="https://www.instagram.com/palpostn" target="_blank" rel="noopener" aria-label="فلسطين بوست على إنستجرام"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://x.com/palpostn" target="_blank" rel="noopener" aria-label="فلسطين بوست على إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a><a href="https://www.tiktok.com/@palpostt" target="_blank" rel="noopener" aria-label="فلسطين بوست على تيك توك"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></div>
+        </div>
+        <div class="categores">
+          <h4>تصنيفات</h4>
+          <ul class="categores-line">
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> أخبار محلية</span> <span class="category-count">(3005)</span></a></li>
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> غزة</span> <span class="category-count">(7428)</span></a></li>
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> القدس</span> <span class="category-count">(2667)</span></a></li>
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> الخليل</span> <span class="category-count">(1269)</span></a></li>
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> نابلس</span> <span class="category-count">(1501)</span></a></li>
+            <li><a href="articles.html"><span class="category-icon"><i class="fa-solid fa-angles-left"></i> رام الله</span> <span class="category-count">(1714)</span></a></li>
+          </ul>
+        </div>
+        <div class="tags">
+          <h4>الوسوم</h4>
+          <ul class="tag-line">
+            <li><a href="articles.html">إسرائيل</a></li>
+            <li><a href="articles.html">قطاع غزة</a></li>
+            <li><a href="articles.html">الخارجية الفلسطينية</a></li>
+            <li><a href="articles.html">رمضان</a></li>
+            <li><a href="articles.html">الأقصى</a></li>
+            <li><a href="articles.html">العشر الأواخر</a></li>
+            <li><a href="articles.html">مستوطنين</a></li>
+            <li><a href="articles.html">اشتباك</a></li>
+            <li><a href="articles.html">الاحتلال</a></li>
+            <li><a href="articles.html">نابلس</a></li>
+            <li><a href="articles.html">دير الحطب</a></li>
+            <li><a href="articles.html">ارتقاء</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom__inner">
+        <p>© 2026 فلسطين بوست. حقوق النشر محفوظة.</p>
+        <ul class="footer-links">
+          <li><a href="about-us.html">من نحن</a></li>
+          <li><a href="send-news.html">أرسل خبرًا</a></li>
+          <li><a href="sitemap.html">خريطة الموقع</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+  <script src="./js/script.js?v=8"></script>
+  <script src="./js/currencies.js?v=8"></script>
+  <script src="./js/weather.js?v=8"></script>
 </body>
-
 </html>
