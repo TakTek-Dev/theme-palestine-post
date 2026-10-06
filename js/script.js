@@ -610,21 +610,26 @@
   function initSitemapFilter() {
     const field = $("[data-sitemap-filter]");
     if (!field) return;
-    const cards = $$(".sitemap-card");
+    const groups = $$(".sitemap-group");
+    const letters = $$(".sitemap-letter");
+    const index = $(".sitemap-letters");
     const empty = $(".sitemap-empty");
+    // Arabic search: hamza seats, short vowels and tatweel don't count; ة/ه and ى/ي match
+    const fold = (text) => text.normalize("NFD").replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+      .replace(/\u0629/g, "\u0647").replace(/\u0649/g, "\u064A").toLowerCase();
+    const entries = $$(".sitemap-group li").map((li) => [li, fold(li.textContent)]);
     field.addEventListener("input", () => {
-      const term = field.value.trim();
+      const term = fold(field.value.trim());
+      entries.forEach(([li, text]) => { li.hidden = Boolean(term) && !text.includes(term); });
+      letters.forEach((block) => { block.hidden = $$("li", block).every((li) => li.hidden); });
       let shown = 0;
-      cards.forEach((card) => {
-        let hits = 0;
-        $$("li", card).forEach((li) => {
-          const match = !term || li.textContent.includes(term);
-          li.hidden = !match;
-          if (match) hits += 1;
-        });
-        card.hidden = hits === 0;
+      groups.forEach((group) => {
+        const hits = $$("li", group).filter((li) => !li.hidden).length;
+        group.hidden = hits === 0;
         shown += hits;
       });
+      // the letter index points at headings a search may have hidden
+      if (index) index.hidden = Boolean(term);
       if (empty) empty.hidden = shown > 0;
     });
   }

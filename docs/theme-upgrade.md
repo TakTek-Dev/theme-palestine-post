@@ -15,7 +15,7 @@
 | `writer.html` | `/writer/…` | |
 | `about-us.html` | `/about_us` | |
 | `send-news.html` | `/send_news` | |
-| `sitemap.html` | `/sitemap` | عيّنة 12 رابطًا لكل قسم، مش القائمة الكاملة |
+| `sitemap.html` | `/sitemap` | أقسام الموقع، والكتّاب والمصادر كلهم بالحروف، والتصنيفات كلها، وعيّنة من الوسوم |
 
 الصور كلها من اللايف (`fsn1.your-objectstorage.com` ومقاسات `ppost.ps/media`).
 
@@ -38,6 +38,7 @@
 13. قسم «فيديو» بيعرض **213 فيديو في صفحة واحدة** من غير صفحات، وكل كارت فيه مكوّن Livewire للمشاركة. وفيه فيديو متكرر مرتين (رقم 213 و214، نفس العنوان ونفس الغلاف).
 14. فيديو «كلمات الشهيد يحيى صبيح مراسل فلسطين بوست» اتشال من يوتيوب (`0zWR_AbgUX4`)، فبيظهر «Video unavailable». ارفعوه تاني أو احذفوه من القسم.
 15. المشغّل على اللايف مربع 320×240 ثابت بيتحمّل بعد رحلة للسيرفر (`wire:click="playVideo(id)"`)، فالفيديو الطولي بيظهر صغير جدًا جوه إطار عرضي.
+16. خريطة الموقع على اللايف **حجمها 8.3 ميجابايت**: بتطبع الـ15463 وسم كلهم في صفحة واحدة. وقايمة الكتّاب فيها 7 أسماء متكررة، ومش مترتبة. وفي الوسوم أخطاء إملائية متكررة زي «وزراة المالية» جنب «وزارة المالية»، و«أطبار بلا حدود». الحل إن الوسوم تتعرض بالأكثر استخدامًا، أو في صفحات بالحروف.
 
 **تحسينات واجهة واستخدام:**
 
@@ -106,7 +107,12 @@
   - جنب الفورم «قبل أن ترسل»: متى وأين، وما رأيته بنفسك، وسلامتك أولًا.
   - بعد الإرسال الفورم بيختفي وتظهر مكانه لوحة «وصلنا خبرك» فيها زرار «أرسل خبرًا آخر»، والتركيز بينتقل لها.
   - جملة «لن ننشر اسمك أو بريدك من دون إذنك» اتشالت، لأنها وعد بسياسة ما اتعلنتش على الموقع. لو الإدارة عايزاها، تتكتب بصيغتهم.
-- **خريطة الموقع:** اتصمّمت (كانت من غير أي ستايل) وفيها فلترة وأنت بتكتب.
+- **خريطة الموقع:**
+  - في الأول «أقسام الموقع»: أقسام القائمة الرئيسية الـ12 بأيقوناتها. المجموعة دي مش موجودة على اللايف.
+  - الكتّاب بقوا كلهم (135 من غير تكرار) وعنوانهم «الكتّاب والمصادر»، لأن القايمة فيها مؤسسات كمان. ومترتبين أبجديًا تحت عناوين بالحروف، وفوقهم فهرس للحروف. والأسماء اللي قبلها «د.» بتتحط تحت حرف الاسم نفسه.
+  - التصنيفات الـ22 كلها، والوسوم عيّنة من 12 ومعاها عددها الحقيقي.
+  - البحث بيتجاهل كراسي الهمزة والتشكيل والتطويل، والتاء المربوطة بتطابق الهاء والألف المقصورة بتطابق الياء. فـ«احمد» بتلاقي «أحمد»، و«غزه» بتلاقي «غزة». والمجموعات اللي ملهاش نتايج بتختفي.
+  - أيقونة الكتّاب كانت ميكروفون واتشالت.
 - **الوصول:** رابط «تخطَّ إلى المحتوى»، وتركيز ظاهر على كل العناصر التفاعلية، و`h1` واحد في كل صفحة، و`<main>` واحد (صفحة الخبر كان فيها اتنين متداخلين). والحركة بتقف لو الزائر مفعّل `prefers-reduced-motion`.
 
 ## 3. تنظيم الكود
@@ -159,6 +165,7 @@
 | صفحة الفيديو | عمود فلتر بمربعات اختيار، و`.latest-news-first-video-container .card` و`wire:click="playVideo(id)"` | `ul.buttons-group-tabs.video-tabs[role=tablist]` بتبويب لكل قسم، و`section.tab-pane.video-panel[role=tabpanel]` لكل قسم فيه `ol.video-grid > li > article.video-card#video-{id}`. جوه الكارت `.video-card__poster` (الغلاف و`.video-card__badge` للمدة)، و`h2 > a.video-card__open` بـ`href` الفيديو و`data-video-src` أو `data-youtube` و`data-ratio` (العرض ÷ الطول) و`data-duration` بالثواني، و`.video-card__foot` فيه التاريخ والمشاركة. وتحت القسم الكبير `nav.dlv-pgn`. النافذة بتتعمل بالجافاسكربت، ومش محتاجة ماركب |
 | صفحة من نحن | `.goals-card` بـ`h4`، وصفوف `.principles-section .row` فيها صورة، والفقرات مفصولة بـ`<br><br>` | `ul.goals-list > li.goal` (`.goal__icon` و`h3.goal__title` و`p`)، و`ul.principles-list > li.principle` (`.principle__head` فيه `.principle__icon` و`h3.principle__title`، وبعده فقرتين `p`)، وعناوين الأقسام `h2.title-side`. وفي الآخر `section.about-cta` فيه رابط `a.btn-solid` لصفحة «أرسل خبرًا» |
 | أرسل خبرًا | `form.border.p-4` بـ`wire:model` من غير `name` | `div.send-page` فيه عمودين: `form.send-news-form[data-send-news]` (الحقول بـ`name` و`required`، وتحت كل حقل `p.field-error#{id}-error`، وتحت «نص الخبر» `p.field-hint#message-hint`، والزرار `button.btn-solid.send-news-submit`)، وبعده `div.send-news-done[hidden]` لرسالة النجاح. وفي العمود التاني `aside` فيه `.send-tips` |
+| خريطة الموقع | `.sitemap-header` و`.sitemap-grid` فيها 3 `.sitemap-card` | مسار التنقل العادي، وبعده `div.sitemap-page` فيه `section.sitemap-group` لكل مجموعة بعنوان `h2.title-side`: `ul.sitemap-sections`، و`nav.sitemap-letters` مع `div.sitemap-writers > div.sitemap-letter#writers-{n}` (فيه `h3` و`ul`)، و`ul.sitemap-columns`، و`ul.tags-list` مع `p.sitemap-note`. والبحث `input[data-sitemap-filter]` |
 | صفحة البرامج | عمود فلتر و`.podcast-item` | `ul.show-list > li > section.show-profile` (العنوان `h2` ورابط «كل الحلقات»)، وبعدها `section.episodes` لأحدث 4 حلقات. الفلتر يظهر بس لو فيه أكتر من تصنيف |
 | الملفات الخاصة | `<div class="fb-accordion-title">` | `<button class="fb-accordion-title" aria-expanded aria-controls>` |
 | المشاركة | `<h4 class="btn-share">` وصور PNG | `<button class="btn-share" aria-expanded>` وأيقونات Font Awesome، والنسخ بـ`data-copy` |

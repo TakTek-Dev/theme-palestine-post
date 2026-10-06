@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=20">
+  <link rel="stylesheet" href="./css/style.css?v=21">
 </head>
 <body class="page-sitemap">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -391,77 +391,329 @@
   </header>
   <main id="main" tabindex="-1">
     <div>
-      <section class="sitemap-section">
+      <section class="breadcrumb">
         <div class="container">
-          <div class="sitemap-header">
-            <h1>خريطة الموقع</h1>
-            <p>استكشف جميع أقسام موقع فلسطين بوست والمحتوى الإعلامي الشامل</p>
-          </div>
-          <div class="sitemap-search">
-            <div class="sitemap-input-group">
-              <label class="visually-hidden" for="sitemap-filter">ابحث في خريطة الموقع</label>
-              <input id="sitemap-filter" type="search" class="sitemap-input" placeholder="ابحث في خريطة الموقع" data-sitemap-filter=""><span class="sitemap-search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
-            </div>
-            <p class="sitemap-empty" role="status" hidden>لا نتائج مطابقة.</p>
-          </div>
-          <div class="sitemap-grid">
-            <div class="sitemap-card">
-              <div class="icon-wrapper"><i class="fa-solid fa-microphone"></i></div>
-              <h3>الكتاب</h3>
-              <ul>
-                <li><a href="writer.html">عبد المنعم سعيد</a></li>
-                <li><a href="writer.html">وجدان شتيوي</a></li>
-                <li><a href="writer.html">رجب أبو سرية</a></li>
-                <li><a href="writer.html">أكرم عطا الله</a></li>
-                <li><a href="writer.html">عيسى قراقع</a></li>
-                <li><a href="writer.html">ولاء فروانة</a></li>
-                <li><a href="writer.html">آية جودة</a></li>
-                <li><a href="writer.html">محمد الجمل</a></li>
-                <li><a href="writer.html">مجاهد طبنجة</a></li>
-                <li><a href="writer.html">راسم عبيدات</a></li>
-                <li><a href="writer.html">عبدالله معروف</a></li>
-                <li><a href="writer.html">ربا إسماعيل</a></li>
-              </ul>
-            </div>
-            <div class="sitemap-card">
-              <div class="icon-wrapper"><i class="fa-solid fa-newspaper"></i></div>
-              <h3>التصنيفات</h3>
-              <ul>
-                <li><a href="articles.html">غزة</a></li>
-                <li><a href="articles.html">أخبار محلية</a></li>
-                <li><a href="articles.html">القدس</a></li>
-                <li><a href="articles.html">عربي دولي</a></li>
-                <li><a href="articles.html">رام الله</a></li>
-                <li><a href="articles.html">نابلس</a></li>
-                <li><a href="articles.html">الخليل</a></li>
-                <li><a href="articles.html">جنين</a></li>
-                <li><a href="articles.html">الداخل المحتل</a></li>
-                <li><a href="articles.html">بيت لحم</a></li>
-                <li><a href="articles.html">طولكرم</a></li>
-                <li><a href="articles.html">طوباس</a></li>
-              </ul>
-            </div>
-            <div class="sitemap-card">
-              <div class="icon-wrapper"><i class="fa-solid fa-clipboard-list"></i></div>
-              <h3>الوسوم</h3>
-              <ul>
-                <li><a href="articles.html">إسرائيل</a></li>
-                <li><a href="articles.html">قطاع غزة</a></li>
-                <li><a href="articles.html">الخارجية الفلسطينية</a></li>
-                <li><a href="articles.html">رمضان</a></li>
-                <li><a href="articles.html">الأقصى</a></li>
-                <li><a href="articles.html">العشر الأواخر</a></li>
-                <li><a href="articles.html">مستوطنين</a></li>
-                <li><a href="articles.html">اشتباك</a></li>
-                <li><a href="articles.html">الاحتلال</a></li>
-                <li><a href="articles.html">نابلس</a></li>
-                <li><a href="articles.html">دير الحطب</a></li>
-                <li><a href="articles.html">ارتقاء</a></li>
-              </ul>
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center justify-content-between">
+              <h1 class="title-breadcrumb">خريطة الموقع</h1>
+              <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+                <ol class="list-breadcrumb">
+                  <li><a href="index.html">الرئيسية</a></li>
+                  <li aria-current="page">خريطة الموقع</li>
+                </ol>
+              </nav>
             </div>
           </div>
         </div>
       </section>
+      <div class="container sitemap-page">
+        <div class="sitemap-bar">
+          <p class="sitemap-lead">استكشف جميع أقسام موقع فلسطين بوست والمحتوى الإعلامي الشامل</p>
+          <div class="sitemap-input-group">
+            <label class="visually-hidden" for="sitemap-filter">ابحث عن قسم أو كاتب أو تصنيف</label>
+            <input id="sitemap-filter" type="search" class="sitemap-input" placeholder="ابحث عن قسم أو كاتب أو تصنيف" autocomplete="off" data-sitemap-filter=""> <span class="sitemap-search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+          </div>
+          <p class="sitemap-empty" role="status" hidden>لا نتائج مطابقة.</p>
+        </div>
+        <section class="sitemap-group" aria-labelledby="sitemap-sections">
+          <h2 class="title-side" id="sitemap-sections">أقسام الموقع</h2>
+          <ul class="sitemap-sections">
+            <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>الرئيسية</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>أخبار محلية</a></li>
+            <li><a href="podcast.html"><i class="fa-solid fa-microphone" aria-hidden="true"></i>بودكاست</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>تقارير بوست</a></li>
+            <li><a href="videos.html"><i class="fa-solid fa-video" aria-hidden="true"></i>فيديو بوست</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i>مقالات</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-book-open" aria-hidden="true"></i>موسوعة فلسطين</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-globe" aria-hidden="true"></i>عربي دولي</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-microchip" aria-hidden="true"></i>تكنولوجيا</a></li>
+            <li><a href="articles.html"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>منوعات</a></li>
+            <li><a href="send-news.html"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>أرسل خبرًا</a></li>
+            <li><a href="about-us.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>من نحن</a></li>
+          </ul>
+        </section>
+        <section class="sitemap-group" aria-labelledby="sitemap-writers">
+          <h2 class="title-side" id="sitemap-writers">الكتّاب والمصادر <span class="sitemap-count">135</span></h2>
+          <nav class="sitemap-letters" aria-label="الكتّاب والمصادر حسب الحرف الأول"><a href="#writers-1">ا</a><a href="#writers-2">ب</a><a href="#writers-3">ج</a><a href="#writers-4">ح</a><a href="#writers-5">خ</a><a href="#writers-6">د</a><a href="#writers-7">ر</a><a href="#writers-8">س</a><a href="#writers-9">ش</a><a href="#writers-10">ط</a><a href="#writers-11">ع</a><a href="#writers-12">غ</a><a href="#writers-13">ف</a><a href="#writers-14">ك</a><a href="#writers-15">ل</a><a href="#writers-16">م</a><a href="#writers-17">ن</a><a href="#writers-18">ه</a><a href="#writers-19">و</a></nav>
+          <div class="sitemap-writers">
+            <div class="sitemap-letter" id="writers-1">
+              <h3>ا</h3>
+              <ul>
+                <li><a href="writer.html">أبو عبيدة</a></li>
+                <li><a href="writer.html">أحمد أبو الهيجاء</a></li>
+                <li><a href="writer.html">أحمد أبو قمر</a></li>
+                <li><a href="writer.html">أحمد الحيلة</a></li>
+                <li><a href="writer.html">أحمد الشيخ</a></li>
+                <li><a href="writer.html">أحمد الطناني</a></li>
+                <li><a href="writer.html">أحمد العطاونة</a></li>
+                <li><a href="writer.html">أحمد كامل</a></li>
+                <li><a href="writer.html">د. أحمد كورو</a></li>
+                <li><a href="writer.html">أروى نجيب</a></li>
+                <li><a href="writer.html">أسعد طه</a></li>
+                <li><a href="writer.html">أطباء بلا حدود</a></li>
+                <li><a href="writer.html">أكرم عطا الله</a></li>
+                <li><a href="writer.html">الاتحاد الأوروبي</a></li>
+                <li><a href="writer.html">الأمم المتحدة</a></li>
+                <li><a href="writer.html">الأونروا</a></li>
+                <li><a href="writer.html">الجهاز المركزي للإحصاء الفلسطيني</a></li>
+                <li><a href="writer.html">الصليب الأحمر</a></li>
+                <li><a href="writer.html">المرصد الأورومتوسطي لحقوق الإنسان</a></li>
+                <li><a href="writer.html">المكتب الإعلامي الحكومي بغزة</a></li>
+                <li><a href="writer.html">اليونيسف</a></li>
+                <li><a href="writer.html">أنتونيو غوتيريش</a></li>
+                <li><a href="writer.html">أنور الهواري</a></li>
+                <li><a href="writer.html">أوري غولدبيرغ</a></li>
+                <li><a href="writer.html">آية جودة</a></li>
+                <li><a href="writer.html">إيهاب جبارين</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-2">
+              <h3>ب</h3>
+              <ul>
+                <li><a href="writer.html">برنامج الأغذية العالمي</a></li>
+                <li><a href="writer.html">بلدية غزة</a></li>
+                <li><a href="writer.html">بيلين فرنانديز</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-3">
+              <h3>ج</h3>
+              <ul>
+                <li><a href="writer.html">جمال قاسم</a></li>
+                <li><a href="writer.html">جوزيف بوريل</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-4">
+              <h3>ح</h3>
+              <ul>
+                <li><a href="writer.html">حاتم كريم الفلاحي</a></li>
+                <li><a href="writer.html">حبيب أبو محفوظ</a></li>
+                <li><a href="writer.html">حسام شاكر</a></li>
+                <li><a href="writer.html">حسن أوريد</a></li>
+                <li><a href="writer.html">حسين البطش</a></li>
+                <li><a href="writer.html">حلمي موسى</a></li>
+                <li><a href="writer.html">حماس</a></li>
+                <li><a href="writer.html">حمزة يوسف</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-5">
+              <h3>خ</h3>
+              <ul>
+                <li><a href="writer.html">خالد إسماعيل</a></li>
+                <li><a href="writer.html">خالد الجابر</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-6">
+              <h3>د</h3>
+              <ul>
+                <li><a href="writer.html">دائرة الأوقاف الإسلامية</a></li>
+                <li><a href="writer.html">ديما طهبوب</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-7">
+              <h3>ر</h3>
+              <ul>
+                <li><a href="writer.html">راسم عبيدات</a></li>
+                <li><a href="writer.html">رائد موسى</a></li>
+                <li><a href="writer.html">ربا إسماعيل</a></li>
+                <li><a href="writer.html">رجب أبو سرية</a></li>
+                <li><a href="writer.html">روبين أندرسون</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-8">
+              <h3>س</h3>
+              <ul>
+                <li><a href="writer.html">ساري عرابي</a></li>
+                <li><a href="writer.html">سعيد الحاج</a></li>
+                <li><a href="writer.html">سلطة المياه الفلسطينية</a></li>
+                <li><a href="writer.html">د. سلمان بونعمان</a></li>
+                <li><a href="writer.html">د. سليمان صالح</a></li>
+                <li><a href="writer.html">سمير حباشنة</a></li>
+                <li><a href="writer.html">سيف الدين موعد</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-9">
+              <h3>ش</h3>
+              <ul>
+                <li><a href="writer.html">د.شادن دياب</a></li>
+                <li><a href="writer.html">شادي عبد الحافظ</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-10">
+              <h3>ط</h3>
+              <ul>
+                <li><a href="writer.html">طارق حمود</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-11">
+              <h3>ع</h3>
+              <ul>
+                <li><a href="writer.html">د. عبد الحفيظ السريتي</a></li>
+                <li><a href="writer.html">عبد العظيم محمد عبد الرحيم</a></li>
+                <li><a href="writer.html">عبد الله معروف</a></li>
+                <li><a href="writer.html">عبد الماجد العالول</a></li>
+                <li><a href="writer.html">عبد المطلب علاء الدين</a></li>
+                <li><a href="writer.html">عبد المنعم سعيد</a></li>
+                <li><a href="writer.html">عبدالله معروف</a></li>
+                <li><a href="writer.html">عريب الرنتاوي</a></li>
+                <li><a href="writer.html">عزت الرشق</a></li>
+                <li><a href="writer.html">عزة كرم</a></li>
+                <li><a href="writer.html">د. عصام يوسف</a></li>
+                <li><a href="writer.html">عكرمة صبري</a></li>
+                <li><a href="writer.html">علي إبراهيم</a></li>
+                <li><a href="writer.html">علي أبو حبلة</a></li>
+                <li><a href="writer.html">علي هويدي</a></li>
+                <li><a href="writer.html">د.عمار علي حسن</a></li>
+                <li><a href="writer.html">عيسى قراقع</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-12">
+              <h3>غ</h3>
+              <ul>
+                <li><a href="writer.html">غسان مصطفى الشامي</a></li>
+                <li><a href="writer.html">غسان نايف ذوقان</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-13">
+              <h3>ف</h3>
+              <ul>
+                <li><a href="writer.html">فارس الخطاب</a></li>
+                <li><a href="writer.html">فايد أبو شمالة</a></li>
+                <li><a href="writer.html">فرانشيسكا ألبانيزي</a></li>
+                <li><a href="writer.html">فيليب لازاريني</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-14">
+              <h3>ك</h3>
+              <ul>
+                <li><a href="writer.html">كريس هيدجيز</a></li>
+                <li><a href="writer.html">كمال أوزتورك</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-15">
+              <h3>ل</h3>
+              <ul>
+                <li><a href="writer.html">لميس أندوني</a></li>
+                <li><a href="writer.html">لينا علي</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-16">
+              <h3>م</h3>
+              <ul>
+                <li><a href="writer.html">د. مازن النجار</a></li>
+                <li><a href="writer.html">ماكسيميليان هيس</a></li>
+                <li><a href="writer.html">مجاهد طبنجة</a></li>
+                <li><a href="writer.html">محافظة القدس</a></li>
+                <li><a href="writer.html">د.محسن محمد صالح</a></li>
+                <li><a href="writer.html">د. محمد إبراهيم المدهون</a></li>
+                <li><a href="writer.html">محمد الجمل</a></li>
+                <li><a href="writer.html">محمد الروين</a></li>
+                <li><a href="writer.html">د. محمد السنوسي</a></li>
+                <li><a href="writer.html">محمد العودات</a></li>
+                <li><a href="writer.html">د. محمد الهندي</a></li>
+                <li><a href="writer.html">محمد جواد ظريف</a></li>
+                <li><a href="writer.html">محمد فوزي</a></li>
+                <li><a href="writer.html">محمد نشبت</a></li>
+                <li><a href="writer.html">محمود أبو حسن</a></li>
+                <li><a href="writer.html">د.محمود الحنفي</a></li>
+                <li><a href="writer.html">محمود الرنتيسي</a></li>
+                <li><a href="writer.html">محمود سلطان</a></li>
+                <li><a href="writer.html">محمود عباس</a></li>
+                <li><a href="writer.html">محمود عبد الهادي</a></li>
+                <li><a href="writer.html">مركز غزة لحقوق الإنسان</a></li>
+                <li><a href="writer.html">مروان الغفوري</a></li>
+                <li><a href="writer.html">مصطفى أبو السعود</a></li>
+                <li><a href="writer.html">مصطفى البرغوتي</a></li>
+                <li><a href="writer.html">مُعطى مركز معلومات فلسطين</a></li>
+                <li><a href="writer.html">معين الطاهر</a></li>
+                <li><a href="writer.html">مكتب إعلام الأسرى</a></li>
+                <li><a href="writer.html">منصف المرزوقي</a></li>
+                <li><a href="writer.html">منظمات المجتمع المدني</a></li>
+                <li><a href="writer.html">منظمة البيدر الحقوقية</a></li>
+                <li><a href="writer.html">منظمة الصحة العالمية</a></li>
+                <li><a href="writer.html">منظمة العفو الدولية</a></li>
+                <li><a href="writer.html">منظمة أوكسفام</a></li>
+                <li><a href="writer.html">منير شفيق</a></li>
+                <li><a href="writer.html">د. مهند مصطفى</a></li>
+                <li><a href="writer.html">مؤسسة القدس الدولية</a></li>
+                <li><a href="writer.html">مؤسسة هند رجب</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-17">
+              <h3>ن</h3>
+              <ul>
+                <li><a href="writer.html">نادي الأسير الفلسطيني</a></li>
+                <li><a href="writer.html">نقابة الصحفيين الفلسطينيين</a></li>
+                <li><a href="writer.html">د. نواف تكروري</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-18">
+              <h3>ه</h3>
+              <ul>
+                <li><a href="writer.html">هاني المصري</a></li>
+                <li><a href="writer.html">هاني عوكل</a></li>
+                <li><a href="writer.html">هشام جعفر</a></li>
+                <li><a href="writer.html">هيئة شؤون الأسرى والمحررين</a></li>
+                <li><a href="writer.html">هيئة مقاومة الجدار والاستيطان</a></li>
+              </ul>
+            </div>
+            <div class="sitemap-letter" id="writers-19">
+              <h3>و</h3>
+              <ul>
+                <li><a href="writer.html">وجدان شتيوي</a></li>
+                <li><a href="writer.html">وزارة التربية والتعليم</a></li>
+                <li><a href="writer.html">وزارة الخارجية الفلسطينية</a></li>
+                <li><a href="writer.html">وزارة الصحة بغزة</a></li>
+                <li><a href="writer.html">ولاء فروانة</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="sitemap-group" aria-labelledby="sitemap-categories">
+          <h2 class="title-side" id="sitemap-categories">التصنيفات <span class="sitemap-count">22</span></h2>
+          <ul class="sitemap-columns">
+            <li><a href="articles.html">غزة</a></li>
+            <li><a href="articles.html">أخبار محلية</a></li>
+            <li><a href="articles.html">القدس</a></li>
+            <li><a href="articles.html">عربي دولي</a></li>
+            <li><a href="articles.html">رام الله</a></li>
+            <li><a href="articles.html">نابلس</a></li>
+            <li><a href="articles.html">الخليل</a></li>
+            <li><a href="articles.html">جنين</a></li>
+            <li><a href="articles.html">الداخل المحتل</a></li>
+            <li><a href="articles.html">بيت لحم</a></li>
+            <li><a href="articles.html">طولكرم</a></li>
+            <li><a href="articles.html">طوباس</a></li>
+            <li><a href="articles.html">قلقيلية</a></li>
+            <li><a href="articles.html">أريحا</a></li>
+            <li><a href="articles.html">سلفيت</a></li>
+            <li><a href="articles.html">تقارير بوست</a></li>
+            <li><a href="articles.html">مقالات</a></li>
+            <li><a href="articles.html">منوعات</a></li>
+            <li><a href="articles.html">صحة</a></li>
+            <li><a href="articles.html">تكنولوجيا</a></li>
+            <li><a href="articles.html">رياضة</a></li>
+            <li><a href="articles.html">موسوعة فلسطين</a></li>
+          </ul>
+        </section>
+        <section class="sitemap-group" aria-labelledby="sitemap-tags">
+          <h2 class="title-side" id="sitemap-tags">الوسوم</h2>
+          <ul class="tags-list">
+            <li><a href="articles.html">إسرائيل</a></li>
+            <li><a href="articles.html">قطاع غزة</a></li>
+            <li><a href="articles.html">الخارجية الفلسطينية</a></li>
+            <li><a href="articles.html">رمضان</a></li>
+            <li><a href="articles.html">الأقصى</a></li>
+            <li><a href="articles.html">العشر الأواخر</a></li>
+            <li><a href="articles.html">مستوطنين</a></li>
+            <li><a href="articles.html">اشتباك</a></li>
+            <li><a href="articles.html">الاحتلال</a></li>
+            <li><a href="articles.html">نابلس</a></li>
+            <li><a href="articles.html">دير الحطب</a></li>
+            <li><a href="articles.html">ارتقاء</a></li>
+          </ul>
+          <p class="sitemap-note">على الموقع 15,463 وسمًا.</p>
+        </section>
+      </div>
     </div>
   </main>
   <footer class="footer">
@@ -514,8 +766,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=20"></script>
-  <script src="./js/currencies.js?v=20"></script>
-  <script src="./js/weather.js?v=20"></script>
+  <script src="./js/script.js?v=21"></script>
+  <script src="./js/currencies.js?v=21"></script>
+  <script src="./js/weather.js?v=21"></script>
 </body>
 </html>

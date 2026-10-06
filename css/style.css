@@ -8633,7 +8633,7 @@ img {
 }
 
 /* the paper plane flies with the reading direction */
-.btn-solid .fa-paper-plane {
+.fa-paper-plane {
     transform: scaleX(-1);
 }
 
@@ -10464,44 +10464,47 @@ main:focus {
 }
 
 /* ---------------------------------------------------------------------
-   site map (the live map had no styles)
+   site map — the live map prints all 15,463 tags on one page (8.3 MB),
+   lists seven writers twice in no order, and the theme kept twelve links
+   a section with a microphone standing for the writers
    --------------------------------------------------------------------- */
-.sitemap-section {
-    padding: 32px 0 56px;
+.sitemap-page {
+    padding-top: 8px;
+    padding-bottom: 64px;
 }
 
-.sitemap-header h1 {
-    margin: 0 0 6px;
-    font-family: var(--font-bold);
-    font-size: 26px;
-    color: var(--text-color);
+.sitemap-bar {
+    display: grid;
+    gap: 14px;
 }
 
-.sitemap-header p {
+.sitemap-lead {
     margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
     color: var(--secondry-text-color);
-}
-
-.sitemap-search {
-    margin: 20px 0 28px;
 }
 
 .sitemap-input-group {
     position: relative;
-    max-width: 520px;
+    max-width: 560px;
 }
 
 .sitemap-input {
     width: 100%;
-    min-height: 48px;
-    padding: 0 16px 0 48px;
-    border: 1px solid #cfd8dc;
+    min-height: 50px;
+    padding-block: 0;
+    padding-inline: 18px 48px;
+    border: 1px solid #86969d;
     border-radius: 999px;
+    background: #fff;
+    color: var(--dark-font);
     font-family: var(--font-regular);
+    font-size: 16px;
 }
 
 .sitemap-input:focus {
-    border-color: var(--main-color);
+    border-color: var(--main-color-ink);
     outline: none;
     box-shadow: 0 0 0 3px rgb(51 179 192 / 0.3);
 }
@@ -10509,62 +10512,191 @@ main:focus {
 .sitemap-search-icon {
     position: absolute;
     top: 50%;
-    left: 18px;
+    inset-inline-end: 18px;
     color: var(--secondry-text-color);
     transform: translateY(-50%);
 }
 
 .sitemap-empty {
+    margin: 0;
     color: var(--secondry-text-color);
 }
 
-.sitemap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+.sitemap-group {
+    margin-top: 48px;
 }
 
-.sitemap-card {
-    padding: 22px;
-    border: 1px solid var(--line-color);
-    border-radius: var(--radius);
-    background: #fff;
-}
-
-.sitemap-card .icon-wrapper {
-    display: inline-grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    background: var(--main-color-soft);
-    color: var(--main-color-ink);
-    font-size: 18px;
-}
-
-.sitemap-card h3 {
-    margin: 0 0 12px;
-    font-family: var(--font-bold);
-    font-size: 18px;
+.sitemap-group .title-side {
+    margin: 0 0 24px;
+    font-size: 20px;
     color: var(--text-color);
 }
 
-.sitemap-card ul {
+.sitemap-count {
+    margin-inline-start: 4px;
+    font-family: var(--font-regular);
+    font-size: 14px;
+    color: var(--secondry-text-color);
+    font-variant-numeric: tabular-nums;
+}
+
+.sitemap-sections {
     display: grid;
-    gap: 2px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.sitemap-card a {
-    display: block;
-    padding: 6px 0;
-    color: var(--dark-font);
-    font-size: 14px;
+.sitemap-sections a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 10px 16px;
+    border: 1px solid var(--line-color);
+    border-radius: var(--radius);
+    color: var(--text-color);
+    font-family: var(--font-semibold);
+    font-size: 15px;
+    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
 
-.sitemap-card a:hover {
+.sitemap-sections a:hover {
+    border-color: var(--main-color);
+    background: var(--main-color-soft);
+}
+
+.sitemap-sections i {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--main-color-soft);
     color: var(--main-color-ink);
+    font-size: 15px;
+}
+
+.sitemap-sections a:hover i {
+    background: #fff;
+}
+
+.sitemap-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 28px;
+}
+
+.sitemap-letters a {
+    display: grid;
+    place-items: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 6px;
+    border: 1px solid var(--line-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-color);
+    font-family: var(--font-semibold);
+}
+
+.sitemap-letters a:hover {
+    border-color: var(--main-color);
+    color: var(--main-color-ink);
+}
+
+.sitemap-writers {
+    columns: 4 200px;
+    column-gap: 40px;
+}
+
+/* a long letter may run on into the next column, so the columns come out even */
+.sitemap-letter {
+    margin-bottom: 24px;
+    scroll-margin-top: 24px;
+}
+
+.sitemap-letter li {
+    break-inside: avoid;
+}
+
+.sitemap-letter h3 {
+    break-after: avoid;
+    margin: 0 0 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line-color);
+    font-family: var(--font-bold);
+    font-size: 18px;
+    color: var(--main-color-ink);
+}
+
+.sitemap-letter ul,
+.sitemap-columns {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sitemap-columns {
+    columns: 4 160px;
+    column-gap: 40px;
+}
+
+.sitemap-columns li {
+    break-inside: avoid;
+}
+
+.sitemap-letter a,
+.sitemap-columns a {
+    display: block;
+    padding: 5px 0;
+    color: var(--dark-font);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.sitemap-letter a:hover,
+.sitemap-columns a:hover {
+    color: var(--main-color-ink);
+}
+
+.sitemap-note {
+    margin: 16px 0 0;
+    font-size: 14px;
+    color: var(--secondry-text-color);
+}
+
+@media (max-width: 991.98px) {
+    .sitemap-sections {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .sitemap-group {
+        margin-top: 40px;
+    }
+
+    .sitemap-sections {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .sitemap-sections a {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .sitemap-writers {
+        columns: 2;
+        column-gap: 24px;
+    }
+
+    .sitemap-columns {
+        columns: 2;
+        column-gap: 24px;
+    }
 }
