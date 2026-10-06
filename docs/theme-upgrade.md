@@ -101,6 +101,10 @@
   - في آخر الصفحة دعوة «شاهدت حدثًا؟ أرسله إلينا» بتودّي لصفحة «أرسل خبرًا»، لأن الصفحة كلها عن صحافة المواطن.
   - نصوص الصفحة زي ما هي على اللايف.
 - **صفحة البرامج:** الفلتر اللي كان فيه اختيار واحد اتشال. البرنامج بقى بنفس بطاقة صفحة البرنامج، وتحته أحدث ٤ حلقات بتشتغل من مكانها.
+- **البودكاست في الرئيسية:**
+  - «الـمزيــد» كان مكتوب بالتطويل جوه زرار بإطار أطول من العنوان، وبقى رابط «كل الحلقات» بسهم على نفس خط العنوان.
+  - على التابلت الكارت 336px، فالمشغّل كان محشور في عمود النص و«استمع» لازقة في المدة. لما الكارت يبقى أضيق من 440px، المشغّل بياخد عرضه كله (container query).
+  - على الموبايل بقى فيه مسافة 16px بين الكارتين، وكانوا لازقين في بعض.
 - **الملفات الخاصة:**
   - العناوين المقفولة كانت عربي مكتوب بالطول ومقلوب، وبقت تبويبات أفقية فوق الملف المفتوح. وكل ملف كان ليه لون عشوائي، وبقوا لون البراند.
   - السكشن ما كانش ليه عنوان، وبقى عليه «ملفات خاصة» زي باقي أقسام الرئيسية. والمربع المقلوب اللي قبل اسم كل ملف اتشال.
@@ -197,6 +201,7 @@
 | أيقونات الهيدر | `<img>` جوه `.icon-container` | `<button class="icon-trigger" aria-expanded aria-controls aria-label>` حوالين الصورة، وجواه بعدها `<span class="icon-label">` بنفس الاسم (بيظهر من 1200px)، و`id` لكل `.mega-menu` |
 | الفوتر | من غير عمود أقسام، وعناوين الأعمدة `h4`، و`div.footer-social-icons` عليه `aria-label` بس | العناوين `h2` (نفس الكلاس والمكان)، و`div.footer-social-icons role="group"`، وأيقونة `.category-icon i` عليها `aria-hidden="true"`. وبعد `.about` على طول `div.footer-sections` فيه `h2` «الأقسام» و`ul.sections-line > li > a` لكل قسم في القائمة |
 | مقالات واقتباسات | `.article-card` فيه صف `d-flex` للكاتب والتاريخ، و`.Quotation-slider-content` فيه `blockquote` وبعده `.author-text` منفصل، والعناوين `h4` | `.article-item > article.opinion-card` (`.opinion-card__by.author-text`، و`h3.opinion-card__title > a`، و`p.opinion-card__excerpt`، و`time.opinion-card__date[datetime]` بالتاريخ من غير الساعة)، و`.quote-item > figure.quote-card` (`i.quote-card__mark`، و`blockquote.quote-card__text > p`، و`figcaption.quote-card__by.author-text`). اسم الكاتب `a.name`، وصورته `alt=""` لأن الاسم جنبها. وعناوين الأقسام `h2` |
+| رابط «المزيد» في البودكاست | `<a class="btn btn-outline-primary">الـمزيــد <i class="fa-angles-left"></i></a>` | `<a class="section-more" href="…">كل الحلقات <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>` |
 | زرار القائمة | `<button class="navbar-toggler pt-2" data-bs-toggle data-bs-target aria-label="فتح قائمة التنقل">` جوه `.full-width-small.py-3` | من غير `data-bs-*` (`script.js` هو اللي بيفتح ويقفل) ومن غير `pt-2`، و`aria-label="قائمة الأقسام"`، والصف من غير `py-3` |
 | أخبار محلية في القائمة | `<a aria-haspopup="true">أخبار محلية <i class="fa-chevron-down"></i></a>`، والمنيو بيفتح بالهوفر بس | `<a class="nav-link custom-hover" href="…">أخبار محلية</a>` وبعده على طول `<button type="button" class="nav-disclosure" aria-expanded="false" aria-controls="local-news-slide-menu" aria-label="أخبار المدن">` فيه السهم. ومن غير خبر متكرر في نفس المدينة |
 | القسم الحالي في القائمة | الرابط بيتعلّم لو هو نفس الصفحة بس | الصفحة نفسها `class="active" aria-current="page"`، والصفحة اللي جوه قسم (زي صفحة الحلقة جوه «بودكاست») بتعلّم القسم `class="active" aria-current="true"` |

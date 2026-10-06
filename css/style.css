@@ -8891,18 +8891,54 @@ img {
     border-radius: var(--radius);
 }
 
-.podcast-slider-header .btn-outline-primary {
+.podcast-slider-container .podcast-slider-header {
+    align-items: center;
+}
+
+.section-more {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    border-color: var(--main-color);
-    border-radius: 999px;
+    gap: 8px;
+    min-height: 44px;
+    font-family: var(--font-semibold);
+    font-size: 15px;
     color: var(--main-color-ink);
 }
 
-.podcast-slider-header .btn-outline-primary:hover {
-    background: var(--main-color);
-    color: #fff;
+.section-more i {
+    font-size: 13px;
+    transition: transform var(--dur) var(--ease);
+}
+
+.section-more:hover {
+    color: var(--text-color);
+}
+
+.section-more:hover i {
+    transform: translateX(-4px);
+}
+
+/* the two cards: space between them when they stack */
+#cards-container {
+    row-gap: 16px;
+}
+
+/* a narrow card (tablets, 336px) squeezed the player into the text column:
+   «استمع» and the time ran together. Below 440px of card the player takes
+   the card's full width, as on phones */
+#cards-container > [class*="col-"] {
+    container-type: inline-size;
+}
+
+@container (max-width: 440px) {
+    #cards-container .episode-card {
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "cover series share"
+            "cover title  title"
+            "cover meta   meta"
+            "bar   bar    bar";
+    }
 }
 
 /* podcast pages — the programme first: cover, name, numbers, play newest */
