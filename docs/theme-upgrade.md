@@ -66,6 +66,13 @@
   - الفيديو بيفتح في نافذة على قد مقاسه: الطولي بيظهر بطول الشاشة وتفاصيله جنبه، والعرضي بعرض لحد 1040px. وفيها السابق والتالي وعدّاد. وبتتقفل بـEsc أو بالضغط برّه أو بزرار الإغلاق، والصوت بيقف، والتركيز بيرجع لكارت آخر فيديو اتشاف.
   - الأحدث الأول، وقسم «فيديو» بيعرض 12 فيديو وتحتهم أرقام الصفحات (19 صفحة).
   - كل الفيديوهات ومصادرها حقيقية من اللايف: ملفات mp4 وMOV على السيرفر، وروابط يوتيوب. نسخة الثيم القديمة كانت بتشغّل مقاطع يوتيوب مالهاش علاقة بعناوين الكروت.
+- **صفحة من نحن:**
+  - المبادئ الستة كانت زيج-زاج، وكل مبدأ جنبه لوحة بتكرر اسمه بس (وعلى اللايف صورة placeholder رمادي). بقت شبكة عمودين، وكل مبدأ بأيقونته وعنوانه وفقرتيه. الصفحة قصرت حوالي الربع على الديسكتوب.
+  - الأهداف كانت تلات كروت بإطار ونص متوسّط وعناوين أكبر من اللازم، وبقت تلات أعمدة بخط فاصل ونص من اليمين.
+  - الفراغ اللي فوق المقدمة (90px) اتشال، ولوحة الهوية بقت محاذية لأول النص.
+  - العناوين بقت بترتيب سليم (h2 للأقسام وh3 للعناصر)، وكانت بتقفز من h2 لـh4. والفقرات اللي كانت مفصولة بـ`<br><br>` بقت فقرات حقيقية.
+  - في آخر الصفحة دعوة «شاهدت حدثًا؟ أرسله إلينا» بتودّي لصفحة «أرسل خبرًا»، لأن الصفحة كلها عن صحافة المواطن.
+  - نصوص الصفحة زي ما هي على اللايف.
 - **صفحة البرامج:** الفلتر اللي كان فيه اختيار واحد اتشال. البرنامج بقى بنفس بطاقة صفحة البرنامج، وتحته أحدث ٤ حلقات بتشتغل من مكانها.
 - **الملفات الخاصة:** العناوين المقفولة كانت عربي مكتوب بالطول ومقلوب، وبقت تبويبات أفقية فوق الملف المفتوح، بالـCSS بس ومن غير تغيير في الماركب. وكل ملف كان ليه لون عشوائي، وبقوا لون البراند.
 - **المقالات والاقتباسات:** كان فيه ارتفاع ثابت 220px بيقص النص واتشال. ووظيفة الكاتب كانت 9px. وكلمة «اقتباس» اللي كانت بتتكرر فوق كل اقتباس اتشالت.
@@ -144,6 +151,7 @@
 | كارت الحلقة | `.card` فيه `.phone-img` و`.podcast-contant` فوق الغلاف | `article.card.episode-card#ep-{id}`: الغلاف في `.card-podcast`، وبعده `.episode-series` (السلسلة)، و`h3.card-title`، و`.episode-meta` (رقم الحلقة والتاريخ)، و`.share-article` بزرار `.btn-share.btn-share--icon`، والمشغّل |
 | صفحة البرنامج | `section.podcast-listing-section` فيه عمود فلتر وكروت | `div.podcast-page` فيه `section.show-profile` (الغلاف، و`h1.show-profile__title`، و`ul.show-stats`، و`button.btn-listen[data-play="ep-…"]`)، وبعده `section.episodes` فيه `.episode-filter[data-episode-filter]` بأزرار `aria-pressed` و`data-series`، و`ol.episode-list > li[data-series]`، والترتيب الأحدث الأول |
 | صفحة الفيديو | عمود فلتر بمربعات اختيار، و`.latest-news-first-video-container .card` و`wire:click="playVideo(id)"` | `ul.buttons-group-tabs.video-tabs[role=tablist]` بتبويب لكل قسم، و`section.tab-pane.video-panel[role=tabpanel]` لكل قسم فيه `ol.video-grid > li > article.video-card#video-{id}`. جوه الكارت `.video-card__poster` (الغلاف و`.video-card__badge` للمدة)، و`h2 > a.video-card__open` بـ`href` الفيديو و`data-video-src` أو `data-youtube` و`data-ratio` (العرض ÷ الطول) و`data-duration` بالثواني، و`.video-card__foot` فيه التاريخ والمشاركة. وتحت القسم الكبير `nav.dlv-pgn`. النافذة بتتعمل بالجافاسكربت، ومش محتاجة ماركب |
+| صفحة من نحن | `.goals-card` بـ`h4`، وصفوف `.principles-section .row` فيها صورة، والفقرات مفصولة بـ`<br><br>` | `ul.goals-list > li.goal` (`.goal__icon` و`h3.goal__title` و`p`)، و`ul.principles-list > li.principle` (`.principle__head` فيه `.principle__icon` و`h3.principle__title`، وبعده فقرتين `p`)، وعناوين الأقسام `h2.title-side`. وفي الآخر `section.about-cta` فيه رابط `a.btn-solid` لصفحة «أرسل خبرًا» |
 | صفحة البرامج | عمود فلتر و`.podcast-item` | `ul.show-list > li > section.show-profile` (العنوان `h2` ورابط «كل الحلقات»)، وبعدها `section.episodes` لأحدث 4 حلقات. الفلتر يظهر بس لو فيه أكتر من تصنيف |
 | الملفات الخاصة | `<div class="fb-accordion-title">` | `<button class="fb-accordion-title" aria-expanded aria-controls>` |
 | المشاركة | `<h4 class="btn-share">` وصور PNG | `<button class="btn-share" aria-expanded>` وأيقونات Font Awesome، والنسخ بـ`data-copy` |

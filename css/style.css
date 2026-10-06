@@ -8599,6 +8599,7 @@ img {
 }
 
 .btn-listen,
+.btn-solid,
 .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -8613,18 +8614,21 @@ img {
     transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.btn-listen {
+.btn-listen,
+.btn-solid {
     border: 0;
     background: var(--text-color);
     color: #fff;
 }
 
-.btn-listen:hover {
+.btn-listen:hover,
+.btn-solid:hover {
     background: var(--text-color-deep);
     color: #fff;
 }
 
-.btn-listen i {
+.btn-listen i,
+.btn-solid i {
     font-size: 12px;
 }
 
@@ -9746,7 +9750,34 @@ a.dlv-pgn__btn:hover {
     }
 }
 
-/* about page: a brand panel where a grey placeholder image used to be */
+/* about page — the intro opened under 90px of empty space, the goals were
+   bordered cards of centred text, and each principle sat beside a panel
+   that only repeated its name (the live page had grey placeholders there) */
+.about-us-intro {
+    padding: 36px 0 72px;
+}
+
+.about-us-intro .image {
+    margin-top: 0;
+}
+
+.about-us-intro .content h2 {
+    margin: 0 0 20px;
+    font-family: var(--font-bold);
+    font-size: clamp(1.375rem, 1.1rem + 0.9vw, 1.875rem);
+    line-height: 1.6;
+    color: var(--text-color);
+    text-wrap: balance;
+}
+
+.about-us-intro .content p {
+    max-width: 62ch;
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.95;
+    color: var(--dark-font);
+}
+
 .about-brand-panel {
     display: grid;
     gap: 16px;
@@ -9792,16 +9823,230 @@ a.dlv-pgn__btn:hover {
     font-size: 16px;
 }
 
-.about-us-intro .content h2 {
-    font-family: var(--font-bold);
-    font-size: clamp(1.375rem, 1.1rem + 0.9vw, 1.875rem);
-    line-height: 1.6;
+.goals-section .title-side,
+.principles-section .title-side {
+    margin: 0 0 36px;
+    font-size: 22px;
     color: var(--text-color);
 }
 
-.about-us-intro .content p {
+.goals-section {
+    padding: 64px 0 72px;
+    background: var(--surface-muted);
+}
+
+.goals-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.goal {
+    min-width: 0;
+    padding-inline: 28px;
+    border-inline-start: 1px solid var(--line-color);
+}
+
+.goal:first-child {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+}
+
+.goal:last-child {
+    padding-inline-end: 0;
+}
+
+.goal__icon img {
+    display: block;
+    width: 56px;
+    height: 56px;
+}
+
+.goal__title {
+    margin: 18px 0 8px;
+    font-family: var(--font-bold);
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.goal p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--dark-font);
+}
+
+.principles-section {
+    padding: 72px 0 24px;
+}
+
+.principles-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 44px 56px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.principle {
+    min-width: 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-color);
+}
+
+.principle__head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.principle__icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--main-color-soft);
+    color: var(--main-color-ink);
+    font-size: 18px;
+}
+
+.principle__title {
+    margin: 0;
+    font-family: var(--font-bold);
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.principle p {
+    margin: 0 0 12px;
     font-size: 16px;
     line-height: 1.95;
+    color: var(--dark-font);
+}
+
+.principle p:last-child {
+    margin-bottom: 0;
+}
+
+/* the page is about citizen journalism: it ends where a reader can take part */
+.about-cta {
+    padding: 48px 0 72px;
+}
+
+.about-cta__box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 32px;
+    padding: 32px 36px;
+    border-radius: var(--radius-lg);
+    background: var(--main-color-soft);
+}
+
+.about-cta__text {
+    min-width: 0;
+}
+
+.about-cta h2 {
+    margin: 0 0 6px;
+    font-family: var(--font-bold);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.about-cta p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--dark-font);
+}
+
+/* the paper plane flies with the reading direction */
+.about-cta .btn-solid i {
+    transform: scaleX(-1);
+}
+
+@media (max-width: 991.98px) {
+    .goals-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .goal {
+        display: grid;
+        grid-template-columns: 56px minmax(0, 1fr);
+        column-gap: 16px;
+        padding: 22px 0;
+        border-inline-start: 0;
+        border-top: 1px solid var(--line-color);
+    }
+
+    .goal:first-child {
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .goal:last-child {
+        padding-bottom: 0;
+    }
+
+    .goal__icon {
+        grid-row: span 2;
+    }
+
+    .goal__title {
+        margin-top: 0;
+    }
+
+    .principles-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-intro {
+        padding: 24px 0 48px;
+    }
+
+    .goals-section {
+        padding: 44px 0 48px;
+    }
+
+    .goals-section .title-side,
+    .principles-section .title-side {
+        margin-bottom: 28px;
+        font-size: 20px;
+    }
+
+    .principles-section {
+        padding: 48px 0 8px;
+    }
+
+    .principle__title {
+        font-size: 19px;
+    }
+
+    .about-cta {
+        padding: 32px 0 48px;
+    }
+
+    .about-cta__box {
+        padding: 24px 20px;
+    }
+
+    .about-cta .btn-solid {
+        flex: 1 1 auto;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -10091,47 +10336,8 @@ main:focus {
 }
 
 /* ---------------------------------------------------------------------
-   about page principles and the site map (the live map had no styles)
+   site map (the live map had no styles)
    --------------------------------------------------------------------- */
-.principle-mark {
-    display: grid;
-    place-items: center;
-    gap: 6px;
-    min-height: 220px;
-    padding: 28px;
-    border-radius: var(--radius-lg);
-    background: var(--surface-muted);
-    color: var(--text-color);
-    text-align: center;
-}
-
-.principle-mark i {
-    font-size: 44px;
-    color: var(--main-color);
-}
-
-.principle-mark__no {
-    font-family: var(--font-bold);
-    font-size: 14px;
-    color: var(--main-color-ink);
-    font-variant-numeric: tabular-nums;
-}
-
-.principle-mark__name {
-    font-family: var(--font-bold);
-    font-size: 22px;
-}
-
-.principles-section h3 {
-    font-family: var(--font-bold);
-    color: var(--text-color);
-}
-
-.principles-section p {
-    font-size: 16px;
-    line-height: 1.95;
-}
-
 .sitemap-section {
     padding: 32px 0 56px;
 }
