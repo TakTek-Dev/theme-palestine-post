@@ -9376,6 +9376,16 @@ blockquote.Quotation-text {
         gap: 40px;
     }
 
+    /* five social buttons in a 219px column: one fell to a second line */
+    .footer .footer-social-icons {
+        gap: 6px;
+    }
+
+    .footer .footer-social-icons a {
+        width: 38px;
+        height: 38px;
+    }
+
     /* one column here: two wrapped «موسوعة فلسطين» and broke the rows */
     .footer .footer-content ul.sections-line {
         grid-template-columns: minmax(0, 1fr);
@@ -9554,6 +9564,29 @@ blockquote.Quotation-text {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 24px;
+    }
+
+    .categores-line li a {
+        padding: 8px 0;
+    }
+
+    /* the sections column made the phone footer 1056px tall: the links run
+       as one wrapping line, each at its own width (a grid cell wrapped
+       «موسوعة فلسطين» onto two lines) */
+    .footer .footer-content ul.sections-line {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 2px 20px;
+    }
+
+    .footer .footer-content ul.sections-line li {
+        width: auto;
+    }
+
+    .sections-line a {
+        padding: 6px 0;
+        white-space: nowrap;
     }
 
     .footer-bottom__inner {
