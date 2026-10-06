@@ -222,6 +222,116 @@
     show(current, false);
   }
 
+  // Video page: a card's link opens its video in a dialog sized to the picture
+  // (portrait files are tall, YouTube is wide). Without <dialog> support the
+  // link simply opens the video file or the YouTube page.
+  function initVideoDialog() {
+    const links = $$(".video-card__open");
+    if (!links.length || typeof HTMLDialogElement !== "function") return;
+    let dialog, stage, heading, meta, counter, nav;
+    let list = [];
+    let index = 0;
+    // the link also holds a visually hidden length for screen readers
+    const nameOf = (link) => Array.from(link.childNodes).filter((node) => node.nodeType === Node.TEXT_NODE)
+      .map((node) => node.textContent).join("").trim();
+
+    // width ÷ height of the picture: sets the stage size, and portrait videos get their details beside them
+    const shape = (ratio) => {
+      dialog.style.setProperty("--r", ratio.toFixed(4));
+      dialog.classList.toggle("is-portrait", ratio < 1);
+    };
+
+    // a replaced <video> keeps downloading unless its source is dropped
+    const clear = () => {
+      $$("video", stage).forEach((video) => {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+      });
+      stage.replaceChildren();
+    };
+
+    // `opening`: focus the player (or the close button); stepping keeps focus on the arrow
+    const show = (i, opening) => {
+      index = (i + list.length) % list.length;
+      const link = list[index];
+      const name = nameOf(link);
+      const seconds = Number(link.dataset.duration);
+      const date = $("time", link.closest(".video-card"))?.textContent.trim() || "";
+      shape(Number(link.dataset.ratio) || 16 / 9);
+      heading.textContent = name;
+      meta.textContent = seconds ? `${date} · ${clock(seconds)}` : date;
+      counter.textContent = `${index + 1} من ${list.length}`;
+      nav.hidden = list.length < 2;
+      clear();
+      if (link.dataset.youtube) {
+        stage.replaceChildren(makeFrame(`https://www.youtube.com/embed/${link.dataset.youtube}`, name));
+        // keys pressed inside YouTube's frame never reach this page, so Esc would not close
+        if (opening) $(".video-dialog__close", dialog).focus();
+        return;
+      }
+      const video = Object.assign(document.createElement("video"), { src: link.dataset.videoSrc, controls: true, playsInline: true });
+      video.setAttribute("aria-label", name);
+      video.addEventListener("loadedmetadata", () => {
+        if (video.isConnected && video.videoWidth) shape(video.videoWidth / video.videoHeight);
+      });
+      stage.replaceChildren(video);
+      if (opening) video.focus();
+      // still inside the click that opened the dialog, so the browser lets it play with sound
+      video.play().catch(() => {});
+    };
+
+    const close = () => {
+      clear();
+      dialog.close();
+      list[index]?.focus();
+    };
+
+    const build = () => {
+      dialog = document.createElement("dialog");
+      dialog.className = "video-dialog";
+      dialog.setAttribute("aria-labelledby", "video-dialog-title");
+      dialog.innerHTML = `<div class="video-dialog__stage"></div>
+        <div class="video-dialog__bar">
+          <div class="video-dialog__text"><h2 class="video-dialog__title" id="video-dialog-title"></h2><p class="video-dialog__meta"></p></div>
+          <div class="video-dialog__tools">
+            <div class="video-dialog__nav">
+              <button type="button" data-step="-1" aria-label="الفيديو السابق"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+              <span class="video-dialog__count"></span>
+              <button type="button" data-step="1" aria-label="الفيديو التالي"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+            </div>
+            <button type="button" class="video-dialog__close" aria-label="إغلاق المشغّل"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          </div>
+        </div>`;
+      document.body.append(dialog);
+      stage = $(".video-dialog__stage", dialog);
+      heading = $(".video-dialog__title", dialog);
+      meta = $(".video-dialog__meta", dialog);
+      counter = $(".video-dialog__count", dialog);
+      nav = $(".video-dialog__nav", dialog);
+      $$("[data-step]", dialog).forEach((button) => button.addEventListener("click", () => show(index + Number(button.dataset.step))));
+      $(".video-dialog__close", dialog).addEventListener("click", close);
+      // a click on the dimmed backdrop lands on the dialog element itself
+      dialog.addEventListener("click", (event) => event.target === dialog && close());
+      // Esc: the browser cancels, then closes the dialog itself
+      dialog.addEventListener("cancel", clear);
+      dialog.addEventListener("close", () => {
+        clear();
+        // the browser has just put focus back on the opening link; move it to the video shown last
+        setTimeout(() => dialog.open || list[index]?.focus());
+      });
+    };
+
+    links.forEach((link) => link.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (!dialog) build();
+      list = links.filter((other) => !other.closest("[hidden]"));
+      if (!dialog.open) dialog.showModal();
+      show(list.indexOf(link), true);
+    }));
+  }
+
   /* ---- 6. Podcast: one play button per episode, Plyr once it is pressed -- */
   const PLYR_VERSION = "3.7.8";
   const PLYR_AR = {
@@ -536,6 +646,7 @@
     initFiles();
     initVideoFacades();
     initVideoPlaylist();
+    initVideoDialog();
     initPodcastPlayers();
     initEpisodeFilter();
     initShare();
