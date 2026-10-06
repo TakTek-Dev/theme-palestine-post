@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=30">
+  <link rel="stylesheet" href="./css/style.css?v=31">
 </head>
 <body class="page-index">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -1353,19 +1353,24 @@
         </div>
       </div>
       <div class="container videos-section2 mt-5">
-        <h2 class="visually-hidden">فيديو بوست</h2>
+        <div class="podcast-slider-header">
+          <div class="main-section-title">
+            <h2>فيديو بوست</h2>
+          </div>
+          <a class="section-more" href="videos.html">كل الفيديوهات <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+        </div>
         <div class="video-section">
-          <div class="video-list" aria-label="قائمة الفيديو">
-            <header class="toplist-videos">
-              <div class="text-toplist">
-                <div class="d-flex align-items-center justify-content-between">
-                  <p class="state-video">يُعرض الآن</p>
-                  <span class="video-counter">1/3</span>
-                </div>
-                <p class="title-video-play"></p>
-              </div>
-              <button class="toggle-video" aria-label="تشغيل الفيديو أو إيقافه" type="button"><i class="fas fa-play" aria-hidden="true"></i></button>
-            </header>
+          <div class="video-stage">
+            <div class="video-player">
+              <div id="video-thumbnail-overlay" class="video-overlay"><img class="thumb-backdrop" src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 800w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp 952w" sizes="120px"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 800w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp 952w" sizes="(max-width: 768px) 94vw, 920px" loading="lazy" decoding="async" alt="" class="thumb-main"> <button type="button" class="video-overlay__play" aria-label="تشغيل الفيديو"><i class="fas fa-play-circle"></i></button></div>
+              <div id="main-video"></div>
+            </div>
+            <div class="video-now">
+              <p class="video-now__meta"><span class="state-video">يُعرض الآن</span> <span class="video-counter">1/3</span></p>
+              <p class="title-video-play"></p>
+            </div>
+          </div>
+          <div class="video-list" role="group" aria-label="قائمة الفيديو">
             <button class="video-item active" data-video="https://www.youtube.com/embed/dKqYCPOEaVU" data-video-type="youtube" data-title="عائلة سائد سلامة تعيش في غرفة بسقف مائل..." data-index="1" type="button" aria-label="تشغيل: عائلة سائد سلامة تعيش في غرفة بسقف مائل في خانيونس، وسط مخاوف متزايدة بعد انهيار عمارة السعادة" aria-current="true">
               <img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp" srcset="https://ppost.ps/media/img/200/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 200w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp 952w" sizes="100px" loading="lazy" alt="" decoding="async">
               <p>عائلة سائد سلامة تعيش في غرفة بسقف مائل في خانيونس، وسط مخاوف متزايدة بعد انهيار عمارة السعادة</p>
@@ -1378,10 +1383,6 @@
               <img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/09/file_6ab6c2146ea03.webp" srcset="https://ppost.ps/media/img/200/ppost/uploads/2026/09/file_6ab6c2146ea03.webp.webp 200w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/09/file_6ab6c2146ea03.webp 1033w" sizes="100px" loading="lazy" alt="" decoding="async">
               <p>بعد أن ألقى أطنان المتفجرات على غزة.. نتنياهو: صاروخ واحد بوزن طن قادر على تدمير هذا المكان بالكامل</p>
             </button>
-          </div>
-          <div class="video-player">
-            <div id="video-thumbnail-overlay" class="video-overlay"><img class="thumb-backdrop" src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 800w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp 952w" sizes="120px"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3d89b49099.webp.webp 800w, https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3d89b49099.webp 952w" sizes="(max-width: 768px) 94vw, 920px" loading="lazy" decoding="async" alt="" class="thumb-main"> <button type="button" class="video-overlay__play" aria-label="تشغيل الفيديو"><i class="fas fa-play-circle"></i></button></div>
-            <div id="main-video"></div>
           </div>
         </div>
       </div>
@@ -1655,8 +1656,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=30"></script>
-  <script src="./js/currencies.js?v=30"></script>
-  <script src="./js/weather.js?v=30"></script>
+  <script src="./js/script.js?v=31"></script>
+  <script src="./js/currencies.js?v=31"></script>
+  <script src="./js/weather.js?v=31"></script>
 </body>
 </html>

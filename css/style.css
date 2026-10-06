@@ -8265,6 +8265,208 @@ img {
     transform: translate(-50%, -50%) scale(1.05);
 }
 
+/* home video band — the title was hidden, "now playing" repeated the
+   active title in a box above the list with a second play button, the
+   list squeezed to 209px on tablets (one word a line) and came before the
+   player on phones. Now: the player with what is playing under it, the
+   list beside it on wide screens and under it below 992px */
+.videos-section2 .video-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--text-color);
+    box-shadow: none;
+}
+
+.video-stage {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #022f47;
+}
+
+.videos-section2 .video-section .video-player {
+    position: relative;
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    background: #0a1628;
+}
+
+.videos-section2 #main-video {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.videos-section2 #main-video iframe {
+    width: 100%;
+    height: 100% !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.video-now {
+    display: grid;
+    gap: 4px;
+    padding: 16px 24px 20px;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.video-now__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.video-now .state-video {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.video-now .state-video::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--main-color);
+}
+
+.video-now .video-counter {
+    color: rgb(255 255 255 / 0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+.video-now .title-video-play {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-family: var(--font-semibold);
+    font-size: 18px;
+    line-height: 1.7;
+    color: #fff;
+    text-wrap: pretty;
+}
+
+/* the list */
+.videos-section2 .video-section .video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: auto;
+    max-height: none;
+    padding: 16px;
+    overflow: visible;
+    border: 0;
+    border-inline-start: 1px solid rgb(255 255 255 / 0.08);
+    background: #01304d;
+}
+
+.videos-section2 .video-section .video-item {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--dur) var(--ease);
+}
+
+.videos-section2 .video-section .video-item:hover {
+    background: rgb(255 255 255 / 0.06);
+}
+
+.videos-section2 .video-section .video-item[aria-current="true"] {
+    background: rgb(51 179 192 / 0.18);
+    box-shadow: inset -3px 0 0 var(--main-color);
+}
+
+.videos-section2 .video-section .video-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.videos-section2 .video-section .video-item p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgb(255 255 255 / 0.9);
+    -webkit-line-clamp: 3;
+}
+
+.videos-section2 .video-section .video-item[aria-current="true"] p {
+    color: #fff;
+}
+
+.videos-section2 .podcast-slider-header {
+    align-items: center;
+}
+
+/* wide screens: the rows share the player's height, a hairline between
+   them, instead of three rows and an empty half column */
+@media (min-width: 992px) {
+    .videos-section2 .video-section .video-item {
+        flex: 1;
+        position: relative;
+    }
+
+    .videos-section2 .video-section .video-item + .video-item::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        inset-inline: 10px;
+        height: 1px;
+        background: rgb(255 255 255 / 0.08);
+    }
+}
+
+/* below 992px: the player, then the list */
+@media (max-width: 991.98px) {
+    .videos-section2 .video-section {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .videos-section2 .video-section .video-list {
+        border-inline-start: 0;
+        border-top: 1px solid rgb(255 255 255 / 0.08);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .video-now {
+        padding: 14px 16px 16px;
+    }
+
+    .video-now .title-video-play {
+        font-size: 16px;
+    }
+
+    .videos-section2 .video-section .video-list {
+        padding: 10px;
+    }
+
+    .videos-section2 .video-section .video-item {
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 12px;
+        padding: 8px;
+    }
+}
+
 /* video page — the posters are portrait covers (about 3:4) that sat in
    square frames; the videos open in a player sized to them, not in a
    320×240 box */
