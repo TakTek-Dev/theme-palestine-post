@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=19">
+  <link rel="stylesheet" href="./css/style.css?v=20">
 </head>
 <body class="page-send-news">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -406,37 +406,57 @@
           </div>
         </div>
       </section>
-      <div class="container my-5">
-        <form class="send-news-form" method="post" novalidate="" data-send-news="">
-          <div class="send-news-intro">
-            <h2>شاهدت حدثًا؟ أرسله إلينا</h2>
-            <p>نراجع كل خبر يصلنا وفق أسس الخبر ومعاييره قبل النشر. لن ننشر اسمك أو بريدك من دون إذنك.</p>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-6 mb-3 mb-md-0">
-              <label for="fullName" class="form-label">الاسم الكامل</label>
-              <input type="text" class="form-control" id="fullName" placeholder="الاسم" name="name" autocomplete="name" required aria-describedby="fullName-error">
-              <p class="field-error" id="fullName-error" hidden></p>
+      <div class="container send-page">
+        <div class="row gy-4 gx-lg-5">
+          <div class="col-lg-7">
+            <form class="send-news-form" method="post" novalidate="" data-send-news="" aria-labelledby="send-title">
+              <div class="send-news-intro">
+                <h2 id="send-title">شاهدت حدثًا؟ أرسله إلينا</h2>
+                <p>نراجع كل خبر يصلنا وفق أسس الخبر الصحفي ومعاييره قبل النشر. كل الحقول مطلوبة.</p>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label">الاسم الكامل</label>
+                  <input type="text" class="form-control" id="fullName" name="name" autocomplete="name" required aria-describedby="fullName-error">
+                  <p class="field-error" id="fullName-error" hidden></p>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">البريد الإلكتروني</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" inputmode="email" dir="ltr" placeholder="name@example.com" required aria-describedby="email-error">
+                  <p class="field-error" id="email-error" hidden></p>
+                </div>
+                <div class="col-12">
+                  <label for="subject" class="form-label">عنوان الخبر</label>
+                  <input type="text" class="form-control" id="subject" name="title" autocomplete="off" required aria-describedby="subject-error">
+                  <p class="field-error" id="subject-error" hidden></p>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">نص الخبر</label>
+                  <p class="field-hint" id="message-hint">اكتب متى وأين حدث ذلك، وماذا رأيت بنفسك.</p>
+                  <textarea class="form-control" id="message" name="body" rows="8" minlength="20" autocomplete="off" required aria-describedby="message-hint message-error"></textarea>
+                  <p class="field-error" id="message-error" hidden></p>
+                </div>
+              </div>
+              <button type="submit" class="btn-solid send-news-submit">إرسال الخبر <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+            <div class="send-news-done" tabindex="-1" aria-labelledby="send-done-title" hidden>
+              <span class="send-news-done__icon" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              <h2 id="send-done-title">وصلنا خبرك</h2>
+              <p>سنراجعه ونتواصل معك إن احتجنا تفاصيل أكثر.</p>
+              <button type="button" class="btn-ghost" data-send-again="">أرسل خبرًا آخر</button>
             </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label">البريد الإلكتروني</label>
-              <input type="email" class="form-control" id="email" placeholder="البريد الإلكتروني" name="email" autocomplete="email" required aria-describedby="email-error" inputmode="email" dir="ltr">
-              <p class="field-error" id="email-error" hidden></p>
+          </div>
+          <aside class="col-lg-5" aria-labelledby="send-tips-title">
+            <div class="send-tips">
+              <h2 id="send-tips-title">قبل أن ترسل</h2>
+              <ol class="send-tips__list">
+                <li><strong>متى وأين؟</strong> اذكر اليوم والساعة والمكان بدقة: المدينة أو القرية أو المخيم.</li>
+                <li><strong>ماذا رأيت بنفسك؟</strong> فرّق بين ما شاهدته وما سمعته من غيرك، واذكر مصدره.</li>
+                <li><strong>سلامتك أولًا.</strong> لا تعرّض نفسك أو غيرك للخطر من أجل خبر.</li>
+              </ol>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="subject" class="form-label">عنوان الخبر</label>
-            <input type="text" class="form-control" id="subject" placeholder="عنوان" name="title" autocomplete="off" required aria-describedby="subject-error">
-            <p class="field-error" id="subject-error" hidden></p>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">نص الخبر</label>
-            <textarea class="form-control" id="message" rows="10" placeholder="متى وأين حدث ذلك؟ ماذا رأيت؟" name="body" autocomplete="off" required aria-describedby="message-error" minlength="20"></textarea>
-            <p class="field-error" id="message-error" hidden></p>
-          </div>
-          <button type="submit" class="btn btn-primary send-news-submit">إرسال الخبر</button>
-          <p class="form-status" role="status" aria-live="polite" hidden></p>
-        </form>
+          </aside>
+        </div>
       </div>
     </div>
   </main>
@@ -490,8 +510,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=19"></script>
-  <script src="./js/currencies.js?v=19"></script>
-  <script src="./js/weather.js?v=19"></script>
+  <script src="./js/script.js?v=20"></script>
+  <script src="./js/currencies.js?v=20"></script>
+  <script src="./js/weather.js?v=20"></script>
 </body>
 </html>

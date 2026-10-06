@@ -562,13 +562,14 @@
   function initSendNews() {
     const form = $("[data-send-news]");
     if (!form) return;
+    const done = $(".send-news-done");
     const messages = {
       valueMissing: "هذا الحقل مطلوب.",
       typeMismatch: "اكتب بريدًا إلكترونيًا صحيحًا، مثل name@example.com",
       tooShort: "اكتب تفاصيل أكثر: متى وأين حدث ذلك وماذا رأيت.",
     };
     const check = (field) => {
-      const error = document.getElementById(field.getAttribute("aria-describedby"));
+      const error = document.getElementById(`${field.id}-error`);
       const problem = Object.keys(messages).find((key) => field.validity[key]);
       field.setAttribute("aria-invalid", String(Boolean(problem)));
       if (error) {
@@ -578,21 +579,30 @@
       return !problem;
     };
     const fields = $$("[required]", form);
-    fields.forEach((field) => field.addEventListener("blur", () => field.value && check(field)));
+    fields.forEach((field) => {
+      field.addEventListener("blur", () => field.value && check(field));
+      // once a field is marked wrong, the message follows the typing
+      field.addEventListener("input", () => field.getAttribute("aria-invalid") === "true" && check(field));
+    });
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const invalid = fields.filter((field) => !check(field));
-      const status = $(".form-status", form);
       if (invalid.length) {
         invalid[0].focus();
         return;
       }
       // the backend posts the form; the static theme only confirms the flow
       form.reset();
-      if (status) {
-        status.textContent = "وصلنا خبرك. سنراجعه ونتواصل معك إن احتجنا تفاصيل أكثر.";
-        status.hidden = false;
-      }
+      if (!done) return;
+      form.hidden = true;
+      done.hidden = false;
+      done.focus();
+    });
+    if (!done) return;
+    $("[data-send-again]", done)?.addEventListener("click", () => {
+      done.hidden = true;
+      form.hidden = false;
+      fields[0]?.focus();
     });
   }
 
