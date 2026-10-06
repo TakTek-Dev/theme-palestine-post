@@ -9362,11 +9362,44 @@ blockquote.Quotation-text {
     padding-bottom: 40px;
 }
 
+/* four columns: about, sections, categories, tags; two by two on tablets */
 @media (min-width: 769px) {
     .footer-content {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.3fr);
-        gap: 48px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px 48px;
     }
+}
+
+@media (min-width: 992px) {
+    .footer-content {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1.3fr);
+        gap: 40px;
+    }
+
+    /* one column here: two wrapped «موسوعة فلسطين» and broke the rows */
+    .footer .footer-content ul.sections-line {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* sections: plain links in two columns */
+.footer-content ul.sections-line {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+    align-items: start;
+}
+
+.sections-line a {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    color: rgb(255 255 255 / 0.85);
+    transition: color var(--dur) var(--ease);
+}
+
+.sections-line a:hover {
+    color: var(--main-color);
 }
 
 .footer-content h2 {

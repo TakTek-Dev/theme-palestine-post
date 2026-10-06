@@ -126,6 +126,7 @@
   - «آخر الأخبار» مبقتش sticky، لأنها كانت بتعدّي فوق «تابعنا على».
 - **الفوتر:**
   - أيقونات تواصل شغالة، وروابط «من نحن، أرسل خبرًا، خريطة الموقع».
+  - عمود جديد «الأقسام» بأقسام القائمة الرئيسية (من غير الرئيسية ومن نحن وأرسل خبرًا، لأن الاتنين الأخيرين في السطر الأخير). الثيم بيبنيه من روابط القائمة نفسها، فلو قسم اتضاف للقائمة بيظهر هنا. على الديسكتوب 4 أعمدة، وعلى التابلت 2×2.
   - على الموبايل كان طوله 983px، بسبب مسافات 60px بين الأعمدة والتصنيفات في عمود واحد. بقى 788px: التصنيفات في عمودين، والمسافات 32px.
   - الوسوم كانت صناديق بإطار رمادي، وبقت شرايح هادية بخلفية خفيفة. وعدد كل تصنيف بقى أصغر وأهدى من اسمه، بأرقام متساوية العرض.
   - عناوين الأعمدة كانت `h4` من غير عناوين قبلها في الفوتر، وبقت `h2`. وأيقونات `»` بقت `aria-hidden`، ومجموعة السوشيال بقت `role="group"` عشان اسمها يتقري.
@@ -184,7 +185,7 @@
 | المكان | قبل | بعد |
 |---|---|---|
 | أيقونات الهيدر | `<img>` جوه `.icon-container` | `<button class="icon-trigger" aria-expanded aria-controls aria-label>` حوالين الصورة، وجواه بعدها `<span class="icon-label">` بنفس الاسم (بيظهر من 1200px)، و`id` لكل `.mega-menu` |
-| الفوتر | عناوين الأعمدة `h4`، و`div.footer-social-icons` عليه `aria-label` بس | العناوين `h2` (نفس الكلاس والمكان)، و`div.footer-social-icons role="group"`، وأيقونة `.category-icon i` عليها `aria-hidden="true"` |
+| الفوتر | من غير عمود أقسام، وعناوين الأعمدة `h4`، و`div.footer-social-icons` عليه `aria-label` بس | العناوين `h2` (نفس الكلاس والمكان)، و`div.footer-social-icons role="group"`، وأيقونة `.category-icon i` عليها `aria-hidden="true"`. وبعد `.about` على طول `div.footer-sections` فيه `h2` «الأقسام» و`ul.sections-line > li > a` لكل قسم في القائمة |
 | زرار القائمة | `<button class="navbar-toggler pt-2" data-bs-toggle data-bs-target aria-label="فتح قائمة التنقل">` جوه `.full-width-small.py-3` | من غير `data-bs-*` (`script.js` هو اللي بيفتح ويقفل) ومن غير `pt-2`، و`aria-label="قائمة الأقسام"`، والصف من غير `py-3` |
 | أخبار محلية في القائمة | `<a aria-haspopup="true">أخبار محلية <i class="fa-chevron-down"></i></a>`، والمنيو بيفتح بالهوفر بس | `<a class="nav-link custom-hover" href="…">أخبار محلية</a>` وبعده على طول `<button type="button" class="nav-disclosure" aria-expanded="false" aria-controls="local-news-slide-menu" aria-label="أخبار المدن">` فيه السهم. ومن غير خبر متكرر في نفس المدينة |
 | القسم الحالي في القائمة | الرابط بيتعلّم لو هو نفس الصفحة بس | الصفحة نفسها `class="active" aria-current="page"`، والصفحة اللي جوه قسم (زي صفحة الحلقة جوه «بودكاست») بتعلّم القسم `class="active" aria-current="true"` |
