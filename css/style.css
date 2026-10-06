@@ -10700,6 +10700,122 @@ main:focus {
     }
 }
 
+/* home: the hero's lead is the page's first heading (h2) and the three
+   stories beside it come under it (h3); they were h3 and h2 */
+.left-text-card h3 {
+    margin: 0;
+    font-family: var(--font-medium);
+    font-size: 15px;
+    line-height: 1.75;
+    color: #fff;
+    transition: color var(--dur) var(--ease);
+}
+
+.left-text-card:hover h3,
+.left-text-card:focus-visible h3 {
+    color: var(--main-color);
+}
+
+/* the sidebar travels beside the long grid as one block (one widget sliding
+   over the next was the old fault); a sidebar taller than the window settles
+   by its bottom edge — script.js sets --aside-top */
+@media (min-width: 768px) {
+    .home-aside {
+        position: sticky;
+        top: var(--aside-top, 16px);
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* phones: one row per story, a small picture beside the title */
+    .right-section .local-news-double-card {
+        gap: 0;
+        margin: 0;
+    }
+
+    .right-section .local-news-double-card .news-card {
+        margin: 0;
+        border: 0;
+        border-bottom: 1px solid var(--line-color);
+        border-radius: 0;
+    }
+
+    .right-section .local-news-double-card .news-card:hover {
+        box-shadow: none;
+    }
+
+    .right-section .local-news-double-card .news-card-content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+    }
+
+    .right-section .local-news-double-card .news-card-img {
+        flex: 0 0 112px;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-sm);
+    }
+
+    .right-section .local-news-double-card .news-card-text {
+        padding: 0;
+    }
+
+    .right-section .local-news-double-card .news-card-text .card-title {
+        font-size: 15px;
+        line-height: 1.6;
+        -webkit-line-clamp: 3;
+    }
+
+    .right-section .local-news-double-card .news-card-text > p {
+        display: none;
+    }
+
+    /* section above time, the same in every row (side by side they broke
+       mid-date on long section names) */
+    .right-section .local-news-double-card .date-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .right-section .local-news-double-card .date {
+        white-space: nowrap;
+    }
+
+    .right-section .latest-news-first-video-container {
+        margin: 18px 0;
+    }
+
+    /* the pinned file: its poster beside its name, not 380px above it */
+    .fixed-accordion .fb-accordion-item.fb-active .fb-accordion-content {
+        flex-flow: row;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .fixed-accordion .fb-accordion-content .image {
+        flex: 0 0 96px;
+        width: 96px;
+        background: none;
+    }
+
+    .fixed-accordion .fb-accordion-content .image img {
+        width: 100%;
+        max-height: none;
+        border-radius: var(--radius-sm);
+    }
+
+    .fixed-accordion .fb-accordion-content .text {
+        padding: 0;
+    }
+
+    .fixed-accordion .fb-accordion-item {
+        padding: 14px;
+    }
+}
+
 /* ---------------------------------------------------------------------
    site map — the live map prints all 15,463 tags on one page (8.3 MB),
    lists seven writers twice in no order, and the theme kept twelve links

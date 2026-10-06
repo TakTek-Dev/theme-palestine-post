@@ -96,6 +96,17 @@
     });
   }
 
+  /* home sidebar: it travels beside the long grid; when it is taller than the
+     window it settles by its bottom edge, so every part of it gets seen */
+  function initStickyAside() {
+    const aside = $(".home-aside");
+    if (!aside) return;
+    const place = () => aside.style.setProperty("--aside-top", `${Math.min(16, window.innerHeight - aside.offsetHeight - 16)}px`);
+    place();
+    window.addEventListener("resize", place);
+    if ("ResizeObserver" in window) new ResizeObserver(place).observe(aside);
+  }
+
   /* ---- 3. Tabs: local news (home) and the writer page -------------------- */
   function initTabs() {
     $$("[role=tablist]").forEach((list) => {
@@ -657,6 +668,7 @@
     initNavToggle();
     initHeaderMenus();
     initNotificationBadge();
+    initStickyAside();
     initTabs();
     initFiles();
     initVideoFacades();
