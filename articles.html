@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=21">
+  <link rel="stylesheet" href="./css/style.css?v=22">
 </head>
 <body class="page-articles">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -408,30 +408,45 @@
       </section>
       <section class="filter-section">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12 d-flex align-items-center justify-content-between flex-wrap gap-2">
-              <form class="filter-item" action="articles.html" method="get" role="search">
-                <label class="visually-hidden" for="filter-q">ابحث في هذا القسم</label>
-                <input id="filter-q" type="search" name="search" class="filter-input" placeholder="بحث عن النتائج"><button type="submit" class="filter-submit" aria-label="بحث"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
-              </form>
-            </div>
+          <div class="listing-bar">
+            <nav class="subcats" aria-label="مدن أخبار محلية">
+              <ul>
+                <li><a href="articles.html" aria-current="page">الكل</a></li>
+                <li><a href="articles.html">غزة</a></li>
+                <li><a href="articles.html">القدس</a></li>
+                <li><a href="articles.html">الخليل</a></li>
+                <li><a href="articles.html">نابلس</a></li>
+                <li><a href="articles.html">رام الله</a></li>
+                <li><a href="articles.html">جنين</a></li>
+                <li><a href="articles.html">طولكرم</a></li>
+                <li><a href="articles.html">طوباس</a></li>
+                <li><a href="articles.html">أريحا</a></li>
+                <li><a href="articles.html">قلقيلية</a></li>
+                <li><a href="articles.html">الداخل المحتل</a></li>
+                <li><a href="articles.html">سلفيت</a></li>
+              </ul>
+            </nav>
+            <form class="filter-item listing-search" action="articles.html" method="get" role="search">
+              <label class="visually-hidden" for="filter-q">ابحث في أخبار محلية</label>
+              <input id="filter-q" type="search" name="search" class="filter-input" placeholder="ابحث في أخبار محلية"> <button type="submit" class="filter-submit" aria-label="بحث"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+            </form>
           </div>
         </div>
       </section>
       <div class="container all-articles">
         <div class="row">
-          <div class="col-md-4">
-            <div class="news-card">
+          <div class="col-12">
+            <div class="news-card news-card--lead">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3b46644af9.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3b46644af9.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3b46644af9.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3b46644af9.webp.webp 800w" sizes="(max-width: 767px) 100vw, 680px" alt="" fetchpriority="high" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 5 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 5 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">هدم وتجريف واستيلاء وإخطارات.. الاحتلال يوسع اعتداءاته في الضفة</a>
-                  <p class="line-clamp-3">شهدت مناطق عدة في الضفة الغربية، اليوم الاثنين، اقتحامات وإجراءات شملت هدم منشآت وإخطارات بالهدم والاستيلاء على ممتلكات فلسطينية.</p>
+                  <a class="card-title" href="single-article.html">هدم وتجريف واستيلاء وإخطارات.. الاحتلال يوسع اعتداءاته في الضفة</a>
+                  <p>شهدت مناطق عدة في الضفة الغربية، اليوم الاثنين، اقتحامات وإجراءات شملت هدم منشآت وإخطارات بالهدم والاستيلاء على ممتلكات فلسطينية.</p>
                 </div>
               </div>
             </div>
@@ -439,15 +454,15 @@
           <div class="col-md-4">
             <div class="news-card">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3a5bb0875b.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3a5bb0875b.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac3a5bb0875b.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac3a5bb0875b.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 5 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 5 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">المستوطنون يصعّدون اعتداءاتهم في الضفة.. إصابات وسرقة للزيتون واحتجاز عمال</a>
-                  <p class="line-clamp-3">شهدت عدة مناطق في الضفة الغربية، اليوم الاثنين، اعتداءات نفذها مستوطنون بحق المزارعين الفلسطينيين وممتلكاتهم، تركزت بصورة خاصة خلال موسم قطف الزيتون.</p>
+                  <a class="card-title" href="single-article.html">المستوطنون يصعّدون اعتداءاتهم في الضفة.. إصابات وسرقة للزيتون واحتجاز عمال</a>
+                  <p>شهدت عدة مناطق في الضفة الغربية، اليوم الاثنين، اعتداءات نفذها مستوطنون بحق المزارعين الفلسطينيين وممتلكاتهم، تركزت بصورة خاصة خلال موسم قطف الزيتون.</p>
                 </div>
               </div>
             </div>
@@ -455,15 +470,15 @@
           <div class="col-md-4">
             <div class="news-card">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac0ad734cb10.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac0ad734cb10.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac0ad734cb10.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac0ad734cb10.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 3 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 3 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">أسعار صرف العملات مقابل الشيكل اليوم السبت</a>
-                  <p class="line-clamp-3">جاءت أسعار صرف العملات مقابل الشيكل اليوم السبت 3 أكتوبر 2026 على النحو التالي:</p>
+                  <a class="card-title" href="single-article.html">أسعار صرف العملات مقابل الشيكل اليوم السبت</a>
+                  <p>جاءت أسعار صرف العملات مقابل الشيكل اليوم السبت 3 أكتوبر 2026 على النحو التالي:</p>
                 </div>
               </div>
             </div>
@@ -471,15 +486,15 @@
           <div class="col-md-4">
             <div class="news-card">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac0aca5a16a0.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac0aca5a16a0.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6ac0aca5a16a0.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6ac0aca5a16a0.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 3 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 3 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">حالة الطقس: أجواء معتدلة وارتفاع على درجات الحرارة</a>
-                  <p class="line-clamp-3">توقعت دائرة الأرصاد الجوية في فلسطين، أن يكون الطقس غائماً جزئياً بوجهٍ عام، معتدلًا في معظم المناطق، ويطرأ ارتفاع آخر على درجات الحرارة لتصبح أعلى من معدلها العام بحوالي درجتين مئويتين.</p>
+                  <a class="card-title" href="single-article.html">حالة الطقس: أجواء معتدلة وارتفاع على درجات الحرارة</a>
+                  <p>توقعت دائرة الأرصاد الجوية في فلسطين، أن يكون الطقس غائماً جزئياً بوجهٍ عام، معتدلًا في معظم المناطق، ويطرأ ارتفاع آخر على درجات الحرارة لتصبح أعلى من معدلها العام بحوالي درجتين مئويتين.</p>
                 </div>
               </div>
             </div>
@@ -487,15 +502,15 @@
           <div class="col-md-4">
             <div class="news-card">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abfb438504d8.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abfb438504d8.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abfb438504d8.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abfb438504d8.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 2 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">1764 انتهاكاً لقوات الاحتلال والمستوطنين في الضفة الغربية خلال أسبوع</a>
-                  <p class="line-clamp-3">وثق مركز معلومات فلسطين "معطى" 1764 انتهاكا لقوات الاحتلال الإسرائيلي والمستوطنين في الضفة الغربية، خلال الفترة الممتدة من 25 سبتمبر/أيلول حتى 1 أكتوبر/تشرين الأول 2026.</p>
+                  <a class="card-title" href="single-article.html">1764 انتهاكاً لقوات الاحتلال والمستوطنين في الضفة الغربية خلال أسبوع</a>
+                  <p>وثق مركز معلومات فلسطين "معطى" 1764 انتهاكا لقوات الاحتلال الإسرائيلي والمستوطنين في الضفة الغربية، خلال الفترة الممتدة من 25 سبتمبر/أيلول حتى 1 أكتوبر/تشرين الأول 2026.</p>
                 </div>
               </div>
             </div>
@@ -503,36 +518,96 @@
           <div class="col-md-4">
             <div class="news-card">
               <div class="news-card-content">
-                <a href="single-article.html">
-                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abf564fe435f.webp" loading="lazy" class="img-fluid" alt="" decoding="async"></div>
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abf564fe435f.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abf564fe435f.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abf564fe435f.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
                 </a>
                 <div class="news-card-text">
                   <div class="date-container">
-                    <p class="date"><i class="fa-regular fa-calendar"></i> 2 أكتوبر 2026</p>
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2 أكتوبر 2026</p>
                   </div>
-                  <a class="card-title line-clamp-2" href="single-article.html">مستوطنون يهاجمون منازل ويطلقون النار على مزارعين في الضفة</a>
-                  <p class="line-clamp-3">شن المستوطنون، اليوم الجمعة، سلسلة هجمات في مناطق متفرقة من الضفة الغربية، استهدفت منازل المواطنين والمزارعين وأشجار الزيتون.</p>
+                  <a class="card-title" href="single-article.html">مستوطنون يهاجمون منازل ويطلقون النار على مزارعين في الضفة</a>
+                  <p>شن المستوطنون، اليوم الجمعة، سلسلة هجمات في مناطق متفرقة من الضفة الغربية، استهدفت منازل المواطنين والمزارعين وأشجار الزيتون.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="news-card">
+              <div class="news-card-content">
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abf3cc34b064.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abf3cc34b064.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abf3cc34b064.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
+                </a>
+                <div class="news-card-text">
+                  <div class="date-container">
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2 أكتوبر 2026</p>
+                  </div>
+                  <a class="card-title" href="single-article.html">أسعار صرف العملات مقابل الشيكل اليوم الجمعة</a>
+                  <p>جاءت أسعار صرف العملات مقابل الشيكل اليوم الجمعة 2 أكتوبر 2026 على النحو التالي:</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="news-card">
+              <div class="news-card-content">
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abe180a20fd3.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abe180a20fd3.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abe180a20fd3.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
+                </a>
+                <div class="news-card-text">
+                  <div class="date-container">
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 1 أكتوبر 2026</p>
+                  </div>
+                  <a class="card-title" href="single-article.html">الاحتلال يعتقل عددا من الفلسطينيين ويستولي على منزل خلال اقتحامات بالضفة</a>
+                  <p>شنت قوات الاحتلال الإسرائيلي، فجر وصباح اليوم الخميس، سلسلة اقتحامات في عدة مناطق بالضفة الغربية، تخللها اعتقال عدد من المواطنين، ومداهمة منازل ومحال تجارية، والاستيلاء على منزل.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="news-card">
+              <div class="news-card-content">
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abe0c81eda68.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abe0c81eda68.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abe0c81eda68.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
+                </a>
+                <div class="news-card-text">
+                  <div class="date-container">
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 1 أكتوبر 2026</p>
+                  </div>
+                  <a class="card-title" href="single-article.html">الإحصاء: كبار السن يشكلون 6.2% من سكان فلسطين منتصف 2026</a>
+                  <p>أظهرت بيانات الجهاز المركزي للإحصاء الفلسطيني أن عدد كبار السن في فلسطين بلغ نحو 347 ألف مسن ومسنة منتصف عام 2026، يشكلون 6.2% من إجمالي السكان</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="news-card">
+              <div class="news-card-content">
+                <a href="single-article.html" tabindex="-1" aria-hidden="true">
+                  <div class="news-card-img"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6abd8fceacf10.webp" srcset="https://ppost.ps/media/img/400/ppost/uploads/2026/10/file_6abd8fceacf10.webp.webp 400w, https://ppost.ps/media/img/800/ppost/uploads/2026/10/file_6abd8fceacf10.webp.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 33vw, 360px" alt="" loading="lazy" decoding="async"></div>
+                </a>
+                <div class="news-card-text">
+                  <div class="date-container">
+                    <p class="date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 1 أكتوبر 2026</p>
+                  </div>
+                  <a class="card-title" href="single-article.html">أسعار صرف العملات مقابل الشيكل اليوم الخميس</a>
+                  <p>جاءت أسعار صرف العملات مقابل الشيكل اليوم الخميس 1 أكتوبر 2026 على النحو التالي:</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <nav class="dlv-pgn" aria-label="التنقل بين الصفحات">
-              <p class="dlv-pgn__info">عرض 1 إلى 6 من 2,973 نتيجة</p>
-              <ul class="dlv-pgn__list">
-                <li><span class="dlv-pgn__btn is-disabled" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></li>
-                <li><a class="dlv-pgn__btn is-current" aria-current="page" href="articles.html?page=1">1</a></li>
-                <li><a class="dlv-pgn__btn" href="articles.html?page=2">2</a></li>
-                <li><a class="dlv-pgn__btn" href="articles.html?page=3">3</a></li>
-                <li><span class="dlv-pgn__gap" aria-hidden="true">…</span></li>
-                <li><a class="dlv-pgn__btn" href="articles.html?page=496">496</a></li>
-                <li><a class="dlv-pgn__btn" href="articles.html?page=2" aria-label="الصفحة التالية"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <nav class="dlv-pgn" aria-label="التنقل بين الصفحات">
+          <p class="dlv-pgn__info">عرض 1 إلى 10 من 2,973 نتيجة</p>
+          <ul class="dlv-pgn__list">
+            <li><span class="dlv-pgn__btn is-disabled" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></li>
+            <li><span class="dlv-pgn__btn is-current" aria-current="page">1</span></li>
+            <li><a class="dlv-pgn__btn" href="articles.html?page=2">2</a></li>
+            <li><a class="dlv-pgn__btn" href="articles.html?page=3">3</a></li>
+            <li><span class="dlv-pgn__gap" aria-hidden="true">…</span></li>
+            <li><a class="dlv-pgn__btn" href="articles.html?page=298">298</a></li>
+            <li><a class="dlv-pgn__btn" href="articles.html?page=2" aria-label="الصفحة التالية"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </main>
@@ -586,8 +661,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=21"></script>
-  <script src="./js/currencies.js?v=21"></script>
-  <script src="./js/weather.js?v=21"></script>
+  <script src="./js/script.js?v=22"></script>
+  <script src="./js/currencies.js?v=22"></script>
+  <script src="./js/weather.js?v=22"></script>
 </body>
 </html>
