@@ -222,7 +222,7 @@
     show(current, false);
   }
 
-  /* ---- 6. Podcast players: Plyr, loaded when a player comes near --------- */
+  /* ---- 6. Podcast: one play button per episode, Plyr once it is pressed -- */
   const PLYR_VERSION = "3.7.8";
   const PLYR_AR = {
     restart: "من البداية", rewind: "رجوع {seektime} ثانية", play: "تشغيل", pause: "إيقاف مؤقت",
@@ -245,36 +245,122 @@
     return plyrLoading;
   }
 
+  const clock = (seconds) => {
+    const whole = Math.round(seconds);
+    return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;
+  };
+
+  // Each episode rests as one button with its length. The first press swaps in
+  // Plyr; until the library arrives (or if it never does) the native controls play.
   function initPodcastPlayers() {
     const hosts = $$("[data-pod-player]");
     if (!hosts.length) return;
-    const players = [];
-    const setup = (host) => {
+    const players = new Map();
+
+    const upgrade = (host) => {
+      if (players.has(host) || !window.Plyr) return players.get(host);
       const audio = $("audio", host);
-      if (!audio || host.dataset.ready) return;
-      host.dataset.ready = "1";
       const player = new window.Plyr(audio, {
-        controls: ["rewind", "play", "fast-forward", "progress", "current-time", "mute", "settings"],
+        controls: ["play", "rewind", "fast-forward", "progress", "current-time", "mute", "settings"],
         settings: ["speed"],
         speed: { selected: 1, options: [0.75, 1, 1.25, 1.5, 2] },
         seekTime: 15,
         invertTime: false,
+        title: audio.getAttribute("aria-label") || "",
         i18n: PLYR_AR,
         keyboard: { focused: true, global: false },
         tooltips: { controls: true, seek: true },
       });
-      player.on("play", () => players.forEach((other) => other !== player && other.pause()));
-      players.push(player);
+      players.set(host, player);
+      return player;
     };
-    // the native <audio controls> stays usable if the library never arrives
-    const start = () => loadPlyr().then(() => hosts.forEach(setup)).catch(() => {});
-    if (!("IntersectionObserver" in window)) { start(); return; }
+
+    // the pressed button disappears: hand focus to the player's own play button
+    const keepFocus = (player) => {
+      if (document.activeElement && document.activeElement !== document.body) return;
+      [].concat(player?.elements.buttons.play || [])[0]?.focus({ preventScroll: true });
+    };
+
+    const play = (host) => {
+      const audio = $("audio", host);
+      host.classList.remove("is-idle");
+      $(".pod-facade", host)?.remove();
+      const player = upgrade(host);
+      // play() inside the click keeps the browser's permission to start sound
+      Promise.resolve(player ? player.play() : audio.play()).catch(() => {});
+      if (player) {
+        keepFocus(player);
+        return;
+      }
+      if (document.activeElement === document.body) audio.focus();
+      loadPlyr().then(() => keepFocus(upgrade(host))).catch(() => {});
+    };
+
+    hosts.forEach((host) => {
+      const audio = $("audio", host);
+      if (!audio) return;
+      const title = audio.getAttribute("aria-label") || "الحلقة";
+      const seconds = Number(host.dataset.duration) || 0;
+      const facade = document.createElement("button");
+      facade.type = "button";
+      facade.className = "pod-facade";
+      facade.setAttribute("aria-label", seconds ? `استمع إلى ${title}، المدة ${clock(seconds)}` : `استمع إلى ${title}`);
+      facade.innerHTML = '<span class="pod-facade__icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>'
+        + '<span class="pod-facade__label" aria-hidden="true">استمع</span>'
+        + (seconds ? `<span class="pod-facade__time" aria-hidden="true">${clock(seconds)}</span>` : "");
+      facade.addEventListener("click", () => play(host));
+      host.prepend(facade);
+      host.classList.add("is-idle");
+    });
+
+    // "listen to the newest episode" and similar buttons name the episode card they play
+    $$("[data-play]").forEach((button) => button.addEventListener("click", () => {
+      const card = document.getElementById(button.dataset.play);
+      const host = card && $("[data-pod-player]", card);
+      if (!host) return;
+      if (card.closest("[hidden]")) $('[data-episode-filter] [data-series="all"]')?.click();
+      card.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+      if ($("audio", host).paused) play(host);
+    }));
+
+    // one episode at a time; the card that is playing is marked
+    document.addEventListener("play", (event) => {
+      if (!(event.target instanceof HTMLAudioElement)) return;
+      $$("audio").forEach((audio) => audio !== event.target && audio.pause());
+      event.target.closest(".episode-card")?.classList.add("is-playing");
+    }, true);
+    ["pause", "ended"].forEach((type) => document.addEventListener(type, (event) => {
+      if (event.target instanceof HTMLAudioElement) event.target.closest(".episode-card")?.classList.remove("is-playing");
+    }, true));
+
+    // fetch the library while the reader approaches, so the first press is instant
+    if (!("IntersectionObserver" in window)) return;
     const watcher = new IntersectionObserver((entries) => {
       if (!entries.some((entry) => entry.isIntersecting)) return;
       watcher.disconnect();
-      start();
+      loadPlyr().catch(() => {});
     }, { rootMargin: "400px 0px" });
     hosts.forEach((host) => watcher.observe(host));
+  }
+
+  /* podcast page: show one series at a time */
+  function initEpisodeFilter() {
+    const group = $("[data-episode-filter]");
+    const list = $(".episode-list");
+    if (!group || !list) return;
+    const buttons = $$("button[data-series]", group);
+    const items = $$(":scope > li", list);
+    const status = $("[data-episode-status]");
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const series = button.dataset.series;
+      let shown = 0;
+      buttons.forEach((other) => other.setAttribute("aria-pressed", String(other === button)));
+      items.forEach((item) => {
+        item.hidden = series !== "all" && item.dataset.series !== series;
+        if (!item.hidden) shown += 1;
+      });
+      if (status) status.textContent = `تظهر ${shown} من ${items.length} حلقات`;
+    }));
   }
 
   /* ---- 7. Share panels and copy link ------------------------------------ */
@@ -451,6 +537,7 @@
     initVideoFacades();
     initVideoPlaylist();
     initPodcastPlayers();
+    initEpisodeFilter();
     initShare();
     initArticleTools();
     initReadProgress();
