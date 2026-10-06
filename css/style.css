@@ -6868,7 +6868,9 @@ img {
 
 /* ---------------------------------------------------------------------
    6.1 HEADER — icons were bare images: no keyboard access, 24px targets,
-   menus that only opened through jQuery
+   menus that only opened through jQuery; a sun and a dollar sign said
+   nothing on their own (the sun read as a light/dark switch); on phones
+   the currency panel was fixed to the screen and ran 200px past it
    --------------------------------------------------------------------- */
 .top-bar {
     padding: 14px 0;
@@ -6880,14 +6882,17 @@ img {
 
 .icon-trigger {
     position: relative;
-    display: inline-grid;
-    place-items: center;
-    width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 44px;
     height: 44px;
     padding: 0;
     border: 0;
     border-radius: 50%;
     background: transparent;
+    color: #fff;
     cursor: pointer;
     transition: background-color var(--dur) var(--ease);
 }
@@ -6902,10 +6907,14 @@ img {
     height: 24px;
 }
 
+.icon-label {
+    display: none;
+}
+
 .icon-badge {
     position: absolute;
     top: 4px;
-    left: 4px;
+    inset-inline-end: 4px;
     min-width: 18px;
     height: 18px;
     padding: 0 4px;
@@ -6921,6 +6930,27 @@ img {
 
 .icon-badge[hidden] {
     display: none;
+}
+
+/* wide screens have room to name each menu */
+@media (min-width: 1200px) {
+    .icon-trigger {
+        padding-inline: 10px 14px;
+        border-radius: var(--radius-sm);
+    }
+
+    .icon-label {
+        display: inline;
+        font-family: var(--font-medium);
+        font-size: 13px;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .icon-badge {
+        top: 2px;
+        inset-inline: 24px auto;
+    }
 }
 
 .v-line {
@@ -6958,6 +6988,23 @@ img {
 
 .weather-mega-menu {
     width: 460px;
+}
+
+/* currency and weather (both carry .curancy-mega-menu): a panel taller than
+   the window kept its last rows out of reach */
+.curancy-mega-menu {
+    max-height: calc(100vh - 96px);
+    max-height: calc(100dvh - 96px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-color) transparent;
+}
+
+/* section names on the white panels: small teal text was 2.6:1 */
+.top-bar .title-with-circle-small h5,
+.navbar .title-with-circle-small h5 {
+    color: var(--main-color-ink);
 }
 
 /* one scroll area only: the production container scrolled inside a menu that
@@ -7141,7 +7188,8 @@ img {
 .search-input::placeholder {
     padding-right: 0;
     font-size: 15px;
-    color: #8a8a8a;
+    color: var(--secondry-text-color);
+    opacity: 1;
 }
 
 .top-bar-btn {
@@ -7152,25 +7200,116 @@ img {
     color: #fff;
 }
 
+/* below 992px the search joins the menu button: between 768 and 991 that
+   row held a lone button while the top bar ran 28px past the screen */
+@media (max-width: 991.98px) {
+    .top-bar-input {
+        display: none;
+    }
+
+    .none-in-large-screen {
+        display: block;
+    }
+
+    .full-width-small {
+        width: 100%;
+        padding-block: 8px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .top-bar {
+        padding: 8px 0;
+    }
+
+    /* the 150px logo box pushed the icons 8px past a 320px screen */
+    .top-bar .logo {
+        width: 120px;
+        height: 40px;
+    }
+
+    .left-icons {
+        gap: 2px;
+    }
+
+    .icon-trigger img {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* the panels hang from the bar, full width, and scroll with the page */
+    .top-bar-container .icon-container {
+        position: static;
+    }
+
+    .notifications-mega-menu,
+    .weather-mega-menu,
+    .curancy-mega-menu,
+    .curancy-mega-menu:not(.weather-mega-menu) {
+        position: absolute;
+        top: calc(100% + 8px);
+        inset-inline: 0;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+    }
+
+    /* the five days fit the card; the row used to scroll sideways by a few
+       pixels with nothing to show that it could */
+    .weather-mega-menu {
+        padding: 12px;
+    }
+
+    .weather-mega-menu .background-weather {
+        padding: 8px;
+    }
+
+    .weather-list {
+        gap: 4px;
+    }
+
+    .weather-list .weather-item {
+        padding: 8px 2px;
+    }
+
+    .weather-list .weather-item p,
+    .weather-list .temperature,
+    .weather-list .description-weather {
+        text-wrap-mode: wrap;
+    }
+
+    .weather-list .temperature {
+        font-size: 12px;
+    }
+}
+
 /* ---------------------------------------------------------------------
    6.2 NAVIGATION — twelve sections wrapped onto two lines at 1280px; hover
-   was white text on teal (2.5:1); the current page was never marked
+   was white text on teal (2.5:1); the current page was never marked; the
+   local-news panel opened on hover only, flashed open whenever the pointer
+   crossed the bar, and keyboard focus walked through all 36 of its links;
+   phones could not reach the cities at all
    --------------------------------------------------------------------- */
 @media (min-width: 992px) {
     .navbar-nav {
+        --nav-pad: 11px;
         flex-wrap: nowrap;
     }
 
     .navbar-nav .nav-link {
-        padding: 24px 11px !important;
+        padding: 24px var(--nav-pad) !important;
         white-space: nowrap;
         font-size: 14px;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    .navbar-nav {
+        --nav-pad: 7px;
+    }
+
     .navbar-nav .nav-link {
-        padding: 22px 7px !important;
+        padding: 22px var(--nav-pad) !important;
         font-size: 13px;
     }
 }
@@ -7186,16 +7325,43 @@ img {
 .navbar-nav .nav-link.active::after {
     content: "";
     position: absolute;
-    right: 11px;
+    inset-inline: var(--nav-pad, 11px);
     bottom: 14px;
-    width: calc(100% - 22px);
+    width: auto;
     height: 2px;
     background-color: var(--main-color);
 }
 
-/* the local-news panel opened on hover only; keyboard users reach it too now */
-.navbar-nav .dropdown:focus-within .mega-menu {
-    display: block;
+/* local news: the link opens the section, the chevron beside it opens the
+   cities (disclosure pattern; script.js keeps aria-expanded in step) */
+.nav-disclosure {
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 11px;
+    cursor: pointer;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.nav-disclosure i {
+    transition: transform var(--dur) var(--ease);
+}
+
+.navbar-nav .dropdown.is-open > .nav-disclosure i {
+    transform: rotate(180deg);
+}
+
+.menu-item h5 {
+    margin: 0;
+    font-family: var(--font-semibold);
+    font-size: 15px;
+}
+
+.menu-item ul li + li {
+    margin-top: 8px;
 }
 
 .menu-item ul li a {
@@ -7204,24 +7370,243 @@ img {
     color: var(--dark-font);
 }
 
-.menu-item ul li a:hover {
-    color: var(--main-color-ink);
+.menu-item ul li a:hover,
+.menu-item > .title-with-circle a:hover h5 {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (min-width: 992px) {
+    .navbar-nav .dropdown {
+        display: flex;
+    }
+
+    .navbar-nav .dropdown > .nav-link {
+        padding-inline-end: 2px !important;
+    }
+
+    .navbar-nav .dropdown > .nav-link::after {
+        inset-inline-end: 2px;
+    }
+
+    .nav-disclosure {
+        width: 24px;
+        padding-inline-end: 4px;
+    }
+
+    /* the link and its chevron read as one item */
+    .navbar-nav .dropdown:hover > :is(.nav-link, .nav-disclosure),
+    .navbar-nav .dropdown.is-open > :is(.nav-link, .nav-disclosure),
+    .navbar-nav .dropdown > .nav-link.active,
+    .navbar-nav .dropdown > .nav-link.active + .nav-disclosure {
+        color: var(--main-color-ink);
+        background-color: var(--main-color-soft);
+    }
+
+    /* the panel opens after a short pause under the pointer and lingers a
+       moment after it leaves, so crossing the bar no longer flashes it open */
+    .navbar-nav .dropdown > .mega-menu {
+        display: block;
+        top: 100%;
+        inset-inline: 0;
+        width: auto;
+        padding: 0;
+        border-color: var(--line-color);
+        border-radius: 0 0 var(--radius) var(--radius);
+        box-shadow: var(--shadow-pop);
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity var(--dur) var(--ease) 100ms, transform var(--dur) var(--ease) 100ms,
+            visibility 0s linear calc(var(--dur) + 100ms);
+    }
+
+    .navbar-nav .dropdown:hover > .mega-menu,
+    .navbar-nav .dropdown.is-open > .mega-menu {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition-delay: 150ms;
+    }
+
+    .navbar-nav .dropdown.is-open > .mega-menu {
+        transition-delay: 0s;
+    }
+
+    /* twelve cities: four columns fill three rows (five left two alone) */
+    .menu-container {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px 40px;
+        max-width: none;
+        padding: 28px 32px 32px;
+        text-align: start;
+    }
+}
+
+/* phones and tablets: the menu opens below the bar */
+.navbar-toggler {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line-color);
+    border-radius: var(--radius-sm);
+}
+
+.navbar-toggler:focus-visible {
+    box-shadow: var(--focus-ring);
+}
+
+.navbar-toggler:focus:not(:focus-visible) {
+    box-shadow: none;
+}
+
+.navbar .navbar-toggler-icon {
+    width: 22px;
+    height: 22px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23023b56' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16'/%3E%3C/svg%3E");
+}
+
+/* open, the button shows how to close it */
+.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23023b56' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
 }
 
 /* mobile search inside the navbar */
 .none-in-large-screen .form-group {
     position: relative;
+    border-radius: var(--radius-sm);
+    transition: box-shadow var(--dur) var(--ease);
+}
+
+.none-in-large-screen .form-group:focus-within {
+    box-shadow: 0 0 0 3px rgb(51 179 192 / 0.45);
 }
 
 .none-in-large-screen .search-input {
-    border-radius: var(--radius-sm);
+    height: 44px;
     padding-left: 52px;
+    border-color: #86969d;
+    border-radius: var(--radius-sm);
 }
 
 .none-in-large-screen .top-bar-btn {
     left: 0;
-    height: 45px;
+    height: 44px;
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+@media (max-width: 991.98px) {
+    /* a flex item: without this it grew to its content's widest layout */
+    .navbar-collapse {
+        min-width: 0;
+    }
+
+    .navbar-collapse.show {
+        display: block;
+        padding-block: 4px 12px;
+        border-top: 1px solid var(--line-color);
+    }
+
+    /* the current page: a bar at the start edge, not an underline the width
+       of the screen */
+    .navbar-nav .nav-link {
+        padding: 12px !important;
+        border-inline-start: 3px solid transparent;
+        border-start-end-radius: var(--radius-sm);
+        border-end-end-radius: var(--radius-sm);
+        font-size: 15px;
+    }
+
+    .navbar-nav .nav-link.active {
+        border-inline-start-color: var(--main-color);
+    }
+
+    .navbar-nav .nav-link.custom-hover:hover {
+        width: auto;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+        display: none;
+    }
+
+    .navbar-nav .dropdown {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .navbar-nav .dropdown > .nav-link {
+        flex: 1;
+    }
+
+    .nav-disclosure {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+    }
+
+    .nav-disclosure:hover,
+    .navbar-nav .dropdown.is-open > .nav-disclosure {
+        background-color: var(--main-color-soft);
+    }
+
+    /* the cities unfold inside the menu, names only */
+    .navbar-nav .dropdown > .mega-menu {
+        position: static;
+        flex-basis: 100%;
+        width: auto;
+        min-width: 0;
+        padding: 4px 0 8px;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .navbar-nav .dropdown:hover > .mega-menu {
+        display: none;
+    }
+
+    .navbar-nav .dropdown.is-open > .mega-menu {
+        display: block;
+    }
+
+    /* auto-fill sized itself against the production 1005px cap: nine
+       columns, 928px wide, on a 375px phone */
+    .menu-container {
+        grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+        gap: 8px;
+        max-width: none;
+        padding: 0;
+        text-align: start;
+    }
+
+    .menu-item ul {
+        display: none;
+    }
+
+    .menu-item > .title-with-circle {
+        margin: 0;
+    }
+
+    .menu-item > .title-with-circle a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 44px;
+        padding-inline: 12px;
+        border: 1px solid var(--line-color);
+        border-radius: var(--radius-sm);
+    }
+
+    .menu-item h5 {
+        font-size: 14px;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -10574,16 +10959,6 @@ main:focus {
    6.16 RESPONSIVE — phones: cards stacked in the right order (not reversed),
    tabs scroll sideways, menus fit the screen, 44px touch targets
    --------------------------------------------------------------------- */
-@media (max-width: 991px) {
-    .navbar-collapse.show {
-        display: block;
-    }
-
-    .navbar-nav .nav-link {
-        padding: 12px 4px !important;
-    }
-}
-
 @media (max-width: 768px) {
     .latest-news-container,
     .local-news,
@@ -10632,24 +11007,6 @@ main:focus {
 
     .landing-right-text .post-link {
         font-size: 1.25rem;
-    }
-
-    .notifications-mega-menu,
-    .weather-mega-menu,
-    .curancy-mega-menu,
-    .curancy-mega-menu:not(.weather-mega-menu) {
-        position: fixed;
-        top: 72px;
-        right: 12px;
-        left: 12px;
-        width: auto;
-        min-width: 0;
-        max-width: none;
-    }
-
-    .weather-list {
-        grid-template-columns: repeat(5, minmax(56px, 1fr));
-        overflow-x: auto;
     }
 
     .controls-header-title .controls-title {

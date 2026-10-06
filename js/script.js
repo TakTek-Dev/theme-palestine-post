@@ -36,11 +36,45 @@
     const button = $(".navbar-toggler");
     const panel = button && document.getElementById(button.getAttribute("aria-controls"));
     if (!panel) return;
-    button.addEventListener("click", () => {
-      const open = !panel.classList.contains("show");
+    const setOpen = (open) => {
       panel.classList.toggle("show", open);
       button.setAttribute("aria-expanded", String(open));
+    };
+    button.addEventListener("click", () => setOpen(!panel.classList.contains("show")));
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !panel.classList.contains("show")) return;
+      setOpen(false);
+      button.focus();
     });
+  }
+
+  /* local news: the link opens the section; the chevron button beside it opens
+     the cities — under the pointer on wide screens (CSS), inside the menu on
+     phones. Escape (handled here first), a click elsewhere or tabbing past
+     the cities closes them */
+  function initLocalNewsMenu() {
+    const item = $(".navbar-nav .dropdown");
+    const button = item && $(".nav-disclosure", item);
+    if (!button) return;
+    const setOpen = (open) => {
+      item.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+    };
+    button.addEventListener("click", () => setOpen(!item.classList.contains("is-open")));
+    item.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !item.classList.contains("is-open")) return;
+      event.stopPropagation();
+      setOpen(false);
+      button.focus();
+    });
+    item.addEventListener("focusout", (event) => {
+      if (event.relatedTarget && !item.contains(event.relatedTarget)) setOpen(false);
+    });
+    document.addEventListener("click", (event) => {
+      if (!item.contains(event.target)) setOpen(false);
+    });
+    // the header menus stop their clicks from reaching the document
+    document.addEventListener("pp:menu-open", () => setOpen(false));
   }
 
   /* ---- 2. Header menus: currency, weather, notifications ----------------- */
@@ -666,6 +700,7 @@
 
   function init() {
     initNavToggle();
+    initLocalNewsMenu();
     initHeaderMenus();
     initNotificationBadge();
     initStickyAside();

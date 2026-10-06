@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=23">
+  <link rel="stylesheet" href="./css/style.css?v=24">
 </head>
 <body class="page-sitemap">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -35,7 +35,7 @@
           </div>
           <div class="left-icons">
             <div class="icon-container icon-container--currency">
-              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-currency" aria-label="العملات"><img src="./imgs/dollar-circle.svg" alt="" width="32" height="32" decoding="async"></button>
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-currency" aria-label="العملات"><img src="./imgs/dollar-circle.svg" alt="" width="32" height="32" decoding="async"><span class="icon-label">العملات</span></button>
               <div class="curancy-mega-menu mega-menu" id="menu-currency" role="region" aria-label="العملات">
                 <div class="loading-overlay">
                   <div class="loading-spinner"></div>
@@ -69,7 +69,7 @@
             </div>
             <div class="v-line"></div>
             <div class="icon-container icon-container--weather">
-              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-weather" aria-label="الطقس"><img class="sun" src="./imgs/sun.png" alt="" width="32" height="32" decoding="async"></button>
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-weather" aria-label="الطقس"><img class="sun" src="./imgs/sun.png" alt="" width="32" height="32" decoding="async"><span class="icon-label">الطقس</span></button>
               <div class="weather-mega-menu curancy-mega-menu mega-menu" id="menu-weather" role="region" aria-label="الطقس">
                 <div class="loading-overlay">
                   <div class="loading-spinner"></div>
@@ -82,7 +82,7 @@
             </div>
             <div class="v-line"></div>
             <div class="icon-container icon-container--notifications">
-              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-notifications" aria-label="الإشعارات"><img src="./imgs/notification.svg" alt="" width="32" height="32" decoding="async"><span class="icon-badge" data-notif-count="" hidden></span></button>
+              <button type="button" class="icon-trigger" aria-expanded="false" aria-controls="menu-notifications" aria-label="الإشعارات"><img src="./imgs/notification.svg" alt="" width="32" height="32" decoding="async"><span class="icon-badge" data-notif-count="" hidden></span><span class="icon-label">الإشعارات</span></button>
               <div class="notifications-mega-menu mega-menu" id="menu-notifications" role="region" aria-label="الإشعارات">
                 <div class="mega-menu-content">
                   <div class="notifications-container">
@@ -212,8 +212,8 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-white" aria-label="القائمة الرئيسية">
       <div class="container">
-        <div class="d-flex align-items-center py-3 gap-2 full-width-small">
-          <button class="navbar-toggler pt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="فتح قائمة التنقل"><span class="navbar-toggler-icon"></span></button>
+        <div class="d-flex align-items-center gap-2 full-width-small">
+          <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="قائمة الأقسام"><span class="navbar-toggler-icon"></span></button>
           <div class="w-100 none-in-large-screen">
             <form role="search" action="articles.html" method="GET">
               <div class="form-group"><input class="search-input" placeholder="ابحث في فلسطين بوست" aria-label="ابحث في فلسطين بوست" name="search" type="search"> <button type="submit" class="top-bar-btn" aria-label="بحث"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button></div>
@@ -224,7 +224,7 @@
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link custom-hover" href="index.html">الرئيسية</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link custom-hover" href="articles.html" aria-haspopup="true">أخبار محلية <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+              <a class="nav-link custom-hover" href="articles.html">أخبار محلية</a><button type="button" class="nav-disclosure" aria-expanded="false" aria-controls="local-news-slide-menu" aria-label="أخبار المدن"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
               <div class="mega-menu" id="local-news-slide-menu">
                 <div class="menu-container">
                   <div class="menu-item">
@@ -355,7 +355,6 @@
                       </a>
                     </div>
                     <ul>
-                      <li><a class="line-clamp-2" href="single-article.html">قائمة بأسماء معتقلين صدرت بحقهم أوامر اعتقال إداري جديدة</a></li>
                       <li><a class="line-clamp-2" href="single-article.html">قائمة بأسماء معتقلين صدرت بحقهم أوامر اعتقال إداري جديدة</a></li>
                     </ul>
                   </div>
@@ -766,8 +765,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=23"></script>
-  <script src="./js/currencies.js?v=23"></script>
-  <script src="./js/weather.js?v=23"></script>
+  <script src="./js/script.js?v=24"></script>
+  <script src="./js/currencies.js?v=24"></script>
+  <script src="./js/weather.js?v=24"></script>
 </body>
 </html>
