@@ -8054,55 +8054,103 @@ img {
    6.6 LOCAL NEWS TABS — the default tab (Gaza) came empty from the server,
    labels were 11px light grey, the headlines linked nowhere
    --------------------------------------------------------------------- */
-.controls-header-title .controls-title {
-    margin: 0;
-    font-family: var(--font-semibold);
-    font-size: 22px;
-    color: var(--text-color);
-}
-
-.local-news-header-controls {
-    align-items: flex-end;
-}
-
-.right-choises {
-    gap: 2px;
+/* the cities as chips under a header like every other section's; title and
+   tabs shared one row (two teal rules side by side, the title broke onto
+   two lines on tablets, slid left on phones with the strip scrolled to its
+   far end) */
+.city-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin: 0 0 20px;
+    padding: 3px;
     overflow-x: auto;
+    list-style: none;
     scrollbar-width: none;
+    scroll-padding-inline: 3px;
     scroll-snap-type: x proximity;
 }
 
-.right-choises li {
+.city-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.city-tabs li {
     flex: none;
     scroll-snap-align: start;
 }
 
-.right-choises li button {
-    display: block;
-    min-height: 40px;
-    padding: 8px 14px;
-    border: 0;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    background: transparent;
-    color: var(--secondry-text-color);
-    font-family: var(--font-semibold);
+.city-tabs li::before,
+.city-tabs li::after,
+.city-tabs li.active::before,
+.city-tabs li.active::after {
+    content: none;
+    display: none;
+}
+
+.city-tabs li button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid var(--line-color);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text-color);
+    font-family: var(--font-medium);
     font-size: 14px;
     white-space: nowrap;
     cursor: pointer;
-    transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.right-choises li button:hover {
-    color: var(--text-color);
-    background: var(--surface-muted);
+.city-tabs li button:hover {
+    border-color: var(--main-color);
+    background: #fff;
 }
 
-.right-choises li.active button {
+.city-tabs li.active button,
+.city-tabs li button[aria-selected="true"] {
+    border-color: var(--text-color);
+    background: var(--text-color);
+    color: #fff;
+}
+
+/* phones: the strip runs off the end edge, faded to say there is more */
+@media (max-width: 991.98px) {
+    .city-tabs {
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 36px);
+        mask-image: linear-gradient(to right, transparent 0, #000 36px);
+    }
+}
+
+.city-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 12px;
+    font-family: var(--font-semibold);
+    font-size: 15px;
     color: var(--main-color-ink);
 }
 
-.right-choises li.active::after {
-    display: none;
+.city-more i {
+    font-size: 13px;
+    transition: transform var(--dur) var(--ease);
+}
+
+.city-more:hover {
+    color: var(--text-color);
+}
+
+.city-more:hover i {
+    transform: translateX(-4px);
+}
+
+.local-news-tabs .date-article {
+    white-space: nowrap;
+    font-size: 12px;
 }
 
 .local-news-tabs .slider-content {
@@ -11802,13 +11850,8 @@ main:focus {
         font-size: 1.25rem;
     }
 
-    .controls-header-title .controls-title {
-        margin-bottom: 12px;
-        font-size: 20px;
-    }
-
     .local-news-tabs .row > [class*="col-"] + [class*="col-"] {
-        margin-top: 0;
+        margin-top: 12px;
     }
 
     .fixed-accordion .fb-accordion-item {
