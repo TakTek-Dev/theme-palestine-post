@@ -101,6 +101,11 @@
   - في آخر الصفحة دعوة «شاهدت حدثًا؟ أرسله إلينا» بتودّي لصفحة «أرسل خبرًا»، لأن الصفحة كلها عن صحافة المواطن.
   - نصوص الصفحة زي ما هي على اللايف.
 - **صفحة البرامج:** الفلتر اللي كان فيه اختيار واحد اتشال. البرنامج بقى بنفس بطاقة صفحة البرنامج، وتحته أحدث ٤ حلقات بتشتغل من مكانها.
+- **آخر الأخبار في الرئيسية:**
+  - الشبكة بقى ليها عنوان «آخر الأخبار» ومعاه «كل الأخبار»، وكان مالهاش عنوان.
+  - العمود الجانبي كان اسمه «آخر الأخبار» برضه، وفيه نفس أخبار الهيرو الخمسة. بقى خط زمني «آخر التحديثات»: الساعة في أول كل صف، ونقطة على خط بيوصل الصفوف ببعض، واليوم بيظهر بس لما يتغيّر.
+  - على التابلت العمود الجانبي كان 156px، والعناوين بتتكسر كلمة في كل سطر. دلوقتي تحت 992px بيبقى تحت الشبكة، والخط الزمني و«تابعنا على» جنب بعض.
+  - «عرض المزيد» بقى «المزيد من الأخبار»، بعرض الشبكة وبنفس حواف الكروت.
 - **أخبار محلية في الرئيسية:**
   - الرأس بقى زي باقي الأقسام: «أخبار محلية» ومعاه «كل الأخبار المحلية». قبل كده العنوان والمدن كانوا في سطر واحد بخطين تركواز جنب بعض. وعلى التابلت العنوان كان بيلف على سطرين، وعلى الموبايل كان بيروح الشمال والشريط ظاهر من آخره.
   - المدن بقت شرايح تحت العنوان، والمختارة كحلي. على التابلت والموبايل الشريط بيسكرول بالعرض، وطرفه باهت عشان يبان إن فيه مدن تانية.
@@ -212,6 +217,7 @@
 | رابط «المزيد» في البودكاست | `<a class="btn btn-outline-primary">الـمزيــد <i class="fa-angles-left"></i></a>` | `<a class="section-more" href="…">كل الحلقات <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>` |
 | الفيديو في الرئيسية | `h2.visually-hidden`، و`.video-list` فيه `header.toplist-videos` (يُعرض الآن، العدّاد، العنوان، `button.toggle-video`) قبل العناصر، و`.video-player` بعد القائمة | رأس `.podcast-slider-header` فيه `h2` «فيديو بوست» و`a.section-more`. وجوه `.video-section` الأول `div.video-stage` (فيه `.video-player`، وبعده `div.video-now` فيه `p.video-now__meta` بـ`.state-video` و`.video-counter`، و`p.title-video-play`)، وبعده `.video-list[role=group]` بالعناصر بس. ومفيش `toggle-video` |
 | أخبار محلية في الرئيسية | `.local-news-header-controls` فيه `.controls-header-title > h2` و`ul.right-choises` | رأس `.podcast-slider-header` (`h2` و`a.section-more`)، وبعده `ul.right-choises.city-tabs[role=tablist]` لوحده، وبعدهم `.local-news-tabs`. وفي آخر كل `.local-news-tab` رابط `a.city-more` «المزيد من أخبار {المدينة}» لصفحة المدينة |
+| آخر الأخبار في الرئيسية | `col-md-9` و`col-md-3`، والشبكة من غير عنوان، و`.news-list > .news-item` (`span.news-number` ولينك و`.date-article`)، و`a#load-more-btn.btn.btn-outline-primary` | `col-lg-9` و`col-lg-3`. وفي أول `.right-section` رأس `.podcast-slider-header` (`h2` «آخر الأخبار» و`a.section-more`). والجانبي `ol.news-list.news-timeline > li.news-item` (`span.news-time` بالساعة، واللينك، و`span.news-day` لما اليوم يتغيّر بس) وعنوانه «آخر التحديثات». و«تابعنا على» `h3`. وفي الآخر `a.more-news` «المزيد من الأخبار» |
 | زرار القائمة | `<button class="navbar-toggler pt-2" data-bs-toggle data-bs-target aria-label="فتح قائمة التنقل">` جوه `.full-width-small.py-3` | من غير `data-bs-*` (`script.js` هو اللي بيفتح ويقفل) ومن غير `pt-2`، و`aria-label="قائمة الأقسام"`، والصف من غير `py-3` |
 | أخبار محلية في القائمة | `<a aria-haspopup="true">أخبار محلية <i class="fa-chevron-down"></i></a>`، والمنيو بيفتح بالهوفر بس | `<a class="nav-link custom-hover" href="…">أخبار محلية</a>` وبعده على طول `<button type="button" class="nav-disclosure" aria-expanded="false" aria-controls="local-news-slide-menu" aria-label="أخبار المدن">` فيه السهم. ومن غير خبر متكرر في نفس المدينة |
 | القسم الحالي في القائمة | الرابط بيتعلّم لو هو نفس الصفحة بس | الصفحة نفسها `class="active" aria-current="page"`، والصفحة اللي جوه قسم (زي صفحة الحلقة جوه «بودكاست») بتعلّم القسم `class="active" aria-current="true"` |

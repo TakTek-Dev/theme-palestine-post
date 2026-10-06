@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=32">
+  <link rel="stylesheet" href="./css/style.css?v=34">
 </head>
 <body class="page-index">
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -432,8 +432,14 @@
       </section>
       <div class="container mt-3">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-lg-9">
             <section class="right-section">
+              <div class="podcast-slider-header">
+                <div class="main-section-title">
+                  <h2>آخر الأخبار</h2>
+                </div>
+                <a class="section-more" href="articles.html">كل الأخبار <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+              </div>
               <div class="hide-right-section">
                 <div class="fixed-accordion">
                   <div class="fb-accordion-item fb-active">
@@ -663,41 +669,26 @@
                   </div>
                 </div>
               </div>
-              <div class="view-more" id="view-more-container"><a href="articles.html" id="load-more-btn" class="btn btn-outline-primary read-more" data-offset="15" data-limit="5">عرض المزيد <i class="fa-solid fa-arrow-left"></i></a></div>
+              <div class="view-more" id="view-more-container"><a class="more-news" href="articles.html">المزيد من الأخبار <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a></div>
             </section>
           </div>
-          <div class="col-md-3">
-            <aside class="home-aside" aria-label="آخر الأخبار وحساباتنا">
+          <div class="col-lg-3">
+            <aside class="home-aside" aria-label="آخر التحديثات وحساباتنا">
               <div class="latest-news-section2">
                 <div class="title-with-circle title-with-circle-small d-flex align-items-center gap-2 border-bottom-blue">
                   <div class="dot-title"></div>
-                  <h3 class="section-title">آخر الأخبار</h3>
+                  <h3 class="section-title">آخر التحديثات</h3>
                 </div>
-                <div class="news-list">
-                  <div class="news-item">
-                    <span class="news-number">01</span> <a class="line-clamp-3" href="single-article.html">"التاج" جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة</a>
-                    <div class="date-article d-flex align-items-center gap-2 justify-content-end"><i class="fa-solid fa-calendar-days"></i> 09:45 م 05 أكتوبر 2026</div>
-                  </div>
-                  <div class="news-item">
-                    <span class="news-number">02</span> <a class="line-clamp-3" href="single-article.html">إصابة شاب برصاص الاحتلال شمال غرب الخليل</a>
-                    <div class="date-article d-flex align-items-center gap-2 justify-content-end"><i class="fa-solid fa-calendar-days"></i> 09:22 م 05 أكتوبر 2026</div>
-                  </div>
-                  <div class="news-item">
-                    <span class="news-number">03</span> <a class="line-clamp-3" href="single-article.html">بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا</a>
-                    <div class="date-article d-flex align-items-center gap-2 justify-content-end"><i class="fa-solid fa-calendar-days"></i> 08:56 م 05 أكتوبر 2026</div>
-                  </div>
-                  <div class="news-item">
-                    <span class="news-number">04</span> <a class="line-clamp-3" href="single-article.html">أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة</a>
-                    <div class="date-article d-flex align-items-center gap-2 justify-content-end"><i class="fa-solid fa-calendar-days"></i> 08:18 م 05 أكتوبر 2026</div>
-                  </div>
-                  <div class="news-item">
-                    <span class="news-number">05</span> <a class="line-clamp-3" href="single-article.html">إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس</a>
-                    <div class="date-article d-flex align-items-center gap-2 justify-content-end"><i class="fa-solid fa-calendar-days"></i> 07:43 م 05 أكتوبر 2026</div>
-                  </div>
-                </div>
+                <ol class="news-list news-timeline">
+                  <li class="news-item"><span class="news-time">09:45 م</span><a href="single-article.html">"التاج" جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة</a><span class="news-day">5 أكتوبر</span></li>
+                  <li class="news-item"><span class="news-time">09:22 م</span><a href="single-article.html">إصابة شاب برصاص الاحتلال شمال غرب الخليل</a></li>
+                  <li class="news-item"><span class="news-time">08:56 م</span><a href="single-article.html">بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا</a></li>
+                  <li class="news-item"><span class="news-time">08:18 م</span><a href="single-article.html">أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة</a></li>
+                  <li class="news-item"><span class="news-time">07:43 م</span><a href="single-article.html">إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس</a></li>
+                </ol>
               </div>
               <div class="side-social-media my-5">
-                <h4 class="title-side">تابعنا على</h4>
+                <h3 class="title-side">تابعنا على</h3>
                 <ul class="list-social-media">
                   <li class="item d-flex align-items-center justify-content-between">
                     <span class="icon" aria-hidden="true"><i class="fa-brands fa-facebook-f"></i></span>
@@ -1670,8 +1661,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=32"></script>
-  <script src="./js/currencies.js?v=32"></script>
-  <script src="./js/weather.js?v=32"></script>
+  <script src="./js/script.js?v=34"></script>
+  <script src="./js/currencies.js?v=34"></script>
+  <script src="./js/weather.js?v=34"></script>
 </body>
 </html>
