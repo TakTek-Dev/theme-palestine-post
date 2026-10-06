@@ -9152,51 +9152,12 @@ img {
 
 /* ---------------------------------------------------------------------
    6.9 SPECIAL FILES — closed files were vertical, rotated Arabic; every file
-   had its own random accent colour. On wide screens the titles become tabs
-   above the open file (same markup, CSS only); on phones a stacked list.
+   had its own random accent colour; the band had no title, a rotated square
+   sat before each name, every story carried its own teal bar, the text
+   column ended halfway down the poster, and on phones the poster shrank to
+   145px in a grey band. Wide screens: the names are tabs over the open
+   file; phones: an accordion
    --------------------------------------------------------------------- */
-.files-section2 .fb-accordion-title {
-    writing-mode: horizontal-tb;
-    transform: none;
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    margin: 0;
-    padding: 12px 18px;
-    border: 1px solid var(--line-color);
-    border-radius: var(--radius-sm);
-    background: #fff;
-    color: var(--text-color);
-    font-family: var(--font-semibold);
-    font-size: 16px;
-    text-align: start;
-    cursor: pointer;
-}
-
-.files-section2 .fb-accordion-title .fa-square,
-.files-section2 .fb-accordion-item:nth-child(n) i {
-    color: var(--main-color);
-}
-
-.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-title {
-    color: var(--text-color);
-}
-
-.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-title[aria-expanded="true"] {
-    color: #fff;
-}
-
-.files-section2 .fb-accordion-title[aria-expanded="true"] {
-    border-color: var(--text-color);
-    background: var(--text-color);
-    color: #fff;
-}
-
-.files-section2 .fb-accordion-title[aria-expanded="true"] .fa-square {
-    color: var(--main-color);
-}
-
 .fb-accordion-content .text h3,
 .fb-accordion-item:nth-child(n) .fb-accordion-content .text h3 {
     font-family: var(--font-bold);
@@ -9235,43 +9196,268 @@ img {
     display: none;
 }
 
-@media (min-width: 769px) {
+/* the band */
+.files-section2 .fb-accordion {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.files-section2 .fb-accordion-item,
+.files-section2 .fb-accordion-item.fb-closed {
+    display: contents;
+}
+
+.files-section2 .fb-accordion-title,
+.files-section2 .fb-accordion-item.fb-active .fb-accordion-title {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 20px;
+    border: 1px solid var(--line-color);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text-color);
+    font-family: var(--font-semibold);
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: start;
+    writing-mode: horizontal-tb;
+    transform: none;
+    cursor: pointer;
+    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.files-section2 .fb-accordion-title:hover {
+    border-color: var(--main-color);
+}
+
+/* production gave each file its own colour by position (nth-child) */
+.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-title {
+    color: var(--text-color);
+}
+
+.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-chevron {
+    color: inherit;
+}
+
+.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-title[aria-expanded="true"],
+.files-section2 .fb-accordion-title[aria-expanded="true"] {
+    border-color: var(--text-color);
+    background: var(--text-color);
+    color: #fff;
+}
+
+.files-section2 .fb-accordion-chevron {
+    display: none;
+    font-size: 12px;
+    transition: transform var(--dur) var(--ease);
+}
+
+/* the open file: poster on the start side, the file's story beside it */
+.files-section2 .fb-accordion-item.fb-active .fb-accordion-content {
+    display: grid;
+    flex: 1 1 100%;
+    order: 1;
+    grid-template-columns: 260px minmax(0, 1fr);
+    margin-top: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+.files-section2 .fb-accordion-content[hidden] {
+    display: none !important;
+}
+
+.files-section2 .fb-accordion-content .image {
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    aspect-ratio: 4 / 5;
+    background: var(--surface-muted);
+}
+
+.files-section2 .fb-accordion-content .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.files-section2 .fb-accordion-content .text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 28px 32px;
+}
+
+.files-section2 .fb-accordion-content .text h3 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.files-section2 .fb-accordion-content .text > p {
+    max-width: 60ch;
+    margin: 0 0 16px;
+}
+
+/* stories: numbered rows on hairlines, like the latest-news list */
+.files-section2 .fb-accordion-content .text ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: file-story;
+}
+
+.files-section2 .fb-accordion-content .text ul li {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: baseline;
+    margin: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-color);
+    counter-increment: file-story;
+}
+
+.files-section2 .fb-accordion-content .text ul li::before {
+    content: counter(file-story, decimal-leading-zero);
+    font-family: var(--font-bold);
+    font-size: 15px;
+    color: var(--main-color-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.files-section2 .fb-accordion-content .text ul li a,
+.files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-content .text ul li a {
+    display: block;
+    padding: 0;
+    font-family: var(--font-medium);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.files-section2 .fb-accordion-content .text ul li a::before {
+    display: none;
+}
+
+.files-section2 .fb-accordion-content .text ul li a:hover {
+    color: var(--main-color-ink);
+}
+
+.files-section2 .files-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 20px;
+    font-family: var(--font-semibold);
+    font-size: 15px;
+    color: var(--main-color-ink);
+}
+
+.files-section2 .files-more i {
+    font-size: 13px;
+    transition: transform var(--dur) var(--ease);
+}
+
+.files-section2 .files-more:hover i {
+    transform: translateX(-4px);
+}
+
+/* phones: an accordion of full-width rows; the poster becomes a thumbnail
+   beside the file's name */
+@media (max-width: 768px) {
     .files-section2 .fb-accordion {
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
     }
 
-    .files-section2 .fb-accordion-item {
-        display: contents;
+    .files-section2 .fb-accordion-item,
+    .files-section2 .fb-accordion-item.fb-closed {
+        display: block;
     }
 
-    .files-section2 .fb-accordion-title {
-        width: auto;
-        border-radius: 999px;
-    }
-
-    .files-section2 .fb-accordion-content,
-    .files-section2 .fb-accordion-item.fb-active .fb-accordion-content {
-        flex: 1 1 100%;
-        order: 1;
-        overflow: hidden;
+    .files-section2 .fb-accordion-title,
+    .files-section2 .fb-accordion-item.fb-active .fb-accordion-title {
+        display: flex !important;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 52px;
+        padding: 0 16px;
         border: 1px solid var(--line-color);
-        border-radius: var(--radius);
-        background: #fff;
+        border-radius: var(--radius-sm);
     }
 
-    .files-section2 .fb-accordion-content .image {
-        flex: 0 0 300px;
-        width: 300px;
-        height: auto;
-        aspect-ratio: auto;
-        align-self: flex-start;
-        background: var(--surface-muted);
+    .files-section2 .fb-accordion-chevron {
+        display: inline-block;
+    }
+
+    .files-section2 .fb-accordion-title[aria-expanded="true"] {
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+
+    .files-section2 .fb-accordion-title[aria-expanded="true"] .fb-accordion-chevron {
+        transform: rotate(180deg);
+    }
+
+    .files-section2 .fb-accordion-item.fb-active .fb-accordion-content {
+        grid-template-columns: 88px minmax(0, 1fr);
+        grid-template-areas:
+            "img title"
+            "img desc"
+            "list list"
+            "more more";
+        column-gap: 14px;
+        margin: 0;
+        padding: 16px;
+        border-top: 0;
+        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     }
 
     .files-section2 .fb-accordion-content .text {
-        padding: 28px 32px;
+        display: contents;
+    }
+
+    .files-section2 .fb-accordion-content .image {
+        grid-area: img;
+        align-self: start;
+        min-height: 0;
+        overflow: hidden;
+        border-radius: var(--radius-sm);
+    }
+
+    .files-section2 .fb-accordion-content .text h3 {
+        grid-area: title;
+        align-self: end;
+        font-size: 18px;
+    }
+
+    .files-section2 .fb-accordion-content .text > p {
+        grid-area: desc;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .files-section2 .fb-accordion-content .text ul {
+        grid-area: list;
+        margin-top: 8px;
+    }
+
+    .files-section2 .fb-accordion-content .text ul li a,
+    .files-section2 .fb-accordion-item:nth-child(n) .fb-accordion-content .text ul li a {
+        font-size: 15px;
+    }
+
+    .files-section2 .files-more {
+        grid-area: more;
+        padding-top: 14px;
     }
 }
 
