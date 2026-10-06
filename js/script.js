@@ -326,7 +326,9 @@
     const bigger = $(".zoom-in");
     const smaller = $(".zoom-out");
     if (!text || !bigger || !smaller) return;
-    const sizes = [16, 18, 20, 22, 24];
+    // phones start one step smaller: 18px reads heavy on a 390px screen
+    const base = window.matchMedia("(max-width: 768px)").matches ? 17 : 18;
+    const sizes = [base - 2, base, base + 2, base + 4, base + 6];
     let index = Math.min(sizes.length - 1, Math.max(0, Number(store.get("pp:article-size") ?? 1)));
     const apply = () => {
       document.documentElement.style.setProperty("--article-size", `${sizes[index]}px`);
@@ -337,6 +339,27 @@
     bigger.addEventListener("click", () => { index = Math.min(sizes.length - 1, index + 1); apply(); });
     smaller.addEventListener("click", () => { index = Math.max(0, index - 1); apply(); });
     apply();
+  }
+
+  /* reading progress: a thin bar that fills as the story is read */
+  function initReadProgress() {
+    const bar = $(".read-progress span");
+    const text = $(".article-text-content");
+    if (!bar || !text) return;
+    let ticking = false;
+    const update = () => {
+      // reading starts when the text reaches the middle of the screen
+      const box = text.getBoundingClientRect();
+      const done = Math.min(1, Math.max(0, (window.innerHeight * 0.5 - box.top) / Math.max(1, box.height)));
+      bar.style.transform = `scaleX(${done.toFixed(3)})`;
+      ticking = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+    update();
   }
 
   /* ---- 9. Send news form: clear messages instead of browser bubbles ------ */
@@ -430,6 +453,7 @@
     initPodcastPlayers();
     initShare();
     initArticleTools();
+    initReadProgress();
     initSendNews();
     initSitemapFilter();
     initScrollTop();

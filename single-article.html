@@ -19,9 +19,10 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css?v=13">
+  <link rel="stylesheet" href="./css/style.css?v=16">
 </head>
 <body class="page-single-article">
+  <div class="read-progress" aria-hidden="true"><span></span></div>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
   <header>
     <div class="top-bar">
@@ -391,14 +392,36 @@
   </header>
   <main id="main" tabindex="-1">
     <div>
-      <section class="article-hero" style="background-image: url(&#x27;https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac39d5f60abb.webp&#x27;); ">
-        <div class="article-hero-overlay"></div>
-        <div class="container article-hero-content">
+      <section class="article-head" aria-labelledby="article-title">
+        <div class="container">
           <div class="row">
-            <div class="col-lg-10 mx-auto text-center">
+            <div class="col-lg-8">
+              <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+                <ol class="list-breadcrumb">
+                  <li><a href="index.html">الرئيسية</a></li>
+                  <li><a href="articles.html">غزة</a></li>
+                </ol>
+              </nav>
               <a href="articles.html" class="hero-category">غزة</a>
-              <h1 class="hero-title">أسرى غزة.. جثامين بلا أسماء ومعتقلون بلا محاكمات وشهداء داخل الأسر</h1>
-              <div class="hero-meta"><span><i class="fa-solid fa-calendar-days"></i> 5 أكتوبر 2026<span class="hero-read">قراءة في 3 دقائق</span></span></div>
+              <h1 class="hero-title" id="article-title">أسرى غزة.. جثامين بلا أسماء ومعتقلون بلا محاكمات وشهداء داخل الأسر</h1>
+              <div class="article-meta">
+                <p class="hero-meta"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time datetime="2026-10-05">5 أكتوبر 2026</time></span><span><i class="fa-regular fa-clock" aria-hidden="true"></i> قراءة في دقيقة</span></p>
+                <div class="article-controls">
+                  <div class="font-controls" role="group" aria-label="حجم الخط"><button class="wrapper-icon zoom-in" aria-label="تكبير الخط" type="button"><i class="fa-solid fa-plus"></i></button> <button class="wrapper-icon zoom-out" aria-label="تصغير الخط" type="button"><i class="fa-solid fa-minus"></i></button></div>
+                  <div class="share-article">
+                    <button type="button" class="btn-share" aria-expanded="false" aria-controls="share-1">شارك <i class="fa-solid fa-share-nodes" aria-hidden="true"></i></button>
+                    <div class="share-social-icons social-icons" id="share-1">
+                      <ul>
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على فيسبوك"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://api.whatsapp.com/send?text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%20https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على واتساب"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+                        <li><a href="https://t.me/share/url?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a></li>
+                        <li><button type="button" class="copy-link" data-copy="https://ppost.ps/share/23764" aria-label="انسخ الرابط"><i class="fa-solid fa-link" aria-hidden="true"></i></button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -408,23 +431,10 @@
           <div class="row">
             <div class="col-lg-8">
               <article class="article-body-section">
-                <div class="author-box">
-                  <div class="article-controls">
-                    <div class="font-controls" role="group" aria-label="حجم الخط"><button class="wrapper-icon zoom-in" aria-label="تكبير الخط" type="button"><i class="fa-solid fa-plus"></i></button> <button class="wrapper-icon zoom-out" aria-label="تصغير الخط" type="button"><i class="fa-solid fa-minus"></i></button></div>
-                    <div class="share-article">
-                      <button type="button" class="btn-share" aria-expanded="false" aria-controls="share-1">شارك <i class="fa-solid fa-share-nodes" aria-hidden="true"></i></button>
-                      <div class="share-social-icons social-icons" id="share-1">
-                        <ul>
-                          <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على فيسبوك"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                          <li><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                          <li><a href="https://api.whatsapp.com/send?text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%20https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على واتساب"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
-                          <li><a href="https://t.me/share/url?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a></li>
-                          <li><button type="button" class="copy-link" data-copy="https://ppost.ps/share/23764" aria-label="انسخ الرابط"><i class="fa-solid fa-link" aria-hidden="true"></i></button></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <figure class="article-figure">
+                  <img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac39d5f60abb.webp" width="682" height="449" alt="" fetchpriority="high" decoding="async">
+                  <figcaption>معتقلون فلسطينيون من قطاع غزة جاثون على الأرض في ساحة يحرسها جنود الاحتلال.</figcaption>
+                </figure>
                 <div class="description article-text-content">
                   <p>أفادت معطيات نشرها مكتب إعلام الأسرى بأن ملف أسرى قطاع غزة لا يزال يكشف عن أرقام كبيرة من المعتقلين والشهداء والجثامين، في ظل استمرار تداعيات الحرب.</p>
                   <p>وبحسب المكتب، بلغ عدد الأسرى الذين أُفرج عنهم ضمن صفقة التبادل 2724 أسيرا، فيما أُفرج عن 794 أسيرا بعد انتهاء صفقة "طوفان الأحرار".</p>
@@ -433,12 +443,24 @@
                   <p>وتعكس هذه الأرقام حجم المأساة التي يواجهها أسرى قطاع غزة، ولا سيما في ظل استمرار احتجاز معتقلين وانكشاف مصير عدد من الأسرى الذين ارتقوا داخل الأسر.</p>
                 </div>
                 <div class="tags-section">
-                  <h5 class="tags-title">علامات</h5>
+                  <h2 class="tags-title">الوسوم</h2>
                   <ul class="tags-list">
                     <li><a href="articles.html">أسرى قطاع غزة</a></li>
                     <li><a href="articles.html">الأسرى في سجون الاحتلال</a></li>
                     <li><a href="articles.html">أسرى غزة</a></li>
                   </ul>
+                </div>
+                <div class="article-share-end">
+                  <p class="article-share-end__label">شارك الخبر</p>
+                  <div class="share-inline">
+                    <ul>
+                      <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على فيسبوك"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                      <li><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                      <li><a href="https://api.whatsapp.com/send?text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%20https%3A%2F%2Fppost.ps%2Fshare%2F23764" target="_blank" rel="noopener" aria-label="شارك على واتساب"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+                      <li><a href="https://t.me/share/url?url=https%3A%2F%2Fppost.ps%2Fshare%2F23764&amp;text=%D8%A3%D8%B3%D8%B1%D9%89%20%D8%BA%D8%B2%D8%A9..%20%D8%AC%D8%AB%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%84%D8%A7%20%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%88%D9%85%D8%B9%D8%AA%D9%82%D9%84%D9%88%D9%86%20%D8%A8%D9%84%D8%A7%20%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A7%D8%AA%20%D9%88%D8%B4%D9%87%D8%AF%D8%A7%D8%A1%20%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1" target="_blank" rel="noopener" aria-label="شارك على تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a></li>
+                      <li><button type="button" class="copy-link" data-copy="https://ppost.ps/share/23764" aria-label="انسخ الرابط"><i class="fa-solid fa-link" aria-hidden="true"></i></button></li>
+                    </ul>
+                  </div>
                 </div>
               </article>
             </div>
@@ -447,6 +469,27 @@
                 <div class="sidebar-widget">
                   <h2 class="widget-title">أخبار مشابهة</h2>
                   <div class="similar-news-list"><a class="similar-post-item" href="single-article.html"><span class="similar-post-image"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3dda47e11d.webp" alt="" loading="lazy" decoding="async"></span><span><span class="similar-post-title">أطباء بلا حدود: الحصار والهدم وتدمير الخدمات الصحية يخنقون غزة</span><span class="similar-post-date">5 أكتوبر 2026</span></span></a><a class="similar-post-item" href="single-article.html"><span class="similar-post-image"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3c6301cb1c.webp" alt="" loading="lazy" decoding="async"></span><span><span class="similar-post-title">أزمة مياه تتفاقم في غزة بسبب تعطل خط «ميكروت» منذ أسبوع</span><span class="similar-post-date">5 أكتوبر 2026</span></span></a><a class="similar-post-item" href="single-article.html"><span class="similar-post-image"><img src="https://fsn1.your-objectstorage.com/ppost/ppost/uploads/2026/10/file_6ac3ee6854535.webp" alt="" loading="lazy" decoding="async"></span><span><span class="similar-post-title">«التاج» جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة</span><span class="similar-post-date">5 أكتوبر 2026</span></span></a></div>
+                </div>
+                <div class="sidebar-widget sidebar-latest">
+                  <h2 class="widget-title">آخر الأخبار</h2>
+                  <ol class="latest-news-section2 news-list">
+                    <li class="news-item">
+                      <span class="news-number">01</span> <a class="line-clamp-3" href="single-article.html">«التاج» جُرح غائر لا يدمله الزمن وذوو الضحايا ينشدون العدالة</a>
+                      <div class="date-article d-flex align-items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 09:45 م 05 أكتوبر 2026</div>
+                    </li>
+                    <li class="news-item">
+                      <span class="news-number">02</span> <a class="line-clamp-3" href="single-article.html">إصابة شاب برصاص الاحتلال شمال غرب الخليل</a>
+                      <div class="date-article d-flex align-items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 09:22 م 05 أكتوبر 2026</div>
+                    </li>
+                    <li class="news-item">
+                      <span class="news-number">03</span> <a class="line-clamp-3" href="single-article.html">بعد تهجير 15 عائلة.. مستوطنون يقيمون بؤرة استيطانية جديدة شمال أريحا</a>
+                      <div class="date-article d-flex align-items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 08:56 م 05 أكتوبر 2026</div>
+                    </li>
+                    <li class="news-item">
+                      <span class="news-number">04</span> <a class="line-clamp-3" href="single-article.html">إصابة خمسيني برضوض إثر اعتداء جنود الاحتلال عليه جنوب نابلس</a>
+                      <div class="date-article d-flex align-items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 07:43 م 05 أكتوبر 2026</div>
+                    </li>
+                  </ol>
                 </div>
               </aside>
             </div>
@@ -505,8 +548,8 @@
     </div>
   </footer>
   <button type="button" id="scrollToTop" aria-label="العودة إلى أعلى الصفحة"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-  <script src="./js/script.js?v=13"></script>
-  <script src="./js/currencies.js?v=13"></script>
-  <script src="./js/weather.js?v=13"></script>
+  <script src="./js/script.js?v=16"></script>
+  <script src="./js/currencies.js?v=16"></script>
+  <script src="./js/weather.js?v=16"></script>
 </body>
 </html>
